@@ -1,2 +1,10 @@
-# XS3KOR
-제노사가 에피소드 III 한글패치 작업 공간입니다(Xenosaga Episode III Korean Translation)
+**제노사가 에피소드 III(Xenosaga Episode III)**의 한글패치 자료들입니다.  
+게임의 인코딩은 EUC-JP입니다.  
+현재 기초 공사 중.  
+최근 제노기어스 한글패치 작업으로 인해 기력이 노쇠(?)한 상태이므로 기초 공사만 해둘 예정입니다.  
+<br>
+<br><현재 완료된 작업>  
+한글 폰트 교체 완료  
+.txd 파일용 파이썬 코드 제작 완료  
+컷신 자막 번역 방법 확립(vscode 이용)  
+ROM unpack/repack 방법 확립
