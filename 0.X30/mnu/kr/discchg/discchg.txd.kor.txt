@@ -1,0 +1,13 @@
+[0]$init;$ax32;$ay64;$az1;$bg3;$prop1;$han1;
+[1]제노사가 에피소드 III의\nDISC 2로 교체해 주십시오.
+[2]DISC가 다릅니다.\n\n제노사가 에피소드 III의\nDISC 2를 삽입해 주십시오.
+[3]DISC가 들어 있지 않습니다.\n\n제노사가 에피소드 III의\nDISC 2를 삽입해 주십시오.
+[4]DISC를 체크하는 중입니다…
+[5]$ax64;$ay296;START로 강제 진행
+[6]
+[7]
+[8]
+[9]
+[10]$init;$ax32;$ay32;$az1;$bg3;$prop1;$han1;
+[11]저장하겠습니까?\n\n\button0: 예\n\n\button1: 아니요
+[12]저장하지 않고 계속 진행합니다.\n\n괜찮겠습니까?\n\n\button0: 예\n\n\button1: 아니요

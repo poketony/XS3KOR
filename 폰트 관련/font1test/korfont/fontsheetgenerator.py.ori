@@ -1,0 +1,64 @@
+import numpy as np
+from PIL import Image, ImageDraw, ImageFont
+
+def generate_kor_font_sheet(ttf_path, output_name, char_list, font_size=18, width_ratio=1.2):
+    # 1. 규격 설정
+    glyph_w, glyph_h = 20, 24
+    grid_w, grid_h = 32, 32
+    canvas_w = glyph_w * grid_w  # 640
+    canvas_h = glyph_h * grid_h  # 768
+
+    # 2. 캔버스 및 폰트 설정 (기존 설정 유지)
+    canvas = Image.new('L', (canvas_w, canvas_h), color=0)
+    
+    try:
+        # 질문하신 기존 경로와 폰트 설정을 그대로 사용합니다.
+        font = ImageFont.truetype(r"C:\USERS\JO\APPDATA\LOCAL\MICROSOFT\WINDOWS\FONTS\A중고딕.TTF", font_size)
+    except:
+        print("폰트 파일을 찾을 수 없습니다. 경로를 확인하세요.")
+        return
+
+    # 3. 글자 그리기 (폭 늘리기 로직 추가)
+    for i, char in enumerate(char_list):
+        if i >= grid_w * grid_h: break
+        
+        row = i // grid_w
+        col = i % grid_w
+        
+        x = col * glyph_w
+        y = row * glyph_h
+
+        # --- 폭 늘리기 핵심 로직 시작 ---
+        # 1. 임시 캔버스에 한 글자만 먼저 그림
+        temp_img = Image.new('L', (glyph_w * 2, glyph_h), color=0)
+        temp_draw = ImageDraw.Draw(temp_img)
+        temp_draw.text((0, 0), char, font=font, fill=255, anchor="lt")
+        
+        # 2. 글자가 그려진 부분만 잘라서 가로로 확장
+        bbox = temp_img.getbbox()
+        if bbox:
+            char_crop = temp_img.crop(bbox)
+            new_w = int(char_crop.size[0] * width_ratio)
+            # 가로 폭을 늘림 (1.2배)
+            char_stretched = char_crop.resize((new_w, char_crop.size[1]), Image.Resampling.LANCZOS)
+            
+            # 3. 메인 시트에 중앙 즈음 붙여넣기 (여백 조정 가능)
+            canvas.paste(char_stretched, (x + 1, y + 5))
+        # --- 폭 늘리기 핵심 로직 끝 ---
+
+    # 4. 미리보기 및 저장
+    print(f"시트 생성 완료: {output_name}")
+    canvas.show()
+    canvas.save(output_name)
+
+if __name__ == "__main__":
+    with open('hangul_2048_final.txt', 'r', encoding='utf-8') as f:
+        full_chars = f.read()
+
+    generate_kor_font_sheet(
+        ttf_path=None, # 함수 내부에서 고정 경로를 사용하므로 None 처리 가능
+        output_name="font1_blue_kor_stretched.png",
+        char_list=full_chars[:1024],
+        font_size=16,
+        width_ratio=1.2 # 120% 폭 설정
+    )

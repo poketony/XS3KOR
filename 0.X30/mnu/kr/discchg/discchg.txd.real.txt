@@ -1,0 +1,13 @@
+[0]$init;$ax32;$ay64;$az1;$bg3;$prop1;$han1;
+[1]薦葛紫亜 拭杷社球 III税\nDISC 2稽 嘘端背 爽淑獣神.
+[2]DISC亜 陥絹艦陥.\n\n薦葛紫亜 拭杷社球 III税\nDISC 2研 諮脊背 爽淑獣神.
+[3]DISC亜 級嬢 赤走 省柔艦陥.\n\n薦葛紫亜 拭杷社球 III税\nDISC 2研 諮脊背 爽淑獣神.
+[4]DISC研 端滴馬澗 掻脊艦陥…
+[5]$ax64;$ay296;START稽 悪薦 遭楳
+[6]
+[7]
+[8]
+[9]
+[10]$init;$ax32;$ay32;$az1;$bg3;$prop1;$han1;
+[11]煽舌馬畏柔艦猿?\n\n\button0: 森\n\n\button1: 焼艦推
+[12]煽舌馬走 省壱 域紗 遭楳杯艦陥.\n\n右諾畏柔艦猿?\n\n\button0: 森\n\n\button1: 焼艦推
