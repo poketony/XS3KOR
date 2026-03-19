@@ -1,0 +1,42 @@
+﻿[0x662]
+예\n아니요
+
+[0x66f]
+E.S.에서 내리겠습니까?<f>
+
+[0x687]
+***************************************************
+
+[0x6bb]
+locater
+
+[0x6c3]
+  who:
+
+[0x6ca]
+  where:
+
+[0x6d3]
+kowaremono
+
+[0x6de]
+  breakNo:
+
+[0x6e9]
+getitem
+
+[0x6f1]
+  getNo:
+
+[0x6fa]
+BATEND
+
+[0x701]
+  situ:
+
+[0x709]
+  whom:
+
+[0x711]
+???
+

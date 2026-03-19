@@ -1,0 +1,141 @@
+import os
+import json
+import struct
+import sys
+
+# --- 설정 ---
+JSON_TABLE_PATH = "XENOSAGA KOR-JPN.json"
+ENCODING = "EUC-JP"
+
+def load_table():
+    if not os.path.exists(JSON_TABLE_PATH):
+        print(f"Error: {JSON_TABLE_PATH} 파일이 없습니다.")
+        sys.exit(1)
+    with open(JSON_TABLE_PATH, 'r', encoding='utf-8') as f:
+        return json.load(f)['replace-table']
+
+def extract(bin_path):
+    output_txt = bin_path + ".txt"
+    if not os.path.exists(bin_path):
+        print(f"Error: {bin_path} 파일을 찾을 수 없습니다.")
+        return
+
+    with open(bin_path, 'rb') as f:
+        data = f.read()
+
+    # 1. 사용자가 알려준 10개의 절대 주소 (문자열 데이터 시작점)
+    string_block_starts = [
+        0x4F28, 0x1EEB8, 0x2A208, 0x2E0F8, 0x37C88,
+        0x3EC98, 0x46DA8, 0x52728, 0x563C8, 0x5FA78
+    ]
+
+    results = []
+    last_bundle_end = 0
+
+    for start_addr in string_block_starts:
+        # [단계 2 & 3] 베이스 포인트(가장 빠르게 나오는 DBF) 찾기
+        # 이전 번들이 끝난 지점 이후부터, 현재 문자열 시작점 이전에 나오는 '첫 번째 DBF' 검색
+        base_point = data.find(b'DBF', last_bundle_end)
+        
+        # 만약 찾은 DBF가 문자열 시작점보다 뒤에 있다면 잘못된 것이므로 이전에서 검색
+        if base_point == -1 or base_point > start_addr:
+            base_point = data.rfind(b'DBF', 0, start_addr)
+
+        if base_point == -1:
+            continue
+
+        # 해당 뭉치의 끝 경계 설정 (다음 번들을 위해)
+        next_dbf = data.find(b'DBF', start_addr)
+        bundle_limit = next_dbf if next_dbf != -1 else len(data)
+
+        # [단계 1] 0x00를 기준으로 해당 구간의 모든 문자열 데이터 정리
+        strings_in_bundle = [] # (절대주소, 텍스트)
+        curr_s_ptr = start_addr
+        while curr_s_ptr < bundle_limit:
+            if data[curr_s_ptr] != 0:
+                s_start = curr_s_ptr
+                s_end = data.find(b'\x00', s_start)
+                if s_end == -1 or s_end > bundle_limit:
+                    s_end = bundle_limit
+                
+                text_bytes = data[s_start:s_end]
+                try:
+                    text = text_bytes.decode(ENCODING).replace('\n', '\\n').replace('\r', '\\r')
+                    strings_in_bundle.append((s_start, text))
+                except:
+                    pass
+                curr_s_ptr = s_end + 1
+            else:
+                curr_s_ptr += 1
+
+        # [단계 4] 포인터 매칭
+        # 베이스 포인트부터 문자열 시작점(start_addr) 전까지의 헤더 영역을 4바이트 단위로 스캔
+        header_cursor = base_point
+        while header_cursor < start_addr:
+            if header_cursor + 4 > len(data): break
+            val = struct.unpack('<I', data[header_cursor : header_cursor + 4])[0]
+            
+            # 정리해둔 각 문자열 주소와의 거리(Offset) 계산 후 매칭
+            for s_addr, s_text in strings_in_bundle:
+                target_offset = s_addr - base_point
+                
+                # 리틀 엔디안 4바이트 값의 하위 2바이트가 상대 거리와 일치하는지 확인
+                if (val & 0xFFFF) == target_offset:
+                    results.append(f"{hex(s_addr)}|{s_text}")
+                    # 하나의 포인터가 매칭되면 해당 위치 스캔 종료 (중복 방지 원하면 break)
+            
+            header_cursor += 4
+        
+        # 다음 번들 탐색을 위해 위치 업데이트
+        last_bundle_end = bundle_limit
+
+    # 결과 저장 (헤더에서 발견된 순서 유지)
+    with open(output_txt, 'w', encoding='utf-8') as f:
+        # 중복된 주소 출력을 방지하려면 set을 사용할 수 있으나, 
+        # 게임 엔진 인덱스 구조상 포인터 순서대로 다 나오는 것이 안전함
+        seen = set()
+        for item in results:
+            if item not in seen:
+                f.write(item + '\n')
+                seen.add(item)
+            
+    print(f"[*] 추출 완료: {output_txt} ({len(results)} 문장)")
+
+def import_text(bin_path, txt_path):
+    table = load_table()
+    out_bin = bin_path + ".new"
+    with open(bin_path, 'rb') as f:
+        bin_data = bytearray(f.read())
+    
+    with open(txt_path, 'r', encoding='utf-8') as f:
+        for line in f:
+            line = line.rstrip('\n').rstrip('\r')
+            if '|' not in line: continue
+            
+            addr_str, content = line.split('|', 1)
+            addr = int(addr_str, 16)
+            content = content.replace('\\n', '\n').replace('\\r', '\r')
+            
+            # 한글 -> 한자 치환
+            patched_text = "".join([table.get(char, char) for char in content])
+            new_bytes = patched_text.encode(ENCODING, errors='ignore')
+            
+            orig_end = bin_data.find(b'\x00', addr)
+            if orig_end != -1:
+                max_len = orig_end - addr
+                write_len = min(len(new_bytes), max_len)
+                bin_data[addr : addr + write_len] = new_bytes[:write_len]
+                for i in range(write_len, max_len):
+                    bin_data[addr + i] = 0
+
+    with open(out_bin, 'wb') as f:
+        f.write(bin_data)
+    print(f"[*] 적용 완료: {out_bin}")
+
+if __name__ == "__main__":
+    if len(sys.argv) < 3:
+        print("Usage: python xeno3tool.py [extract/import] [filename]")
+    else:
+        mode, target = sys.argv[1].lower(), sys.argv[2]
+        if mode == "extract": extract(target)
+        elif mode == "import": import_text(target, target + ".txt")
