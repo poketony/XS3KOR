@@ -5,7 +5,8 @@ echo .sb 파일 리팩을 시작합니다...
 :: 현재 폴더의 모든 .sb 파일에 대해 루프 실행
 for %%f in (*.sb) do (
     echo 처리 중: %%f
-    python 0.sbtool.py import "%%f" "%%f.txt"
+    :: %%~nf는 파일명에서 확장자(.sb)를 제거한 이름만 가져옵니다.
+    python 0.sbtool.py import "%%f" "%%~nf.txt"
 )
 
 echo.
