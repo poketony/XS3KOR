@@ -1,0 +1,379 @@
+#!/usr/bin/env python3
+"""
+batdat_tool.py  —  Xenosaga III  batdat.bin  텍스트 추출/삽입 툴
+인코딩: EUC-JIS-2004
+포인터: 리틀엔디안 2바이트, 각 섹션의 base 주소 기준 상대 오프셋
+
+사용법:
+  python batdat_tool.py extract <batdat.bin>  <output.json>
+  python batdat_tool.py insert  <batdat.bin>  <translated.json>  [output.bin]  [char_table.json]
+
+insert 시 char_table.json 자동 탐지:
+  translated.json과 같은 디렉터리에 char_table.json 이 있으면 자동 로드됩니다.
+"""
+
+import sys
+import json
+import struct
+import os
+from pathlib import Path
+
+ENCODING = 'euc-jis-2004'
+
+# ─────────────────────────────────────────────────────────────
+# 섹션 정의
+#   label    : 섹션 이름 (JSON 키)
+#   base     : 섹션 시작 절대 오프셋
+#   end_sec  : 섹션 종료 절대 오프셋 (포함)
+#   stride   : 포인터 테이블 엔트리 간격(바이트)
+#   hdr_off  : 섹션 시작에서 첫 포인터까지 오프셋
+#   sec_type : 'name_only' → [이름 ptr 2B][끝 ptr 2B][패딩]
+#              'name_desc' → [이름 ptr 2B][설명 ptr 2B]  (stride=4)
+# ─────────────────────────────────────────────────────────────
+SECTIONS = [
+    # label          base     end_sec  stride  hdr_off  sec_type
+    #
+    # name_only : [이름ptr 2B][스탯/무의미 2B][패딩] — 이름만 번역
+    # name_desc : [이름ptr 2B][설명ptr 2B][패딩]  — 이름과 설명 모두 번역
+    #             pool 레이아웃은 [이름\x00설명\x00] 연속
+    # name_desc_pair : stride=4, [이름ptr 2B][설명ptr 2B] 순수 포인터 쌍 (전투 메뉴)
+    #
+    ('파티원 이름', 0x0078,  0x04B3,  56,  0x16, 'name_only'),   # ptr2 = 스탯
+    ('에너미 이름', 0x04B4,  0x033BB, 56,  0x16, 'name_only'),   # ptr2 = 0x001E 고정
+    ('에테르 1',    0x3FAC,  0x05483, 32,  0x00, 'name_only'),   # ptr2 = 0x0000
+    ('에테르 2',    0x5484,  0x0B6FB, 32,  0x00, 'name_only'),   # ptr2 = 0x0000
+    ('에테르 3',    0xB6FC,  0x0D05B, 32,  0x00, 'name_desc'),   # 이름+설명 연속
+    ('공격기 1',    0xD05C,  0x0EE8B, 40,  0x00, 'name_desc'),
+    ('공격기 2',    0xEE8C,  0x0FE5F, 40,  0x00, 'name_desc'),
+    ('도구',        0xFE60,  0x11277, 40,  0x00, 'name_desc'),
+    ('콤보',        0x11278, 0x113BB, 8,   0x00, 'name_only'),   # ptr2 = 이름 끝, 설명 없음
+    ('설명 1',      0x113BC, 0x11617, 8,   0x00, 'name_only'),   # 이름 자체가 설명
+    ('설명 2',      0x11618, 0x1337B, 20,  0x00, 'name_desc'),
+    ('TEC 1',       0x1337C, 0x14F0F, 28,  0x00, 'name_desc'),
+    ('TEC 2',       0x14F10, 0x1841B, 28,  0x00, 'name_desc'),
+    ('KAP',         0x1841C, 0x19A53, 24,  0x00, 'name_desc'),
+    ('AF',          0x19A54, 0x1A03B, 20,  0x00, 'name_desc'),
+    ('G',           0x1A03C, 0x1A2D3, 20,  0x00, 'name_desc'),
+    ('슬롯 1',      0x1A2D4, 0x1A59F, 20,  0x00, 'name_desc'),
+    ('슬롯 2',      0x1A5A0, 0x1B417, 24,  0x00, 'name_desc'),
+    ('전투 메뉴',   0x1C5C4, 0x1CC1F, 4,   0x00, 'name_desc_pair'),  # 독립 포인터 쌍
+    ('세그먼트',    0x1E1B0, 0x1F35B, 8,   0x00, 'name_desc'),
+]
+
+# SECTIONS 와 헤더 오프셋 테이블(0x0008~)의 순서가 1:1 대응
+# header_sec_offsets[i] == SECTIONS[i].base
+
+
+# ─────────────────────────────────────────────────────────────
+# 유틸
+# ─────────────────────────────────────────────────────────────
+def read_str(data: bytes, abs_addr: int) -> str:
+    """절대 주소에서 NUL 종료 EUC-JIS-2004 문자열 읽기"""
+    if abs_addr <= 0 or abs_addr >= len(data):
+        return ''
+    nul = data.find(b'\x00', abs_addr)
+    if nul <= abs_addr:
+        return ''
+    return data[abs_addr:nul].decode(ENCODING, errors='replace')
+
+
+def encode_str(text: str) -> bytes:
+    """문자열을 EUC-JIS-2004로 인코딩 + NUL 종단자"""
+    return text.encode(ENCODING, errors='replace') + b'\x00'
+
+
+def load_char_table(path: str) -> dict:
+    """char_table.json 로드 → {한글: 한자} dict"""
+    if not os.path.exists(path):
+        return {}
+    with open(path, encoding='utf-8-sig') as f:
+        obj = json.load(f)
+    return obj.get('replace-table', {})
+
+
+def apply_char_table(text: str, table: dict) -> str:
+    """한글 음절 → 한자 1:1 치환"""
+    if not table:
+        return text
+    return ''.join(table.get(ch, ch) for ch in text)
+
+
+def count_entries(data: bytes, base: int, hdr_off: int, stride: int) -> int:
+    """
+    첫 포인터 값 = pool 시작 오프셋(base 기준).
+    따라서 포인터 테이블 크기 = first_ptr_val - hdr_off,
+    엔트리 수 = 포인터 테이블 크기 / stride.
+    """
+    first_ptr_val = struct.unpack_from('<H', data, base + hdr_off)[0]
+    ptr_table_bytes = first_ptr_val - hdr_off
+    if ptr_table_bytes <= 0 or stride <= 0:
+        return 0
+    return ptr_table_bytes // stride
+
+
+# ─────────────────────────────────────────────────────────────
+# EXTRACT
+# ─────────────────────────────────────────────────────────────
+def cmd_extract(bin_path: str, out_json: str):
+    data = open(bin_path, 'rb').read()
+    print(f'[extract] {bin_path}  ({len(data):,} bytes)')
+
+    result = {}
+
+    for label, base, end_sec, stride, hdr_off, sec_type in SECTIONS:
+        n = count_entries(data, base, hdr_off, stride)
+        entries = []
+
+        if sec_type == 'name_only':
+            for i in range(n):
+                ptr_pos  = base + hdr_off + i * stride
+                name_ptr = struct.unpack_from('<H', data, ptr_pos)[0]
+                end_ptr  = struct.unpack_from('<H', data, ptr_pos + 2)[0]
+                text = read_str(data, base + name_ptr)
+                entries.append({
+                    'idx':      i,
+                    'ptr_pos':  ptr_pos,   # 포인터가 저장된 파일 절대 오프셋
+                    'name_ptr': name_ptr,  # base 기준 상대 오프셋
+                    'end_ptr':  end_ptr,   # base 기준 상대 오프셋 (끝)
+                    'jp':       text,
+                    'ko':       text,      # ← 번역 대상
+                })
+
+        elif sec_type in ('name_desc', 'name_desc_pair'):
+            # name_desc      : pool = [이름\x00설명\x00] 연속, desc_ptr = name NUL+1
+            # name_desc_pair : pool 내 이름/설명이 독립 위치 (전투 메뉴)
+            # 둘 다 포인터 테이블 구조는 동일 → extract 로직 공유
+            for i in range(n):
+                ptr_pos  = base + hdr_off + i * stride
+                name_ptr = struct.unpack_from('<H', data, ptr_pos)[0]
+                desc_ptr = struct.unpack_from('<H', data, ptr_pos + 2)[0]
+                name_text = read_str(data, base + name_ptr)
+                desc_text = read_str(data, base + desc_ptr)
+                entries.append({
+                    'idx':      i,
+                    'ptr_pos':  ptr_pos,
+                    'name_ptr': name_ptr,
+                    'desc_ptr': desc_ptr,
+                    'jp_name':  name_text,
+                    'jp_desc':  desc_text,
+                    'ko_name':  name_text,  # ← 번역 대상
+                    'ko_desc':  desc_text,  # ← 번역 대상
+                })
+
+        result[label] = {
+            'base':     base,
+            'end_sec':  end_sec,
+            'stride':   stride,
+            'hdr_off':  hdr_off,
+            'sec_type': sec_type,
+            'entries':  entries,
+        }
+        print(f'  [{label:<14}] {n:4d}개')
+
+    with open(out_json, 'w', encoding='utf-8') as f:
+        json.dump(result, f, ensure_ascii=False, indent=2)
+
+    total = sum(len(v['entries']) for v in result.values())
+    print(f'\n[extract] 완료 → {out_json}  (총 {total:,}개 엔트리)')
+
+
+# ─────────────────────────────────────────────────────────────
+# INSERT
+# ─────────────────────────────────────────────────────────────
+def cmd_insert(bin_path: str, json_path: str, out_path: str,
+               char_table_path: str | None = None):
+
+    data_orig     = open(bin_path, 'rb').read()
+    filesize_orig = len(data_orig)
+
+    with open(json_path, encoding='utf-8') as f:
+        trans = json.load(f)
+
+    # char_table 로드
+    char_table = {}
+    if char_table_path:
+        char_table = load_char_table(char_table_path)
+        print(f'[insert] char_table: {char_table_path}  ({len(char_table)}개 매핑)')
+    else:
+        auto = Path(json_path).parent / 'char_table.json'
+        if auto.exists():
+            char_table = load_char_table(str(auto))
+            print(f'[insert] char_table 자동 로드: {auto}  ({len(char_table)}개 매핑)')
+
+    print(f'[insert] {bin_path}  ({filesize_orig:,} bytes)')
+
+    # ── 헤더에서 섹션 오프셋 테이블 읽기 (0x0008~0x0077, 28개) ──
+    # header_sec_offsets[i] : i번째 섹션의 절대 시작 주소
+    header_sec_offsets = [
+        struct.unpack_from('<I', data_orig, 0x0008 + i * 4)[0]
+        for i in range(28)
+    ]
+    # base → header 인덱스 역매핑 (SECTIONS.base 로 해당 슬라이스를 찾기 위해)
+    base_to_hidx = {v: i for i, v in enumerate(header_sec_offsets)}
+
+    # ── 파일을 header 슬라이스 단위로 분해 ─────────────────────
+    # new_hbufs[i] : header_sec_offsets[i] 에 해당하는 슬라이스 (bytearray)
+    new_hbufs = []
+    for i in range(len(header_sec_offsets)):
+        start = header_sec_offsets[i]
+        end   = header_sec_offsets[i + 1] if i + 1 < len(header_sec_offsets) else filesize_orig
+        new_hbufs.append(bytearray(data_orig[start:end]))
+
+    # ── 텍스트 섹션만 재빌드 ────────────────────────────────────
+    for label, base_orig, _end_sec, stride, hdr_off, sec_type in SECTIONS:
+
+        hidx = base_to_hidx.get(base_orig)
+        if hidx is None:
+            print(f'  [{label:<14}] !! base=0x{base_orig:05X} 가 헤더 테이블에 없음, 스킵')
+            continue
+
+        orig_buf  = new_hbufs[hidx]
+        orig_size = len(orig_buf)
+
+        if label not in trans:
+            print(f'  [{label:<14}] 번역 없음 → 원본 유지')
+            continue
+
+        sec_data = trans[label]
+        entries  = sec_data['entries']
+        n        = len(entries)
+
+        # pool 시작 상대 오프셋 = 첫 포인터 값
+        pool_start_rel = struct.unpack_from('<H', orig_buf, hdr_off)[0]
+
+        # ── 새 문자열 풀 빌드 ─────────────────────────────────
+        new_pool      = bytearray()
+        new_name_rels = []
+        new_end_rels  = []
+        new_desc_rels = []
+
+        if sec_type == 'name_only':
+            for entry in entries:
+                ko  = apply_char_table(entry.get('ko', entry.get('jp', '')), char_table)
+                enc = encode_str(ko)
+                rel = pool_start_rel + len(new_pool)
+                new_name_rels.append(rel)
+                new_end_rels.append(rel + len(enc) - 1)  # NUL 직전
+                new_pool += enc
+
+        elif sec_type == 'name_desc':
+            # pool = [이름\x00설명\x00] 연속 — 이름과 설명을 함께 씀
+            for entry in entries:
+                ko_n  = apply_char_table(entry.get('ko_name', entry.get('jp_name', '')), char_table)
+                ko_d  = apply_char_table(entry.get('ko_desc',  entry.get('jp_desc',  '')), char_table)
+                enc_n = encode_str(ko_n)
+                enc_d = encode_str(ko_d)
+                rel_n = pool_start_rel + len(new_pool)
+                new_name_rels.append(rel_n)
+                new_pool += enc_n
+                rel_d = pool_start_rel + len(new_pool)
+                new_desc_rels.append(rel_d)
+                new_pool += enc_d
+
+        elif sec_type == 'name_desc_pair':
+            # 전투 메뉴: 이름 풀과 설명 풀이 독립적 위치를 가질 수 있음
+            # 원본에서 이름/설명의 상대 위치를 그대로 유지하면 복잡하므로
+            # 이름을 먼저 전부 쌓고, 그 뒤에 설명을 전부 쌓는 방식으로 재배치
+            name_rels_tmp = []
+            desc_rels_tmp = []
+            name_pool = bytearray()
+            desc_pool = bytearray()
+
+            for entry in entries:
+                ko_n  = apply_char_table(entry.get('ko_name', entry.get('jp_name', '')), char_table)
+                ko_d  = apply_char_table(entry.get('ko_desc',  entry.get('jp_desc',  '')), char_table)
+                name_rels_tmp.append(len(name_pool))
+                name_pool += encode_str(ko_n)
+                desc_rels_tmp.append(len(desc_pool))
+                desc_pool += encode_str(ko_d)
+
+            # pool = 이름 풀 + 설명 풀
+            desc_pool_start = pool_start_rel + len(name_pool)
+            for i in range(len(entries)):
+                new_name_rels.append(pool_start_rel + name_rels_tmp[i])
+                new_desc_rels.append(desc_pool_start + desc_rels_tmp[i])
+            new_pool = name_pool + desc_pool
+
+        # ── 크기 초과 검사 ────────────────────────────────────
+        orig_pool_size = orig_size - pool_start_rel
+        if len(new_pool) > orig_pool_size:
+            print(f'  [{label:<14}] !! pool 초과: 번역 {len(new_pool):,}B > 원본 {orig_pool_size:,}B')
+            print(f'               이 섹션은 패치하지 않았습니다. 번역문을 {len(new_pool)-orig_pool_size}바이트 줄여주세요.')
+            continue
+
+        # ── 새 섹션 버퍼 = 원본 포인터 테이블 + 새 풀 + NUL 패딩 ──
+        # 원본과 동일한 크기로 유지 (남는 공간은 NUL 패딩)
+        padding = b'\x00' * (orig_pool_size - len(new_pool))
+        new_buf = bytearray(orig_buf[:pool_start_rel]) + new_pool + padding
+        assert len(new_buf) == orig_size, f'크기 불일치: {len(new_buf)} != {orig_size}'
+
+        # ── 포인터 패치 ───────────────────────────────────────
+        for i, entry in enumerate(entries):
+            ofs = entry['ptr_pos'] - base_orig   # 섹션 내 상대 위치
+            if sec_type == 'name_only':
+                struct.pack_into('<H', new_buf, ofs,     new_name_rels[i])
+                struct.pack_into('<H', new_buf, ofs + 2, new_end_rels[i])
+            else:  # name_desc / name_desc_pair
+                struct.pack_into('<H', new_buf, ofs,     new_name_rels[i])
+                struct.pack_into('<H', new_buf, ofs + 2, new_desc_rels[i])
+
+        new_hbufs[hidx] = new_buf
+        saved = orig_pool_size - len(new_pool)
+        print(f'  [{label:<14}] {n:4d}개  pool: {orig_pool_size:,}B (번역 {len(new_pool):,}B + NUL패딩 {saved:,}B)')
+
+    # ── 새 파일 조립 ─────────────────────────────────────────────
+    prolog   = bytearray(data_orig[0x00: header_sec_offsets[0]])
+    new_file = bytearray(prolog)
+
+    # 섹션 크기를 원본과 동일하게 유지했으므로 오프셋 테이블도 불변
+    # 헤더의 파일 크기만 확인 (변하지 않아야 함)
+    new_filesize = header_sec_offsets[0] + sum(len(b) for b in new_hbufs)
+    assert new_filesize == filesize_orig, \
+        f'파일 크기 변화: {new_filesize} != {filesize_orig} (섹션 크기가 변했습니다)'
+
+    # 헤더는 원본 그대로 (오프셋 테이블 포함) — 수정 불필요
+    # 단 파일크기 필드는 재확인
+    struct.pack_into('<I', new_file, 0x0004, new_filesize)
+
+    # 섹션 데이터 붙이기
+    for buf in new_hbufs:
+        new_file += buf
+
+    with open(out_path, 'wb') as f:
+        f.write(new_file)
+
+    delta_total = new_filesize - filesize_orig
+    sign = '+' if delta_total >= 0 else ''
+    print(f'\n[insert] 완료 → {out_path}')
+    print(f'  원본: {filesize_orig:,} bytes  →  출력: {new_filesize:,} bytes  ({sign}{delta_total:,})')
+
+
+# ─────────────────────────────────────────────────────────────
+# main
+# ─────────────────────────────────────────────────────────────
+def main():
+    if len(sys.argv) < 4:
+        print(__doc__)
+        sys.exit(1)
+
+    cmd = sys.argv[1].lower()
+
+    if cmd == 'extract':
+        bin_path = sys.argv[2]
+        out_json = sys.argv[3]
+        cmd_extract(bin_path, out_json)
+
+    elif cmd == 'insert':
+        bin_path  = sys.argv[2]
+        json_path = sys.argv[3]
+        out_path  = sys.argv[4] if len(sys.argv) > 4 else 'batdat_out.bin'
+        char_tbl  = sys.argv[5] if len(sys.argv) > 5 else None
+        cmd_insert(bin_path, json_path, out_path, char_tbl)
+
+    else:
+        print(f'알 수 없는 명령: {cmd!r}\nextract 또는 insert 를 사용하세요.')
+        sys.exit(1)
+
+
+if __name__ == '__main__':
+    main()
