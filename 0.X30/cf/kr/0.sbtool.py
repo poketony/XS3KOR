@@ -56,16 +56,13 @@ class Xeno3AutoScanner:
             search_pos -= 4
         
         if found_end_of_table == -1: 
-            # 만약 0을 못 찾았다면 파일 처음부터 기준점까지가 전부 테이블일 가능성 염두
             found_end_of_table = 4 
 
         curr = found_end_of_table - 4
         last_valid = found_end_of_table
         
-        # 유효한 포인터 값(데이터 길이 내의 값)이 끝나는 지점을 찾음
         while curr >= 0:
             val = struct.unpack('<I', data[curr:curr+4])[0]
-            # 오프셋 값이 파일 크기보다 작고 0보다 큰지 확인
             if 0 < val < len(data): 
                 last_valid = curr
             else:
@@ -89,7 +86,6 @@ class Xeno3AutoScanner:
             offset = struct.unpack('<I', data[curr_ptr:curr_ptr+4])[0]
             if offset == 0: break
             
-            # 실제 주소 계산
             actual_off = self.base_addr + offset
             if actual_off >= len(data): break
             
@@ -108,8 +104,32 @@ class Xeno3AutoScanner:
 
         with open(txt_path, 'w', encoding='utf-8-sig') as f:
             for off, txt in extracted:
-                f.write(f"[{off}]\n{txt.replace('\n', '[n]')}\n\n")
+                f.write(f"[{off}]\n{txt.replace(chr(10), '[n]')}\n\n")
         print(f"[*] {txt_path} 추출 완료")
+
+    def parse_txd(self, content):
+        """
+        [0x....] 태그를 기준으로 줄 단위 파싱.
+        항목 사이의 빈 줄 유무와 무관하게 동작합니다.
+        """
+        items = []
+        current_off = None
+        current_lines = []
+
+        for line in content.splitlines():
+            m = re.match(r'^\[(0x[0-9a-fA-F]+)\]$', line)
+            if m:
+                if current_off is not None:
+                    items.append((current_off, '\n'.join(current_lines).rstrip('\n')))
+                current_off = m.group(1)
+                current_lines = []
+            else:
+                current_lines.append(line)
+
+        if current_off is not None:
+            items.append((current_off, '\n'.join(current_lines).rstrip('\n')))
+
+        return items
 
     def iimport(self, original_sb, txd_path):
         if not self.kor_to_jp_table:
@@ -123,7 +143,8 @@ class Xeno3AutoScanner:
         with open(txd_path, 'r', encoding='utf-8-sig') as f:
             content = f.read()
 
-        items = re.findall(r"\[(0x[0-9a-fA-F]+)\]\r?\n(.*?)(?=\r?\n\r?\n\[0x|\r?\n\r?\n\Z|$)", content, re.DOTALL)
+        # 빈 줄 유무와 무관하게 파싱
+        items = self.parse_txd(content)
         
         extension_pos = len(sb_data)
         new_ext_data = bytearray()

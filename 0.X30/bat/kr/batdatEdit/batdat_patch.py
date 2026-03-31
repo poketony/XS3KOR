@@ -50,10 +50,10 @@ def apply_char_table(text: str, table: dict) -> str:
 MENU_SITA_TAG = '[menu_sita]'
 
 def apply_menu_sita(text: str) -> str:
-    """문자열 끝에 [menu_sita]가 있으면 태그를 제거하고 반각 공백을 、로 치환"""
     if text.endswith(MENU_SITA_TAG):
         text = text[:-len(MENU_SITA_TAG)]
-        text = text.replace(' ', '、')
+        text = text.replace(' ', '、')    # 먼저: 한국어 띄어쓰기 → 、
+        text = text.replace('@', ' ')     # 나중: @ → 반각 공백
     return text
 
 

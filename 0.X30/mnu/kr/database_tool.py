@@ -7,6 +7,9 @@ import sys
 JSON_TABLE_PATH = "XENOSAGA KOR-JPN.json"
 ENCODING = "EUC-JP"
 
+# 포인터 기준 주소: import_text에서 파일별로 동적으로 결정 (기본값 0x70)
+POINTER_BASE = 0x70
+
 def load_table():
     if not os.path.exists(JSON_TABLE_PATH):
         print(f"[-] 에러: {JSON_TABLE_PATH} 파일을 찾을 수 없습니다.")
@@ -49,7 +52,6 @@ def extract(bin_path):
                 s_end = data.find(b'\x00', s_start)
                 if s_end == -1 or s_end > bundle_limit: s_end = bundle_limit
                 try:
-                    # 원문의 0x5c 0x6e를 그대로 텍스트 파일에 표기
                     text = data[s_start:s_end].decode(ENCODING).replace('\n', '\\n').replace('\r', '\\r')
                     strings_in_bundle[s_start] = text
                 except: pass
@@ -70,12 +72,95 @@ def extract(bin_path):
         for item in results: f.write(item + '\n')
     print(f"[*] 추출 완료: {output_txt}")
 
+
+def find_all_pointer_refs(data, target_addr, scan_end=None):
+    """헤더/포인터 테이블 영역(0~scan_end)에서 target_addr를 가리키는 포인터 위치를 반환.
+    포인터 값 = target_addr - POINTER_BASE (4바이트 LE)
+    scan_end: 포인터 테이블 끝 주소 (string_block_starts[0]). None이면 전체 스캔."""
+    val = target_addr - POINTER_BASE
+    if val < 0 or val > 0xFFFFFFFF:
+        return []
+    search = struct.pack('<I', val)
+    refs = []
+    pos = 0
+    search_data = data[:scan_end] if scan_end is not None else data
+    while True:
+        p = search_data.find(search, pos)
+        if p == -1:
+            break
+        if p % 4 == 0:  # 4바이트 정렬된 위치만 유효한 포인터
+            refs.append(p)
+        pos = p + 1
+    return refs
+
+
+def relocate_slot(bin_data, old_addr, new_bytes, scan_end=None):
+    """슬롯을 파일 끝으로 재배치.
+    - 원본 슬롯의 모든 내부 포인터(부분 참조 포함)를 새 위치 기준으로 업데이트
+    - 원본 슬롯은 0x00으로 채움
+    - new_bytes: null terminator 포함한 새 데이터
+    반환: 수정된 bytearray"""
+
+    old_end = bin_data.find(b'\x00', old_addr)
+    if old_end == -1:
+        old_end = len(bin_data)
+    old_slot_len = old_end - old_addr  # null 제외 원본 길이
+
+    # 파일 끝에 추가될 위치
+    new_addr = len(bin_data)
+
+    print(f"  [reloc] {hex(old_addr)} -> {hex(new_addr)} "
+          f"({old_slot_len}B -> {len(new_bytes)-1}B)")
+
+    # 원본 슬롯 내부를 참조하는 모든 포인터 수집
+    # (old_addr 자신 + old_addr+1 ~ old_end-1 내부 오프셋들)
+    internal_refs = {}  # {pointer_file_pos: old_target_addr}
+    for offset in range(0, old_slot_len + 1):
+        target = old_addr + offset
+        refs = find_all_pointer_refs(bytes(bin_data), target, scan_end)
+        for r in refs:
+            internal_refs[r] = target
+
+    # 새 데이터를 파일 끝에 추가
+    bin_data.extend(new_bytes)
+
+    # 포인터 업데이트: old_target -> new_addr + (old_target - old_addr)
+    for ptr_pos, old_target in internal_refs.items():
+        new_target = new_addr + (old_target - old_addr)
+        new_val = new_target - POINTER_BASE
+        bin_data[ptr_pos:ptr_pos+4] = struct.pack('<I', new_val)
+
+    # 원본 슬롯 0x00으로 클리어 (null terminator 포함)
+    for i in range(old_addr, old_end + 1):
+        if i < len(bin_data):
+            bin_data[i] = 0x00
+
+    return bin_data
+
+
 def import_text(bin_path, txt_path):
     table = load_table()
     out_bin = bin_path + ".new"
     with open(bin_path, 'rb') as f:
         bin_data = bytearray(f.read())
-    
+
+    string_block_starts = [
+        0x4F28, 0x1EEB8, 0x2A208, 0x2E0F8, 0x37C88,
+        0x3EC98, 0x46DA8, 0x52728, 0x563C8, 0x5FA78
+    ]
+
+    # 파일에서 첫 번째 DBF 마커 위치를 POINTER_BASE로 사용
+    global POINTER_BASE
+    dbf_pos = bytes(bin_data).find(b'DBF\x00')
+    if dbf_pos != -1:
+        POINTER_BASE = dbf_pos
+        print(f"[*] POINTER_BASE 감지: {hex(POINTER_BASE)}")
+    else:
+        print(f"[!] DBF 마커 없음, 기본값 {hex(POINTER_BASE)} 사용")
+
+    scan_end = string_block_starts[0]
+    print(f"[*] 포인터 스캔 범위: 0x0 ~ {hex(scan_end)}")
+
     print(f"[*] 리빌드 시작: {txt_path}")
     patch_data = {}
     with open(txt_path, 'r', encoding='utf-8-sig') as f:
@@ -83,50 +168,56 @@ def import_text(bin_path, txt_path):
             line = line.rstrip('\n').rstrip('\r')
             if '|' not in line: continue
             addr_str, content = line.split('|', 1)
-            
-            # "-1"이나 쓰레기 값 완전 제외 (바이너리 수정 리스트에 넣지 않음)
             clean_content = content.strip()
             if clean_content == "-1" or len(clean_content) == 0:
                 continue
             patch_data[int(addr_str, 16)] = content
 
     patched_count = 0
+    relocated_count = 0
+
     for addr, content in patch_data.items():
-        # [핵심 수정] \\n을 개행문자(0x0a)로 바꾸지 않고 그대로 둡니다.
-        # 이렇게 하면 원본처럼 0x5c 0x6e 바이트가 그대로 입력됩니다.
         patched_text = "".join([table.get(char, char) for char in content])
         try:
             new_bytes = patched_text.encode(ENCODING)
         except:
             new_bytes = patched_text.encode(ENCODING, errors='ignore')
-        
+
         orig_end = bin_data.find(b'\x00', addr)
-        if orig_end != -1:
-            max_len = orig_end - addr
-            
-            # 프리즈 방지: EUC-JP 2바이트 문자 잘림 보정
-            if len(new_bytes) > max_len:
-                write_len = max_len
-                if (0x81 <= new_bytes[write_len-1] <= 0x9F) or (0xE0 <= new_bytes[write_len-1] <= 0xEF):
-                    write_len -= 1
-            else:
-                write_len = len(new_bytes)
-            
-            # 실제 데이터가 원본과 다를 때만 덮어쓰기
-            if bin_data[addr : addr + write_len] != new_bytes[:write_len]:
-                bin_data[addr : addr + write_len] = new_bytes[:write_len]
-                # 수정된 부분 이후부터 원본 Null 영역까지 0x00으로 채움
+        if orig_end == -1:
+            continue
+        max_len = orig_end - addr
+
+        if len(new_bytes) > max_len:
+            # 오버플로우: 파일 끝 재배치
+            null_terminated = new_bytes + b'\x00'
+            bin_data = relocate_slot(bin_data, addr, null_terminated, scan_end)
+            relocated_count += 1
+            patched_count += 1
+        else:
+            # 인-플레이스 패치 (기존 방식)
+            write_len = len(new_bytes)
+            # 2바이트 문자 경계 보정
+            if write_len > 0 and (
+                (0x81 <= new_bytes[write_len-1] <= 0x9F) or
+                (0xE0 <= new_bytes[write_len-1] <= 0xEF)
+            ):
+                write_len -= 1
+
+            if bin_data[addr:addr+write_len] != new_bytes[:write_len]:
+                bin_data[addr:addr+write_len] = new_bytes[:write_len]
                 for i in range(write_len, max_len):
                     bin_data[addr + i] = 0
                 patched_count += 1
 
     with open(out_bin, 'wb') as f:
         f.write(bin_data)
-    print(f"[*] 리빌드 완료: 총 {patched_count}개의 유효 주소 패치됨.")
+    print(f"[*] 리빌드 완료: 총 {patched_count}개 패치 ({relocated_count}개 재배치).")
+
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
-        print("\n[Xeno3 DBC Tool v35]")
+        print("\n[Xeno3 DBC Tool v36]")
         print("  python database_tool.py extract [DBC.bin]")
         print("  python database_tool.py import [DBC.bin] [DBC.bin.txt]")
     else:
