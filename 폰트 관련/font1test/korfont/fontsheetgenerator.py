@@ -7,7 +7,7 @@ def generate_kor_font_sheet_final_v2(output_name, char_list, font_size=16, stret
     canvas = Image.new('L', (glyph_w * grid_w, glyph_h * grid_h), color=0)
     
     try:
-        font_path = r"C:\USERS\JO\APPDATA\LOCAL\MICROSOFT\WINDOWS\FONTS\A중고딕.TTF"
+        font_path = r"Pretendard-Medium.otf"
         font = ImageFont.truetype(font_path, font_size)
     except:
         print("폰트 파일을 찾을 수 없습니다.")
@@ -52,4 +52,4 @@ if __name__ == "__main__":
     with open('hangul_2048_final.txt', 'r', encoding='utf-8') as f:
         full_chars = f.read()
     # 1.15배 정도로 살짝만 늘려보고, 너무 좁으면 1.2로 조정하세요.
-    generate_kor_font_sheet_final_v2("font1_pro_ratio.png", full_chars[:1024], stretch_ratio=1.15)
+    generate_kor_font_sheet_final_v2("font1_pro_ratio.png", full_chars[:1024], stretch_ratio=1.2, font_size=17)

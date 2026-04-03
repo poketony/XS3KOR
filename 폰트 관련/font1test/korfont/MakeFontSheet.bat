@@ -1,1 +1,2 @@
 python fontsheetgenerator.py
+pause
