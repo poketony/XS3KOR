@@ -1,0 +1,361 @@
+#!/usr/bin/env python3
+"""
+njDataText.bin 텍스트 추출/임포트 도구
+Xenosaga Episode III 메모리 코드/이벤트 뷰어 데이터베이스 파일
+
+파일 구조:
+  [0x00~0x03] 데이터셋 개수 (uint32 LE)
+  [0x04~...]  데이터셋 목록, 8바이트 단위: (offset LE, size LE)
+
+  각 데이터셋 (TOP/CHA/EVE):
+    - 헤더 엔트리 반복, 각 32바이트:
+        [0~3]   태그 (TOP\x00 / CHA\x00 / EVE\x00)
+        [4~7]   p1: 문자열 포인터 (데이터셋 기준 상대 오프셋)
+        [8~11]  p2: 문자열 포인터
+        [12~15] p3: 문자열 포인터
+        [16~19] v4: 인덱스/플래그 (포인터 아님, 무시)
+        [20~31] (다음 데이터 또는 문자열 영역 시작)
+    - 포인터 유효 조건: ptr > 0, ptr < ds_size, data[ds_off+ptr] != 0x00
+
+  마지막 데이터셋 ('l\x00\x00\x00'):
+    - [0~3]  'l' 식별자
+    - [4~...] 포인터 배열 (uint32 LE, ptr==0 또는 ptr>=ds_size에서 종료)
+"""
+
+import struct, json, os, sys, shutil, re
+from pathlib import Path
+
+ENCODE_SRC = 'euc-jisx0213'   # 원본 (EUC-JP 2004)
+ENCODE_DST = 'euc-kr'         # 번역 (EUC-KR)
+TAG_SIZE   = 4
+VALID_TAGS = {b'TOP\x00', b'CHA\x00', b'EVE\x00'}
+# 태그별 헤더 엔트리 크기: CHA는 16바이트, TOP/EVE는 32바이트
+ENTRY_SIZES = {b'TOP\x00': 32, b'CHA\x00': 16, b'EVE\x00': 32}
+
+# 태그별 유효 문자열 포인터 필드
+# EVE의 p3는 디스크 번호 플래그(0/1/2)이므로 포인터 아님
+PTR_FIELDS = {
+    b'TOP\x00': ('p1', 'p2', 'p3'),
+    b'CHA\x00': ('p1', 'p2', 'p3'),
+    b'EVE\x00': ('p1', 'p2'),
+}
+
+def entry_size(tag_bytes):
+    return ENTRY_SIZES.get(tag_bytes, 32)
+
+def ptr_fields(tag_bytes):
+    return PTR_FIELDS.get(tag_bytes, ('p1', 'p2', 'p3'))
+
+
+# ─── 치환표 ──────────────────────────────────────────────────────────────────
+
+def load_charmap(path):
+    with open(path, encoding='utf-8') as f:
+        return json.load(f)
+
+def find_charmap():
+    for p in sorted(Path('.').glob('*.json')):
+        try:
+            cm = load_charmap(str(p))
+            if cm:
+                print(f"[치환표] {p} 로드 ({len(cm)}개 항목)")
+                return cm
+        except Exception:
+            pass
+    return None
+
+def apply_charmap(text, charmap):
+    for k, v in charmap.items():
+        text = text.replace(k, v)
+    return text
+
+
+# ─── 구조 파싱 ───────────────────────────────────────────────────────────────
+
+def get_datasets(data):
+    num = struct.unpack_from('<I', data, 0)[0]
+    result = []
+    for i in range(num):
+        base = 4 + i * 8
+        offset = struct.unpack_from('<I', data, base)[0]
+        size   = struct.unpack_from('<I', data, base + 4)[0]
+        result.append({'index': i, 'offset': offset, 'size': size})
+    return result
+
+def is_ptr_dataset(data, ds_off):
+    # 유효 태그(TOP/CHA/EVE)로 시작하지 않으면 포인터 배열 형식
+    return data[ds_off:ds_off + TAG_SIZE] not in VALID_TAGS
+
+def count_entries(data, ds_off, ds_size):
+    n, pos = 0, ds_off
+    while pos < ds_off + ds_size:
+        tb = data[pos:pos + TAG_SIZE]
+        if tb not in VALID_TAGS:
+            break
+        sz = entry_size(tb)
+        if pos + sz > ds_off + ds_size:
+            break
+        n += 1; pos += sz
+    return n
+
+def read_str(data, abs_pos):
+    if abs_pos <= 0 or abs_pos >= len(data):
+        return ''
+    raw = data[abs_pos:].split(b'\x00')[0]
+    if not raw:
+        return ''
+    for enc in (ENCODE_SRC, ENCODE_DST, 'euc-jp', 'cp932'):
+        try:
+            return raw.decode(enc)
+        except Exception:
+            pass
+    return raw.decode('latin-1')
+
+def is_valid_ptr(ptr, ds_size, data, ds_off):
+    if ptr == 0 or ptr >= ds_size:
+        return False
+    abs_p = ds_off + ptr
+    if abs_p >= len(data) or data[abs_p] == 0x00:
+        return False
+    raw = data[abs_p:].split(b'\x00')[0]
+    if len(raw) < 2:
+        return False
+    # EUC-JISX0213(원본) 또는 EUC-KR(번역) 디코딩 성공 여부로 유효성 판별
+    for enc in (ENCODE_SRC, ENCODE_DST):
+        try:
+            raw.decode(enc)
+            return True
+        except Exception:
+            pass
+    return False
+
+
+# ─── 문자열 수집 ─────────────────────────────────────────────────────────────
+
+def collect_strings(data):
+    """
+    모든 데이터셋에서 고유 문자열 레코드 수집.
+    abs_pos 기준 중복 제거 (여러 포인터가 같은 주소를 공유하는 경우).
+    헤더의 p1/p2/p3만 포인터로 처리. v4는 무시.
+    """
+    datasets = get_datasets(data)
+    seen = {}   # abs_pos → record
+
+    for ds in datasets:
+        ds_off, ds_size, ds_idx = ds['offset'], ds['size'], ds['index']
+
+        if is_ptr_dataset(data, ds_off):
+            # ── 포인터 배열 형식 (헤더 없음, ds_off부터 바로 포인터 배열) ──
+            pos = ds_off
+            ptr_idx = 0
+            while pos + 4 <= ds_off + ds_size:
+                ptr = struct.unpack_from('<I', data, pos)[0]
+                if ptr == 0 or ptr >= ds_size:
+                    break
+                abs_p = ds_off + ptr
+                raw   = data[abs_p:].split(b'\x00')[0]
+                if raw and abs_p not in seen:
+                    seen[abs_p] = {
+                        'ds_idx':   ds_idx,
+                        'ds_off':   ds_off,
+                        'type':     'PTR_ARRAY',
+                        'ptr_idx':  ptr_idx,
+                        'ptr':      ptr,
+                        'abs_pos':  abs_p,
+                        'raw_size': len(raw) + 1,
+                        'text':     read_str(data, abs_p),
+                    }
+                pos += 4; ptr_idx += 1
+
+        else:
+            # ── 태그 헤더 형식 (TOP/CHA/EVE) — p1/p2/p3만 사용 ──────────
+            n_entries = count_entries(data, ds_off, ds_size)
+            pos = ds_off
+            for entry_idx in range(n_entries):
+                tb   = data[pos:pos+TAG_SIZE]
+                tag  = tb.rstrip(b'\x00').decode('ascii')
+                esz  = entry_size(tb)
+                p1, p2, p3 = struct.unpack_from('<3I', data, pos + TAG_SIZE)
+                fields = ptr_fields(tb)
+                for field, ptr in zip(('p1','p2','p3'), (p1, p2, p3)):
+                    if field not in fields: continue
+                    if not is_valid_ptr(ptr, ds_size, data, ds_off):
+                        continue
+                    abs_p = ds_off + ptr
+                    raw   = data[abs_p:].split(b'\x00')[0]
+                    if not raw:
+                        continue
+                    if abs_p not in seen:
+                        seen[abs_p] = {
+                            'ds_idx':    ds_idx,
+                            'ds_off':    ds_off,
+                            'type':      'TAGGED',
+                            'entry_idx': entry_idx,
+                            'tag':       tag,
+                            'field':     field,
+                            'ptr':       ptr,
+                            'abs_pos':   abs_p,
+                            'raw_size':  len(raw) + 1,
+                            'text':      read_str(data, abs_p),
+                        }
+                pos += esz
+
+    return sorted(seen.values(), key=lambda r: r['abs_pos'])
+
+
+# ─── 추출 ────────────────────────────────────────────────────────────────────
+
+def cmd_extract(bin_path, out_path, charmap):
+    with open(bin_path, 'rb') as f:
+        data = f.read()
+
+    records = collect_strings(data)
+    lines   = []
+    for r in records:
+        text = apply_charmap(r['text'], charmap) if charmap else r['text']
+        if r['type'] == 'PTR_ARRAY':
+            id_part = f"{r['ds_idx']}:str{r['ptr_idx']}:ptr:{r['abs_pos']:06x}"
+        else:
+            id_part = f"{r['ds_idx']}:{r['entry_idx']}:{r['field']}:{r['abs_pos']:06x}"
+        lines.append(f"<<<{id_part}>>> {text}")
+
+    with open(out_path, 'w', encoding='utf-8') as f:
+        f.write('\n'.join(lines) + '\n')
+
+    print(f"추출 완료: {len(records)}개 문자열 → {out_path}")
+
+
+# ─── 임포트 ──────────────────────────────────────────────────────────────────
+
+META_RE = re.compile(r'^<<<(\d+):[^:]+:[^:]+:([0-9a-f]+)>>> ?(.*)', re.DOTALL)
+
+def encode_text(text):
+    # ENCODE_SRC(원본)로 먼저 시도 - 번역 안 된 텍스트가 EUC-KR로 잘못 인코딩되는 것 방지
+    # ENCODE_SRC 실패 시 ENCODE_DST(번역문) 시도
+    for enc in (ENCODE_SRC, ENCODE_DST):
+        try:
+            return text.encode(enc)
+        except Exception:
+            pass
+    return text.encode('latin-1')
+
+def patch_ptrs(data, ds_info, old_ptr, new_ptr):
+    """데이터셋 내 old_ptr → new_ptr 교체 (p1/p2/p3만, v4 건드리지 않음)."""
+    ds_off, ds_size = ds_info['offset'], ds_info['size']
+    old_b = struct.pack('<I', old_ptr)
+    new_b = struct.pack('<I', new_ptr)
+
+    if is_ptr_dataset(bytes(data), ds_off):
+        pos = ds_off + TAG_SIZE
+        while pos + 4 <= ds_off + ds_size:
+            if data[pos:pos+4] == old_b:
+                data[pos:pos+4] = new_b
+            pos += 4
+    else:
+        pos = ds_off
+        while pos < ds_off + ds_size:
+            tb = bytes(data[pos:pos + TAG_SIZE])
+            if tb not in VALID_TAGS:
+                break
+            esz = entry_size(tb)
+            # p1(+4), p2(+8), p3(+12) 만 패치
+            for off in (TAG_SIZE, TAG_SIZE + 4, TAG_SIZE + 8):
+                if data[pos+off:pos+off+4] == old_b:
+                    data[pos+off:pos+off+4] = new_b
+            pos += esz
+
+def cmd_import(bin_path, txt_path, out_path, charmap):
+    with open(bin_path, 'rb') as f:
+        orig = bytearray(f.read())
+
+    with open(txt_path, 'r', encoding='utf-8') as f:
+        lines = [l.rstrip('\n') for l in f]
+
+    datasets = get_datasets(bytes(orig))
+    records  = collect_strings(bytes(orig))
+    size_map = {r['abs_pos']: r['raw_size'] for r in records}
+    ds_map   = {ds['index']: ds for ds in datasets}
+
+    patched  = 0
+    overflow = []
+
+    for line in lines:
+        m = META_RE.match(line)
+        if not m:
+            continue
+        ds_idx    = int(m.group(1))
+        abs_pos   = int(m.group(2), 16)
+        text      = m.group(3)
+        orig_size = size_map.get(abs_pos, 0)
+        if orig_size == 0:
+            continue
+
+        new_bytes = encode_text(text) + b'\x00'
+        if len(new_bytes) <= orig_size:
+            orig[abs_pos:abs_pos + orig_size] = \
+                new_bytes + b'\x00' * (orig_size - len(new_bytes))
+            patched += 1
+        else:
+            overflow.append((abs_pos, new_bytes, orig_size, ds_idx))
+
+    # ── 오버플로우: 파일 끝 재배치 ───────────────────────────────────────────
+    if overflow:
+        print(f"[오버플로우] {len(overflow)}개 → 파일 끝 재배치")
+        orig.extend(b'\x00' * ((-len(orig)) % 16))  # 16바이트 정렬
+
+        for abs_pos, new_bytes, orig_size, ds_idx in overflow:
+            new_off = len(orig)
+            orig.extend(new_bytes)
+            ds_info = ds_map[ds_idx]
+            patch_ptrs(orig, ds_info,
+                       old_ptr=abs_pos - ds_info['offset'],
+                       new_ptr=new_off  - ds_info['offset'])
+            orig[abs_pos:abs_pos + orig_size] = b'\x00' * orig_size
+            patched += 1
+            print(f"  {hex(abs_pos)} → {hex(new_off)}")
+
+    with open(out_path, 'wb') as f:
+        f.write(bytes(orig))
+    print(f"임포트 완료: {patched}개 패치 → {out_path}")
+
+
+# ─── CLI ─────────────────────────────────────────────────────────────────────
+
+def main():
+    if len(sys.argv) < 3:
+        print("사용법:\n"
+              "  python njdatatexttool.py extract <bin> [출력.txt] [치환표.json]\n"
+              "  python njdatatexttool.py import  <bin> <입력.txt> [출력.bin] [치환표.json]")
+        sys.exit(1)
+
+    cmd, bin_path = sys.argv[1].lower(), sys.argv[2]
+
+    charmap = None
+    for arg in sys.argv[3:]:
+        if arg.endswith('.json'):
+            charmap = load_charmap(arg)
+            print(f"[치환표] {arg} ({len(charmap)}개 항목)")
+            break
+    if charmap is None:
+        charmap = find_charmap()
+
+    non_json = [a for a in sys.argv[3:] if not a.endswith('.json')]
+
+    if cmd == 'extract':
+        out = non_json[0] if non_json else bin_path.replace('.bin', '.txt')
+        cmd_extract(bin_path, out, charmap)
+    elif cmd == 'import':
+        if not non_json:
+            print("txt 파일을 지정하세요."); sys.exit(1)
+        txt = non_json[0]
+        out = non_json[1] if len(non_json) > 1 else bin_path.replace('.bin', '_new.bin')
+        bak = bin_path + '.bak'
+        if not os.path.exists(bak):
+            shutil.copy2(bin_path, bak)
+            print(f"[백업] {bak}")
+        cmd_import(bin_path, txt, out, charmap)
+    else:
+        print(f"알 수 없는 명령: {cmd}"); sys.exit(1)
+
+if __name__ == '__main__':
+    main()
