@@ -5,7 +5,7 @@ import sys
 
 # --- 설정 ---
 JSON_TABLE_PATH = "XENOSAGA KOR-JPN.json"
-ENCODING = "EUC-JP"
+ENCODING = "euc_jis_2004"
 
 STRING_BLOCK_STARTS = [
     0x4718, 0x15908, 0x225F8, 0x2E318, 0x363B8,

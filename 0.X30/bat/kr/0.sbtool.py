@@ -6,7 +6,7 @@ import json
 
 class Xeno3AutoScanner:
     def __init__(self, json_path=None):
-        self.encoding = 'euc-jp'
+        self.encoding = 'euc_jis_2004'
         self.base_addr = None
         self.ptr_table_start = None
         self.kor_to_jp_table = {}
