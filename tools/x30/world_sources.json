@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-24",
+  "original": "../../0.X30/mg1/kr/World.Dat",
+  "original_sha256": "d0adb8042639104cc791c6832d9ea236c1affa916e71b27c60b6a499d3e16f05",
+  "original_reference_member": "X30/mg1/com/Stage/World.Dat",
+  "edit": "../../0.X30/mg1/kr/World.Dat.txt",
+  "editor_snapshot_sha256": "a48c226b15583e786bdcb3c1a90fc41052d0b049c7de81f55ca52ee6d7e54fe8",
+  "editor_is_untranslated": true,
+  "charmap_sha256": "1f461ef9eee4b58a856ef214e80f38ffa84c24865bddd7a494662685f00ab007",
+  "output": "output/mg1/com/Stage/World.Dat",
+  "string_count": 10,
+  "name_base": 56,
+  "name_slot_bytes": 32,
+  "charmap": "../../0.X30/mg1/kr/XENOSAGA KOR-JPN.json"
+}

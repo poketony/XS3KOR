@@ -1,0 +1,5 @@
+/output/
+/test-output/
+/independence-check.json
+__pycache__/
+*.pending

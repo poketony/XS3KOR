@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-24",
+  "assets": {
+    "font0": {
+      "original": "../../0.X30/mnu/kr/fonts/font0.bin",
+      "original_sha256": "3b789d9ea01c00033b9e5908d5c1f5efe4ff2d2afc15fdd0aa7af63f49677f77",
+      "original_reference_member": "X30/mnu/jp/font0.bin",
+      "reference": "reference/font0.current.bin",
+      "reference_sha256": "901063f371cbd0ee94e12a92aef63f082541348e6b6b06235f00401f1bf735fd",
+      "reference_source": "C:\\Users\\JO\\Desktop\\XENO_ARC\\Xenosaga\\Xenosaga3\\X30_UNPACKED\\mnu\\jp\\font0.bin",
+      "channels": {
+        "red": {
+          "edit": "../../0.X30/mnu/kr/fonts/font0_red.png",
+          "snapshot_source": "폰트 관련/font0test/font0_red.png",
+          "snapshot_sha256": "b7acc359939accb191ce0093fa2143bbae0e6e428dca592b8f2823fe2385c345"
+        },
+        "green": {
+          "edit": "../../0.X30/mnu/kr/fonts/font0_green.png",
+          "snapshot_source": "폰트 관련/font0test/font0_green.png",
+          "snapshot_sha256": "288cfce2be4c5e0a2658dba927b5b2722dc5623acc5017e7e3ad7f817c3c1976"
+        },
+        "blue": {
+          "edit": "../../0.X30/mnu/kr/fonts/font0_blue.png",
+          "snapshot_source": "폰트 관련/font0test/font0_blue.png",
+          "snapshot_sha256": "c9ef20a7c4f8afec0f4ed6c10dea4113976ee15d2bd8830d2dd1233232c10887"
+        },
+        "alpha": {
+          "edit": "../../0.X30/mnu/kr/fonts/font0_alpha.png",
+          "snapshot_source": "폰트 관련/font0test/font0_alpha.png",
+          "snapshot_sha256": "9366e74bc43fbb73ca1621d043c4548eab141b4f9b77d29859bea5efa90af0cf"
+        }
+      },
+      "tail_sha256": "4d6e11d40778bdc4801ccf5ed81fde640afab02eea1b7e2b995ed677134e6dfe",
+      "output": "output/mnu/jp/font0.bin"
+    },
+    "font1": {
+      "original": "../../0.X30/mnu/kr/fonts/font1.bin",
+      "original_sha256": "1e0b51e560ced7c69a4b6575286d96f3d23bbae30ce1ef70a1a89d5c6f1efaef",
+      "original_reference_member": "X30/mnu/jp/font1.bin",
+      "reference": "reference/font1.current.bin",
+      "reference_sha256": "91c026249f4255955f33fe96bff5d2a72da3d9b7066919f54f2b8c40d862b147",
+      "reference_source": "C:\\Users\\JO\\Desktop\\XENO_ARC\\Xenosaga\\Xenosaga3\\X30_UNPACKED\\mnu\\jp\\font1.bin",
+      "channels": {
+        "red": {
+          "edit": "../../0.X30/mnu/kr/fonts/font1_red.png",
+          "snapshot_source": "폰트 관련/font1test/font1_red.png",
+          "snapshot_sha256": "08f40efadb4ffe1de690133ac9b403c51506bf7044b8f5e18434ff0126342f1b"
+        },
+        "green": {
+          "edit": "../../0.X30/mnu/kr/fonts/font1_green.png",
+          "snapshot_source": "폰트 관련/font1test/font1_green.png",
+          "snapshot_sha256": "6919c532d354f38e1b57c277bde180f8477fb61d2a60b22cd48b7272c737dfc7"
+        },
+        "blue": {
+          "edit": "../../0.X30/mnu/kr/fonts/font1_blue.png",
+          "snapshot_source": "폰트 관련/font1test/font1_blue.png",
+          "snapshot_sha256": "56532796c8bb079ca4d75ab429f2976d2a813821e36afac85c97586da6bc8e9c"
+        },
+        "alpha": {
+          "edit": "../../0.X30/mnu/kr/fonts/font1_alpha.png",
+          "snapshot_source": "폰트 관련/font1test/font1_alpha.png",
+          "snapshot_sha256": "d73bc2eeffbb813e50de31a713ac89a1134cf599a6c3539742ac790faea0246e"
+        }
+      },
+      "tail_sha256": "b55968374bc39265675cf289e2fe26946726756e24bbdda85994b075a2af61d5",
+      "output": "output/mnu/jp/font1.bin"
+    }
+  },
+  "runtime_verified": false
+}

@@ -1,0 +1,20 @@
+# XS3 save-title names v1
+# English memory-card browser names; in-game Korean names are unchanged.
+# ID|name. PS2 system-font names only; no Korean-to-kanji substitution.
+# Keep 1..10 fullwidth characters. No automatic punctuation conversion.
+01|Ｓｈｉｏｎ
+02|Ｊｉｎ
+03|ＭＯＭＯ
+04|Ｚｉｇｇｙ
+05|ＫＯＳ−ＭＯＳ
+06|ｃｈａｏｓ
+07|Ｊｒ．
+08|Ｍｉｙｕｋｉ
+09|Ｃａｎａａｎ
+10|Ａｌｌｅｎ
+11|Ｕｎｕｓｅｄ
+12|Ｕｎｕｓｅｄ
+13|ＥＳ　Ａｓｈｅｒ
+14|ＥＳ　Ｚｅｂｕｌｕｎ
+15|ＥＳ　Ｄｉｎａｈ
+16|ＥＳ　Ｒｅｕｂｅｎ

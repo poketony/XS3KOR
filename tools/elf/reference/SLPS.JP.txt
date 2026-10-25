@@ -1,0 +1,13 @@
+﻿# XS3 ELF text v1
+# asset: SLPS
+# origin-sha256: b82b6744bac7b9557cce5cadde1c721b90fd2959d576828882b05feb03a54ec9
+# offset|original bytes/capacity bytes|text
+# Edit only after the second |. Missing rows use Japanese original.
+# \n = byte 0A; \\n = literal backslash+n; {HEX} = control packet.
+# Preserve controls, % formats, markup and button symbols.
+# Slots cannot relocate. Code, fonts and other strings remain unchanged.
+00410780|33/39|<s0>%s%s:\\n%s%s{0CC0C0C0}を手にいれた！
+004107C8|37/39|<s0>%s%s:\\n%s%s{0CC0C0C0}を%dコ手にいれた！
+# Existing Desktop money text omits {0CC0C0C0}; both original/preserved controls are accepted.
+004107F0|33/39|<s0>%s%s:\\n%s%dＧ{0CC0C0C0}手にいれた！
+0041EE70|104/111|{0B}{15020110}{0D03}シークエラーが発生しました。\n\n\n{0C802020}○{0C808080}ボタン：再生しなおす。\n\n{0C208020}△{0C808080}ボタン：スキップする。

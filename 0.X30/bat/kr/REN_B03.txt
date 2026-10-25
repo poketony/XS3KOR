@@ -1,0 +1,63 @@
+[0xc65]
+B04
+
+[0xc69]
+--- Battle Start ---
+
+[0xc7e]
+--- default ---
+
+[0xc8e]
+--- top005 ---
+
+[0xc9d]
+KOS-MOS！ 大人しく我が糧となれ…!!
+
+[0xcc0]
+CHRV_EVE0000
+
+[0xccd]
+焦る事はないわ…順番に始末してあげる…!!
+
+[0xcf6]
+CHRV_EVE0001
+
+[0xd03]
+ブースト上昇率が大幅にUPした！
+
+[0xd22]
+T-elosは必殺技の構えを取った
+
+[0xd3f]
+T-elosは敵性体のブレイクゲージ残量を解析中
+
+[0xd6a]
+BOOST ATK
+
+[0xd74]
+T-elosは解析に失敗したため行動できない
+
+[0xd9b]
+ここが貴様等の死に場所となるのだ…!!
+
+[0xdc0]
+CHRV_EVE0002
+
+[0xdcd]
+T-elosは敵性体のHP残量を解析中
+
+[0xdec]
+--- top005 Dmg ---
+
+[0xdff]
+camera_telos_00
+
+[0xe0f]
+camera_telos_01
+
+[0xe1f]
+camera_telos_02
+
+[0xe2f]
+camera_telos_dead
+

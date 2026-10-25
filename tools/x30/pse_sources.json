@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-24",
+  "charmap_sha256": "1f461ef9eee4b58a856ef214e80f38ffa84c24865bddd7a494662685f00ab007",
+  "assets": {
+    "AC": {
+      "original": "../../0.X30/mnu/pse/kr/AC.mes",
+      "original_sha256": "dbf3bc3baf73ad3c34fb3134faebbe26ee1f140d8a087b4ed878ffc375676315",
+      "original_reference_member": "X30/mnu/pse/jp/AC.mes",
+      "edit": "../../0.X30/mnu/pse/kr/AC.mes.kor.txt",
+      "editor_snapshot_sha256": "32b8e0e49a9b8feb48ed97e34ac70424d7c307da4147fa15f5f660fc5f026d1c",
+      "editor_is_untranslated": false,
+      "output": "output/mnu/pse/jp/AC.mes",
+      "message_count": 16
+    },
+    "EP1": {
+      "original": "../../0.X30/mnu/pse/kr/EP1.mes",
+      "original_sha256": "afa5d4c3c666b41f96ce47173fd5dd127f7ee4cf16059bd6a61918dd09295f94",
+      "original_reference_member": "X30/mnu/pse/jp/EP1.mes",
+      "edit": "../../0.X30/mnu/pse/kr/EP1.mes.txt",
+      "editor_snapshot_sha256": "f198d3fccfc88fbbba6623c600ea3bb45f2090a8366347f7ce1bef6a652d55b5",
+      "editor_is_untranslated": true,
+      "output": "output/mnu/pse/jp/EP1.mes",
+      "message_count": 29
+    },
+    "EP2": {
+      "original": "../../0.X30/mnu/pse/kr/EP2.mes",
+      "original_sha256": "24a3583a7588b85e4e89b412797a67afed59c4001a6c4b9b0d29c30fb411aa2f",
+      "original_reference_member": "X30/mnu/pse/jp/EP2.mes",
+      "edit": "../../0.X30/mnu/pse/kr/EP2.mes.txt",
+      "editor_snapshot_sha256": "0acb215eace23d645f8116e49b5b46df787619e395068b338ff554bc0717ac42",
+      "editor_is_untranslated": true,
+      "output": "output/mnu/pse/jp/EP2.mes",
+      "message_count": 40
+    },
+    "opening": {
+      "original": "../../0.X30/mnu/pse/kr/opening.mes",
+      "original_sha256": "7c9114fd31b7b95154d7387dd42e5fd9da3dd18a05c5f8394d782333956a76a8",
+      "original_reference_member": "X30/mnu/pse/jp/opening.mes",
+      "edit": "../../0.X30/mnu/pse/kr/opening.mes.txt",
+      "editor_snapshot_sha256": "b4ce767f42c08ee2f0b5a3d588cd0487548c51aeefa95b10bb8e995a2f073000",
+      "editor_is_untranslated": true,
+      "output": "output/mnu/pse/jp/opening.mes",
+      "message_count": 15
+    },
+    "PP": {
+      "original": "../../0.X30/mnu/pse/kr/PP.mes",
+      "original_sha256": "f3b835777d9ed6cafc2a689d4d4d402a5eeb8ed9ce949f2ed2e54bea05e105d7",
+      "original_reference_member": "X30/mnu/pse/jp/PP.mes",
+      "edit": "../../0.X30/mnu/pse/kr/PP.mes.txt",
+      "editor_snapshot_sha256": "291e83f139169c90a450f3bea1160c35db24dc0dd05ca4f708249c852242676b",
+      "editor_is_untranslated": true,
+      "output": "output/mnu/pse/jp/PP.mes",
+      "message_count": 3
+    },
+    "test": {
+      "original": "../../0.X30/mnu/pse/kr/test.mes",
+      "original_sha256": "1ea481725dbf67d197033373972fbec75f4e586637064e4682eabeb4ec04044f",
+      "original_reference_member": "X30/mnu/pse/jp/test.mes",
+      "edit": "../../0.X30/mnu/pse/kr/test.mes.txt",
+      "editor_snapshot_sha256": "d20f52ad6852fde6fd10ad4fabb775ce76110c69e2a8d563b11651bb872bc6bc",
+      "editor_is_untranslated": true,
+      "output": "output/mnu/pse/jp/test.mes",
+      "message_count": 3
+    }
+  },
+  "charmap": "../../0.X30/mnu/pse/kr/XENOSAGA KOR-JPN.json"
+}

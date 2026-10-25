@@ -1,0 +1,11 @@
+@echo off
+setlocal DisableDelayedExpansion
+chcp 65001 >nul
+rem 원문 재추출 시에만 .bat로 바꾸고 끝나면 .batlock으로 되돌리세요.
+rem 같은 폴더의 World.Dat에서 일본어 World.Dat.txt를 추출합니다. 기존 TXT는 덮어쓰지 않습니다.
+rem --check는 저장 없이 추출/원본 왕복을 검사합니다. 작업 TXT는 직접 별도로 보관해야 합니다.
+python -X utf8 -B "%~dp0..\..\..\tools\x30\build_minigame.py" --asset World.Dat --extract %*
+set "RESULT=%ERRORLEVEL%"
+if not "%RESULT%"=="0" echo 추출 실패: 기존 TXT와 오류 내용을 확인하세요.
+if not defined XS3_NO_PAUSE pause
+exit /b %RESULT%

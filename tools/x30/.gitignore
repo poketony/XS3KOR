@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+/output/
+/releases/
+/original/archive/X30.big
+/INDEPENDENCE.json

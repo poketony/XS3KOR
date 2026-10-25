@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-24",
+  "original": "../../0.X30/mg1/kr/Message.Dat",
+  "original_sha256": "22d5458028b61a0ccbcc53454cb8761848d69c51991903aff3501a8a25cc1526",
+  "original_reference_member": "X30/mg1/jp/Message.Dat",
+  "edit": "../../0.X30/mg1/kr/Message.Dat.txt",
+  "editor_snapshot_sha256": "a82cf3ad9502440ddcb638365e0325823699e85ba079bd3d6c0ed0e9bcb86e79",
+  "editor_snapshot_source": "0.X30/mg1/kr/Message.Dat",
+  "editor_is_untranslated": true,
+  "charmap_sha256": "1f461ef9eee4b58a856ef214e80f38ffa84c24865bddd7a494662685f00ab007",
+  "output": "output/mg1/jp/Message.Dat",
+  "string_count": 871,
+  "reference_slots": 1024,
+  "charmap": "../../0.X30/mg1/kr/XENOSAGA KOR-JPN.json"
+}

@@ -1,0 +1,10 @@
+{
+  "explicit_menu_input": "C:\\Users\\JO\\XS3KOR\\tools\\x30\\output\\mnu\\jp\\menutext.txd",
+  "explicit_input_sha256": "87ef9d24410e16744840790d5bfcff803deac15beeaf83c8d145077c69452fd8",
+  "outside_kit_input_is_read_only": true,
+  "guard_probes_blocked": 2,
+  "unexpected_outside_accesses": 0,
+  "input_unchanged": true,
+  "runtime_uses_lab_rom_iso_or_xs2": false,
+  "file_paths_accessed": 25
+}

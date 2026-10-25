@@ -1,0 +1,22 @@
+﻿# XS3 ELF text v1
+# asset: OV04
+# origin-sha256: f9d5644bc55a6b2aa40b444ad1767df55c27e1949a2b4b18bc3074fd1d4d1198
+# offset|original bytes/capacity bytes|text
+# Edit only after the second |. Missing rows use Japanese original.
+# \n = byte 0A; \\n = literal backslash+n; {HEX} = control packet.
+# Preserve controls, % formats, markup and button symbols.
+# Slots cannot relocate. Code, fonts and other strings remain unchanged.
+# COUNT: ASCII 0 must remain first; the game copies exactly 12 bytes.
+0003DDA8|11/11|0連続ゴール
+0003F020|26/31|特殊アイテムと消費アイテム
+0003F040|32/39|デコーダ０２と、スキルドラッグＡ
+0003F068|12/15|消費アイテム
+0003F078|16/23|スキルドラッグＢ
+0003F090|16/23|スキルドラッグＣ
+0003F0A8|4/7|防具
+0003F0B0|10/15|水着ジギー
+0003F0C0|4/7|武器
+0003F0C8|12/15|ヴァンクール
+0003F0D8|10/15|アクセサリ
+0003F0E8|14/15|ブレイブハート
+00040400|32/39|ビューモード…STARTボタンで再開\n

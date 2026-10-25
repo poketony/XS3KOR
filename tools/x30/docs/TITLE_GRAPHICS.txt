@@ -1,0 +1,32 @@
+명령 실행 기준: XS3KOR/tools/x30. 일상 작업 순서는 ../README.txt를 참고하세요.
+검증 개수와 초기 번역 상태는 구현 당시의 기록이며 현재 결과와 다를 수 있습니다.
+
+타이틀 메뉴 그래픽
+
+작업 PNG: 0.X30/mnu/kr/titleobj
+실행 코드: tools/x30/build_title.py 및 tools/title_text.py
+원본: 0.X30/mnu/kr/titleobj/titleobj.xtx
+출력: 같은 폴더의 titleobj.xtx.new
+
+PNG 다섯 개(new_game, continue, data, disc1, disc2)를 120x18 크기와 투명도를 유지해 편집합니다.
+Build_titleobj.bat를 더블클릭하면 다섯 작업 PNG를 읽고 게임용 XTX를 만듭니다.
+PNG를 BAT에 드롭하거나 CLI 인자로 넘겨도 됩니다. 여러 파일을 넘길 수 있고, 이름은 위 다섯 이름을 유지해야 합니다.
+지정하지 않은 문구는 같은 작업 폴더의 PNG를 사용합니다. 없는 입력을 원문으로 대체하지 않습니다.
+입력은 이 저장소의 0.X30 또는 tools/x30 안에 있어야 합니다. 외부 ROM 폴더와 자동 동기화하지 않습니다.
+CLI 검사 예: python -B tools/x30/build_title.py --check "0.X30/mnu/kr/titleobj/new_game.png"
+BAT의 대기를 생략하려면 환경 변수 XS3_NO_PAUSE=1을 지정합니다.
+
+Export_titleobj.batlock은 필요한 때만 .bat로 바꿔 원본 PNG를 추출하고 다시 잠급니다. 기존 작업 PNG가 하나라도 있으면 전체 저장을 거부합니다. --check는 원본 왕복만 검사하고 저장하지 않습니다.
+현재 PNG는 일본판 원본을 그대로 추출한 영문이며, 번역 이미지를 임의로 제작하지 않았습니다.
+작업 폴더의 원본 XTX를 직접 읽고 SHA-256을 검사합니다. SLPS/OVL, 원본 ISO, codex-lab, XS2는 실행에 필요하지 않습니다.
+Python 3.10 이상과 Pillow가 필요합니다. NumPy는 필요하지 않습니다.
+
+문구 좌표는 SLPS의 00A811A0에서 읽는 UV와 TEX0 값으로 확인했습니다.
+왼쪽 120픽셀, Y=0/18/36/72/90의 높이 18픽셀 영역만 수정합니다. Y=54의 빈 줄은 수정하지 않습니다.
+문구 외 영역, XTX 헤더, 선택 효과, 팔레트는 그대로 보존합니다. 출력 크기도 원본과 같은 36,944바이트입니다.
+게임의 기존 팔레트는 고정입니다. PNG의 새 색은 가장 가까운 기존 RGBA로 변환되며, quantized 수에 해당 픽셀 수가 표시됩니다.
+검정 글자와 투명도를 기준으로 편집하세요. 새 색상을 팔레트에 추가하지 않습니다.
+원본 PNG를 그대로 넣으면 원본 XTX와 바이트 단위로 일치합니다.
+실제 게임 화면에서 위치·가독성·자간 확인은 별도로 필요합니다.
+
+외부 ROM 작업 폴더는 계속 독립적입니다. 개별 BAT 산출물을 Xenosaga3/X30_UNPACKED/mnu/jp/titleobj.xtx에 직접 적용한 뒤 ROM BAT를 실행합니다.

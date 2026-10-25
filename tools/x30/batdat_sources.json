@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-24",
+  "original": "../../0.X30/bat/kr/batdatEdit/batdat.bin",
+  "original_sha256": "1d50d6ae782ddaf7ac7db9ee5df61de67d384bcbfe37624133223d9dca6519ad",
+  "original_reference_member": "X30/bat/jp/batdat.bin",
+  "edit": "../../0.X30/bat/kr/batdatEdit/batdat.json",
+  "editor_snapshot_sha256": "7f25d1d194cc4900048cc3049d39b4fbbec8c48ccec50b92fb2e874e903a7bd6",
+  "editor_snapshot_source": "0.X30/bat/kr/batdatEdit/batdat.json",
+  "legacy_editor": "reference/batdat.legacy.json",
+  "legacy_editor_sha256": "580442e6683d3a9e697a65e42c804f1a3e45db7ebb221aaad51342ca08b99173",
+  "charmap_sha256": "1f461ef9eee4b58a856ef214e80f38ffa84c24865bddd7a494662685f00ab007",
+  "output": "output/bat/jp/batdat.bin",
+  "charmap": "../../0.X30/bat/kr/batdatEdit/XENOSAGA KOR-JPN.json"
+}

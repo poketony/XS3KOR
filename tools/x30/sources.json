@@ -1,0 +1,147 @@
+{
+  "charmap_sha256": "1f461ef9eee4b58a856ef214e80f38ffa84c24865bddd7a494662685f00ab007",
+  "assets": {
+    "njDataText": {
+      "original": "../../0.X30/mnu/kr/njDataText.bin",
+      "original_sha256": "b4983acbe8bdf153b890e440b7c445aed25c20b630a5c186ed3528f6fb4e094e",
+      "edit": "../../0.X30/mnu/kr/njDataText.KOR.txt",
+      "output": "output/mnu/jp/njDataText.bin",
+      "editor_snapshot_sha256": "e74b910ba1f24db32780b771d53b08c80dce279c06cd0633d876da757cd8fc24",
+      "editor_snapshot_source": "0.X30/mnu/kr/njDataText/njDataText.KOR.txt",
+      "original_reference_member": "X30/mnu/jp/njDataText.bin"
+    },
+    "devchk": {
+      "original": "../../0.X30/mnu/kr/devchk.txd",
+      "original_sha256": "27ef4986765dd60b53420d38137631b9698dec0747213cd379374f49fcc77644",
+      "edit": "../../0.X30/mnu/kr/devchk.txd_kor.txt",
+      "output": "output/mnu/jp/devchk.txd",
+      "editor_snapshot_sha256": "b23deb42bd080209cff7c2f6ee24a0795f902d244f2eb7b47253c4fea2c27385",
+      "editor_snapshot_source": "0.X30/mnu/kr/devchk/devchk.txd_kor.txt",
+      "original_reference_member": "X30/mnu/jp/devchk.txd"
+    },
+    "discchg": {
+      "original": "../../0.X30/mnu/kr/discchg.txd",
+      "original_sha256": "28fcdf19fe342be237d75fcfdad3660116ad44d5a41125e134517e90b78230b3",
+      "edit": "../../0.X30/mnu/kr/discchg.txd.kor.txt",
+      "output": "output/mnu/jp/discchg.txd",
+      "editor_snapshot_sha256": "db20336bc7d293d5da5c1ba49d313dcb10cdb5d03fd501bbb5b4d10c3d399a7c",
+      "editor_snapshot_source": "0.X30/mnu/kr/discchg/discchg.txd.kor.txt",
+      "original_reference_member": "X30/mnu/jp/discchg.txd"
+    },
+    "menutext": {
+      "original": "../../0.X30/mnu/kr/menutext.JPN.txd",
+      "original_sha256": "3bb922d9266a2735049aa9733ed3ac2839bb1f3a2d9c59a08cde091b6543ccdf",
+      "edit": "../../0.X30/mnu/kr/menutext.txd_kor.txt",
+      "output": "output/mnu/jp/menutext.txd",
+      "editor_snapshot_sha256": "26d7af30762e80e5b073c0caf7dde7f79a65081ee863b2f013cb7d88a2311684",
+      "editor_snapshot_source": "0.X30/mnu/kr/menutext/menutext.txd_kor.txt",
+      "original_reference_member": "X30/mnu/jp/menutext.txd"
+    },
+    "synopsis": {
+      "original": "../../0.X30/mnu/kr/synopsis.txd",
+      "original_sha256": "8d44f17333bb019b6c44efbbf8ec50b790a0b13b17eaaeefcd384c359d6ca947",
+      "edit": "../../0.X30/mnu/kr/synopsis.txd_kor.txt",
+      "output": "output/mnu/jp/synopsis.txd",
+      "editor_snapshot_sha256": "772f54d498c1dabdb1cbd641c004a2ff46a6320c1bca59b35653bc91b97ab9a2",
+      "editor_snapshot_source": "0.X30/mnu/kr/synopsis/synopsis.txd_kor.txt",
+      "original_reference_member": "X30/mnu/jp/synopsis.txd"
+    },
+    "MVtext": {
+      "original": "../../0.X30/mnu/kr/MVtext.bin",
+      "original_sha256": "846b5972df34849b96d3635f033f2b8be5a7f72274a0769167931a03ebc4596b",
+      "edit": "../../0.X30/mnu/kr/MVtext.KOR.txt",
+      "output": "output/mnu/jp/MVtext.bin",
+      "editor_snapshot_sha256": "c3c357f67b47082d70836c87a026dd3ec03eabc1963cac5ad4c37394c8bc6726",
+      "editor_snapshot_source": "0.X30/mnu/kr/MVtext/MVtext.KOR.txt",
+      "original_reference_member": "X30/mnu/jp/MVtext.bin"
+    },
+    "SegmentFileData": {
+      "original": "../../0.X30/mnu/kr/SegmentFileData.bin",
+      "original_sha256": "b272994786482280815ede19ffed509feb7777df8fea295ab9aaed31b5ea90c0",
+      "edit": "../../0.X30/mnu/kr/SegmentFileData.KOR.txt",
+      "output": "output/mnu/jp/SegmentFileData.bin",
+      "editor_snapshot_sha256": "e4d35bd8aa65ce80f863f2152fb66120dada5fa700b55b71313479fa5fbeca18",
+      "editor_snapshot_source": "0.X30/mnu/kr/SegmentFileData/SegmentFileData.KOR.txt",
+      "original_reference_member": "X30/mnu/jp/SegmentFileData.bin"
+    },
+    "njDBcommon": {
+      "original": "../../0.X30/mnu/kr/njDBcommon.bin",
+      "original_sha256": "87f1fbb0acb353b5537892a628bd6913d3b07a1df382af899bf485443dd60dd2",
+      "edit": "../../0.X30/mnu/kr/njDBcommon.KOR.txt",
+      "output": "output/mnu/jp/njDBcommon.bin",
+      "editor_snapshot_sha256": "d4ebadbad3771ad33a141bddd13ff0770af4630d1b6e579104b7faf4dff1ed8f",
+      "editor_snapshot_source": "0.X30/mnu/kr/njDBcommon/njDBcommon.KOR.txt",
+      "original_reference_member": "X30/mnu/jp/njDBcommon.bin"
+    },
+    "DBC": {
+      "original": "../../0.X30/mnu/kr/DBC.bin",
+      "original_sha256": "f5c2636930e9063805c8f1dc0feef4116f016fa8f041dcbb67f46f87cd94cded",
+      "output": "output/mnu/jp/DBC.bin",
+      "original_reference_member": "X30/mnu/jp/DBC.bin",
+      "edit": "../../0.X30/mnu/kr/DBC.bin.KOR.txt",
+      "editor_snapshot_sha256": "823625ab060396eeb82b2a9fe52755f4a1396381cd59bf369ae873fa4393f29a",
+      "editor_snapshot_source": "0.X30/mnu/kr/database/DBC.bin.KOR.txt"
+    },
+    "DBC2": {
+      "original": "../../0.X30/mnu/kr/DBC2.bin",
+      "original_sha256": "3c579f04e293cc498739696de7c67b422afd8019c9196d977dd8958a9f03703c",
+      "output": "output/mnu/jp/DBC2.bin",
+      "original_reference_member": "X30/mnu/jp/DBC2.bin",
+      "derived_from": "DBC by entry ID and identical original field text"
+    },
+    "njBtlText": {
+      "original": "../../0.X30/mnu/kr/njBtlText.JPN.bin",
+      "original_sha256": "c8f5877b075fb6561facbf0f0e6e5fb2fd25088ddda556826a84e2442f3eb57f",
+      "original_reference_member": "X30/mnu/jp/njBtlText.bin",
+      "edit": "../../0.X30/mnu/kr/njBtlText.KOR.txt",
+      "editor_snapshot_sha256": "dd3942c191d8574c15cb70225ef5c680a2fcb616770f08027b34c94de0c51007",
+      "editor_snapshot_source": "0.X30/mnu/kr/njBtlText.bin",
+      "binary_patch_reference": "reference/njBtlText.current.bin",
+      "binary_patch_sha256": "c8f2022841819695678b5bb7a124d1b8d73d2a6ef8bf0b8206662f346a187d62",
+      "output": "output/mnu/jp/njBtlText.bin",
+      "recovered_translations": [
+        {
+          "id": 40,
+          "jp": "ステータス",
+          "ko": "스테이터스"
+        },
+        {
+          "id": 41,
+          "jp": "ブースト",
+          "ko": "부스트"
+        },
+        {
+          "id": 42,
+          "jp": "攻撃",
+          "ko": "공격"
+        },
+        {
+          "id": 44,
+          "jp": "相性",
+          "ko": "상성"
+        },
+        {
+          "id": 45,
+          "jp": "無効",
+          "ko": "무효"
+        },
+        {
+          "id": 46,
+          "jp": "弱点",
+          "ko": "약점"
+        },
+        {
+          "id": 47,
+          "jp": "強化",
+          "ko": "강화"
+        },
+        {
+          "id": 48,
+          "jp": "吸収",
+          "ko": "흡수"
+        }
+      ]
+    }
+  },
+  "charmap": "../../0.X30/mnu/kr/XENOSAGA KOR-JPN.json"
+}

@@ -1,0 +1,93 @@
+[0xcb9]
+B13
+
+[0xcbd]
+--- Battle Start ---
+
+[0xcd2]
+ａ−ｍａ−ｏ−ｐｕｎｎ
+
+[0xce9]
+必殺技により「金剛甲咒」に亀裂！
+
+[0xd0a]
+「金剛甲咒」を破壊した！
+
+[0xd23]
+--- default ---
+
+[0xd33]
+--- top025 ---
+
+[0xd42]
+％  reuben
+
+[0xd4d]
+--- ルベンいじめを少々たしなんでおります ---
+
+[0xd7a]
+--- 40％〜60％ ---
+
+[0xd8d]
+--- 20％〜40％ ---
+
+[0xda0]
+--- 0％〜20％ ---
+
+[0xdb2]
+ステータスアップ
+
+[0xdc3]
+素早さ、回避率、命中率UP！
+
+[0xdde]
+アーマー展開
+
+[0xdeb]
+金剛甲咒
+
+[0xdf4]
+アーマー亀裂
+
+[0xe01]
+アーマー破壊
+
+[0xe0e]
+KAOV_EVE0600
+
+[0xe1b]
+KAOV_EVE0601
+
+[0xe28]
+アニマ覚醒
+
+[0xe33]
+KAOV_EVE0602
+
+[0xe40]
+KAOV_EVE0603
+
+[0xe4d]
+KAOV_EVE0604
+
+[0xe5a]
+camera_top025_j_00
+
+[0xe6d]
+camera_top025_j_01
+
+[0xe80]
+camera_top025_00
+
+[0xe91]
+camera_top025_01
+
+[0xea2]
+camera_top025_02
+
+[0xeb3]
+camera_dead
+
+[0xebf]
+camera_break
+

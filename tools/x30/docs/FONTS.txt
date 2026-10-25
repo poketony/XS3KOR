@@ -1,0 +1,29 @@
+명령 실행 기준: XS3KOR/tools/x30. 일상 작업 순서는 ../README.txt를 참고하세요.
+검증 개수와 초기 번역 상태는 구현 당시의 기록이며 현재 결과와 다를 수 있습니다.
+
+폰트 수동 리빌드
+
+작업 PNG와 원본 font0.bin/font1.bin은 0.X30/mnu/kr/fonts에 있습니다. 같은 폴더의 Build_font0.bat 또는 Build_font1.bat를 실행합니다. tools/x30/edit/fonts에 별도 작업 사본은 두지 않습니다.
+더블클릭하면 해당 font의 red/green/blue/alpha PNG 네 장을 사용합니다.
+이름을 유지한 PNG를 해당 BAT에 드롭하거나 CLI 인자로 지정하면 그 파일을 직접 읽습니다. 여러 PNG를 함께 넘길 수 있습니다.
+지정하지 않은 채널은 기존 작업 PNG를 읽습니다. 파일명 예: font0_red.png.
+다른 폰트의 PNG, 같은 채널 중복 지정, 누락 파일, 잘못된 크기/형식은 오류로 중단합니다.
+입력 PNG는 저장소의 0.X30 또는 tools/x30 내부에 있어야 합니다.
+
+CLI 예: 0.X30\mnu\kr\fonts\Build_font0.bat "0.X30\mnu\kr\fonts\font0_red.png" --check
+상대 경로는 명령을 실행한 폴더 기준입니다. --check는 저장하지 않고 검사합니다.
+XS3_NO_PAUSE=1 환경 변수를 지정하면 BAT의 종료 대기를 생략합니다.
+Python 3.10 이상과 Pillow가 필요합니다.
+
+출력은 같은 작업 폴더의 font0.bin.new 또는 font1.bin.new입니다.
+원본 마지막 3,072바이트를 그대로 붙이며 결과 크기는 494,592바이트입니다.
+기존 20x24 글리프 배치, 네 개의 2비트 평면, 픽셀 양자화 방식은 변경하지 않았습니다.
+작업 PNG는 바이트 그대로 이동했고 글꼴 디자인은 수정하지 않았습니다.
+실패한 실행의 출력은 적용하지 마세요. 이전 출력이 남아 있을 수 있습니다.
+
+Extract_fonts.batlock은 필요한 때만 .bat로 바꿔 사용하고 다시 잠급니다.
+일본판 원본 BIN에서 PNG 8장을 추출합니다. 현재 한글 폰트를 복원하는 기능이 아닙니다.
+기존 PNG가 하나라도 있으면 전체 저장을 거부합니다. --asset font0 또는 font1로 범위를 선택하고 --check로 저장 없이 왕복을 검사할 수 있습니다.
+
+외부 ROM 작업에서는 개별 결과를 X30_UNPACKED/mnu/jp의 원래 파일명으로 직접 적용합니다.
+XS3KOR와 외부 Xenosaga3 폴더 간 자동 복사나 의존성은 없습니다.

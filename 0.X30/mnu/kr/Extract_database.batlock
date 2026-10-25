@@ -1,0 +1,12 @@
+@echo off
+setlocal DisableDelayedExpansion
+chcp 65001 >nul
+rem 원문 재추출 시에만 .bat로 바꾸고 끝나면 .batlock으로 되돌리세요.
+rem 원본 DBC.bin에서 일본어 DBC.bin.KOR.txt를 추출합니다. 이름은 작업 호환용이며 자동 번역하지 않습니다.
+rem 기존 TXT가 있으면 중단합니다. --check를 붙이면 저장 없이 두 원본의 왕복 검증만 수행합니다.
+rem DBC2도 같은 항목 ID로 연결되므로 별도 번역 사본을 만들지 않습니다. 재빌드는 두 BIN을 함께 생성합니다.
+python -X utf8 -B "%~dp0..\..\..\tools\x30\build_database.py" --extract %*
+set "RESULT=%ERRORLEVEL%"
+if not "%RESULT%"=="0" echo 추출 실패: 기존 TXT와 오류 내용을 확인하세요.
+if not defined XS3_NO_PAUSE pause
+exit /b %RESULT%

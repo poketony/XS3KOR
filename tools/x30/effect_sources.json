@@ -1,0 +1,827 @@
+{
+  "format": "XS3 location effect labels v1",
+  "label_names": [
+    "1stmarchant-a.bmp",
+    "5thelsalem-a.bmp",
+    "abel-a.bmp",
+    "battleship-a.bmp",
+    "calcareouscave-a.bmp",
+    "cathedral-a.bmp",
+    "daburimine-a.bmp",
+    "durandal-a.bmp",
+    "elsa-a.bmp",
+    "examinationhall-a.bmp",
+    "forest-a.bmp",
+    "hos-a.bmp",
+    "lab-a.bmp",
+    "levitationisland-a.bmp",
+    "miktam-a.bmp",
+    "oldchurch-a.bmp",
+    "oldmiruchia-a.bmp",
+    "pediaisland-a.bmp",
+    "rabyrinthos-a.bmp",
+    "renmuchateau-a.bmp",
+    "ruins-a.bmp",
+    "spaceport-a.bmp",
+    "urban-a.bmp",
+    "vectorsdivision-a.bmp",
+    "zoharudungeon-a.bmp"
+  ],
+  "assets": [
+    {
+      "group": "esd",
+      "source": "0.X30/ef/esd/kr/ce001_999.esd",
+      "editor": "0.X30/ef/esd/kr/ce001_999.png",
+      "source_sha256": "b063525d0beb3ca703e716c2c9621c9bfdaf76e519d6f12a60b35da21084fcde",
+      "initial_rebuilt_sha256": "b063525d0beb3ca703e716c2c9621c9bfdaf76e519d6f12a60b35da21084fcde",
+      "texture_name": "vectorsdivision-a.bmp",
+      "archive_paths": [
+        "ef/esd/jp/ce001_999.esd",
+        "ef/esd/ce000/ce001_999.esd"
+      ]
+    },
+    {
+      "group": "esd",
+      "source": "0.X30/ef/esd/kr/ce002_999.esd",
+      "editor": "0.X30/ef/esd/kr/ce002_999.png",
+      "source_sha256": "c7587e50567c8f9423a0d41911eaa0342ea620255cf82e7d9322d1318a66cb09",
+      "initial_rebuilt_sha256": "c7587e50567c8f9423a0d41911eaa0342ea620255cf82e7d9322d1318a66cb09",
+      "texture_name": "pediaisland-a.bmp",
+      "archive_paths": [
+        "ef/esd/jp/ce002_999.esd",
+        "ef/esd/ce000/ce002_999.esd"
+      ]
+    },
+    {
+      "group": "esd",
+      "source": "0.X30/ef/esd/kr/ce003_993.esd",
+      "editor": "0.X30/ef/esd/kr/ce003_993.png",
+      "source_sha256": "77431a61345e61645c464f5faf7a74a2e87d5dba600e0d7e52df5549dd966c5a",
+      "initial_rebuilt_sha256": "77431a61345e61645c464f5faf7a74a2e87d5dba600e0d7e52df5549dd966c5a",
+      "texture_name": "1stmarchant-a.bmp",
+      "archive_paths": [
+        "ef/esd/jp/ce003_993.esd",
+        "ef/esd/ce000/ce003_993.esd"
+      ]
+    },
+    {
+      "group": "esd",
+      "source": "0.X30/ef/esd/kr/ce003_994.esd",
+      "editor": "0.X30/ef/esd/kr/ce003_994.png",
+      "source_sha256": "bc5ebd4eb66a821e74122e6f11e4a5a34284aeca52f11a6ee5b6bc03fd3598b0",
+      "initial_rebuilt_sha256": "bc5ebd4eb66a821e74122e6f11e4a5a34284aeca52f11a6ee5b6bc03fd3598b0",
+      "texture_name": "5thelsalem-a.bmp",
+      "archive_paths": [
+        "ef/esd/jp/ce003_994.esd",
+        "ef/esd/ce000/ce003_994.esd"
+      ]
+    },
+    {
+      "group": "esd",
+      "source": "0.X30/ef/esd/kr/ce003_999.esd",
+      "editor": "0.X30/ef/esd/kr/ce003_999.png",
+      "source_sha256": "2198bd3cf39fa0be0fe33017b67a267dd1106d7c8b8f0c6db43610114ceb9d44",
+      "initial_rebuilt_sha256": "1468399bef314e4c4a84d55cf3e65a66f53da5a4fe86c5646bfe430bd467ecbd",
+      "texture_name": "spaceport-a.bmp",
+      "archive_paths": [
+        "ef/esd/jp/ce003_999.esd",
+        "ef/esd/ce000/ce003_999.esd"
+      ]
+    },
+    {
+      "group": "esd",
+      "source": "0.X30/ef/esd/kr/ce004_999.esd",
+      "editor": "0.X30/ef/esd/kr/ce004_999.png",
+      "source_sha256": "594255151dd44b6af4765891ae183807ea65d162df806194ea2a3d639fa7c411",
+      "initial_rebuilt_sha256": "594255151dd44b6af4765891ae183807ea65d162df806194ea2a3d639fa7c411",
+      "texture_name": "elsa-a.bmp",
+      "archive_paths": [
+        "ef/esd/jp/ce004_999.esd",
+        "ef/esd/ce000/ce004_999.esd"
+      ]
+    },
+    {
+      "group": "esd",
+      "source": "0.X30/ef/esd/kr/ce005_999.esd",
+      "editor": "0.X30/ef/esd/kr/ce005_999.png",
+      "source_sha256": "faf55a2d8630180fd6e89c8d8f6b6747798201cc648fe28bf19f1c0e1af107ea",
+      "initial_rebuilt_sha256": "faf55a2d8630180fd6e89c8d8f6b6747798201cc648fe28bf19f1c0e1af107ea",
+      "texture_name": "examinationhall-a.bmp",
+      "archive_paths": [
+        "ef/esd/jp/ce005_999.esd",
+        "ef/esd/ce000/ce005_999.esd"
+      ]
+    },
+    {
+      "group": "esd",
+      "source": "0.X30/ef/esd/kr/ce006_999.esd",
+      "editor": "0.X30/ef/esd/kr/ce006_999.png",
+      "source_sha256": "7026c9fcf9c744d3e2e729f260238946b6c66ff8e45cd721f2feef05147d99dd",
+      "initial_rebuilt_sha256": "7026c9fcf9c744d3e2e729f260238946b6c66ff8e45cd721f2feef05147d99dd",
+      "texture_name": "zoharudungeon-a.bmp",
+      "archive_paths": [
+        "ef/esd/jp/ce006_999.esd",
+        "ef/esd/ce000/ce006_999.esd"
+      ]
+    },
+    {
+      "group": "esd",
+      "source": "0.X30/ef/esd/kr/ce007_998.esd",
+      "editor": "0.X30/ef/esd/kr/ce007_998.png",
+      "source_sha256": "aaa6122b49b74da32836412cd4c89d0400b5a93bfda0b0d328c5adb503c4a627",
+      "initial_rebuilt_sha256": "aaa6122b49b74da32836412cd4c89d0400b5a93bfda0b0d328c5adb503c4a627",
+      "texture_name": "renmuchateau-a.bmp",
+      "archive_paths": [
+        "ef/esd/jp/ce007_998.esd",
+        "ef/esd/ce000/ce007_998.esd"
+      ]
+    },
+    {
+      "group": "esd",
+      "source": "0.X30/ef/esd/kr/ce007_999.esd",
+      "editor": "0.X30/ef/esd/kr/ce007_999.png",
+      "source_sha256": "418a583fb8ecb74ffff5c50cd20b7e9024ccd376c2487260e02418c51daa349a",
+      "initial_rebuilt_sha256": "418a583fb8ecb74ffff5c50cd20b7e9024ccd376c2487260e02418c51daa349a",
+      "texture_name": "levitationisland-a.bmp",
+      "archive_paths": [
+        "ef/esd/jp/ce007_999.esd",
+        "ef/esd/ce000/ce007_999.esd"
+      ]
+    },
+    {
+      "group": "esd",
+      "source": "0.X30/ef/esd/kr/ce008_999.esd",
+      "editor": "0.X30/ef/esd/kr/ce008_999.png",
+      "source_sha256": "d593b9c70fad06f997a652f31f55487c7330d84b48b42a8e1a0e11eeb62e85ea",
+      "initial_rebuilt_sha256": "d593b9c70fad06f997a652f31f55487c7330d84b48b42a8e1a0e11eeb62e85ea",
+      "texture_name": "oldmiruchia-a.bmp",
+      "archive_paths": [
+        "ef/esd/jp/ce008_999.esd",
+        "ef/esd/ce000/ce008_999.esd"
+      ]
+    },
+    {
+      "group": "esd",
+      "source": "0.X30/ef/esd/kr/ce009_999.esd",
+      "editor": "0.X30/ef/esd/kr/ce009_999.png",
+      "source_sha256": "7c22475d7cb6df4ce702dd957f812e5a9f714d58f27e47111b04f87d261241c4",
+      "initial_rebuilt_sha256": "7c22475d7cb6df4ce702dd957f812e5a9f714d58f27e47111b04f87d261241c4",
+      "texture_name": "forest-a.bmp",
+      "archive_paths": [
+        "ef/esd/jp/ce009_999.esd",
+        "ef/esd/ce000/ce009_999.esd"
+      ]
+    },
+    {
+      "group": "esd",
+      "source": "0.X30/ef/esd/kr/ce010_999.esd",
+      "editor": "0.X30/ef/esd/kr/ce010_999.png",
+      "source_sha256": "0642fbbe38e3247d60b3db4015d682a8066e0a013442a128dcb76f26657302f6",
+      "initial_rebuilt_sha256": "0642fbbe38e3247d60b3db4015d682a8066e0a013442a128dcb76f26657302f6",
+      "texture_name": "oldchurch-a.bmp",
+      "archive_paths": [
+        "ef/esd/jp/ce010_999.esd",
+        "ef/esd/ce000/ce010_999.esd"
+      ]
+    },
+    {
+      "group": "esd",
+      "source": "0.X30/ef/esd/kr/ce011_998.esd",
+      "editor": "0.X30/ef/esd/kr/ce011_998.png",
+      "source_sha256": "2304f351ce579148968dce62f0171ab3257c6e3c2de6f4bda067cd56db9ca9b5",
+      "initial_rebuilt_sha256": "2304f351ce579148968dce62f0171ab3257c6e3c2de6f4bda067cd56db9ca9b5",
+      "texture_name": "calcareouscave-a.bmp",
+      "archive_paths": [
+        "ef/esd/jp/ce011_998.esd",
+        "ef/esd/ce000/ce011_998.esd"
+      ]
+    },
+    {
+      "group": "esd",
+      "source": "0.X30/ef/esd/kr/ce011_999.esd",
+      "editor": "0.X30/ef/esd/kr/ce011_999.png",
+      "source_sha256": "f14d17adce92aa43c829551ab1b443ee5aa9d23b0c309ffb8fe49a0d707fbe81",
+      "initial_rebuilt_sha256": "f14d17adce92aa43c829551ab1b443ee5aa9d23b0c309ffb8fe49a0d707fbe81",
+      "texture_name": "daburimine-a.bmp",
+      "archive_paths": [
+        "ef/esd/jp/ce011_999.esd",
+        "ef/esd/ce000/ce011_999.esd"
+      ]
+    },
+    {
+      "group": "esd",
+      "source": "0.X30/ef/esd/kr/ce012_999.esd",
+      "editor": "0.X30/ef/esd/kr/ce012_999.png",
+      "source_sha256": "c67feebf02c81cb0775ba05d7e3aa41ecc5a16a85539a81b623c8b48b7f84352",
+      "initial_rebuilt_sha256": "c67feebf02c81cb0775ba05d7e3aa41ecc5a16a85539a81b623c8b48b7f84352",
+      "texture_name": "urban-a.bmp",
+      "archive_paths": [
+        "ef/esd/jp/ce012_999.esd",
+        "ef/esd/ce000/ce012_999.esd"
+      ]
+    },
+    {
+      "group": "esd",
+      "source": "0.X30/ef/esd/kr/ce013_999.esd",
+      "editor": "0.X30/ef/esd/kr/ce013_999.png",
+      "source_sha256": "56b68f53643b60f2c22fd43237aa672814a0edc63cc0a6ef2ccd6013d02f9194",
+      "initial_rebuilt_sha256": "56b68f53643b60f2c22fd43237aa672814a0edc63cc0a6ef2ccd6013d02f9194",
+      "texture_name": "hos-a.bmp",
+      "archive_paths": [
+        "ef/esd/jp/ce013_999.esd",
+        "ef/esd/ce000/ce013_999.esd"
+      ]
+    },
+    {
+      "group": "esd",
+      "source": "0.X30/ef/esd/kr/ce014_999.esd",
+      "editor": "0.X30/ef/esd/kr/ce014_999.png",
+      "source_sha256": "e37e86bdd39aac98cd431a3c22c54e6030ed82218856d6c0f52a4d143c5eddd5",
+      "initial_rebuilt_sha256": "e37e86bdd39aac98cd431a3c22c54e6030ed82218856d6c0f52a4d143c5eddd5",
+      "texture_name": "rabyrinthos-a.bmp",
+      "archive_paths": [
+        "ef/esd/jp/ce014_999.esd",
+        "ef/esd/ce000/ce014_999.esd"
+      ]
+    },
+    {
+      "group": "esd",
+      "source": "0.X30/ef/esd/kr/ce015_999.esd",
+      "editor": "0.X30/ef/esd/kr/ce015_999.png",
+      "source_sha256": "697edfce1571164a37ad3f39f0728cc3d2cd7cee1835c22db0a87e2c8e2fbfb8",
+      "initial_rebuilt_sha256": "697edfce1571164a37ad3f39f0728cc3d2cd7cee1835c22db0a87e2c8e2fbfb8",
+      "texture_name": "battleship-a.bmp",
+      "archive_paths": [
+        "ef/esd/jp/ce015_999.esd",
+        "ef/esd/ce000/ce015_999.esd"
+      ]
+    },
+    {
+      "group": "esd",
+      "source": "0.X30/ef/esd/kr/ce016_999.esd",
+      "editor": "0.X30/ef/esd/kr/ce016_999.png",
+      "source_sha256": "6e5da659ef4096789ff31fe6b64b7affccadce7e6cdbbf3424529fda439e6c4d",
+      "initial_rebuilt_sha256": "6e5da659ef4096789ff31fe6b64b7affccadce7e6cdbbf3424529fda439e6c4d",
+      "texture_name": "durandal-a.bmp",
+      "archive_paths": [
+        "ef/esd/jp/ce016_999.esd",
+        "ef/esd/ce000/ce016_999.esd"
+      ]
+    },
+    {
+      "group": "esd",
+      "source": "0.X30/ef/esd/kr/ce017_999.esd",
+      "editor": "0.X30/ef/esd/kr/ce017_999.png",
+      "source_sha256": "cff4ac8c81a10d7f21c6a360c334f41f12d6ff709ece74a5dd8fb5d9a1272b29",
+      "initial_rebuilt_sha256": "cff4ac8c81a10d7f21c6a360c334f41f12d6ff709ece74a5dd8fb5d9a1272b29",
+      "texture_name": "abel-a.bmp",
+      "archive_paths": [
+        "ef/esd/jp/ce017_999.esd",
+        "ef/esd/ce000/ce017_999.esd"
+      ]
+    },
+    {
+      "group": "esd",
+      "source": "0.X30/ef/esd/kr/ce018_996.esd",
+      "editor": "0.X30/ef/esd/kr/ce018_996.png",
+      "source_sha256": "c91079db260df5b130616811079d0c55292e83c5a1b1a7cc37b593e93eaac631",
+      "initial_rebuilt_sha256": "c91079db260df5b130616811079d0c55292e83c5a1b1a7cc37b593e93eaac631",
+      "texture_name": "ruins-a.bmp",
+      "archive_paths": [
+        "ef/esd/jp/ce018_996.esd",
+        "ef/esd/ce000/ce018_996.esd"
+      ]
+    },
+    {
+      "group": "esd",
+      "source": "0.X30/ef/esd/kr/ce018_997.esd",
+      "editor": "0.X30/ef/esd/kr/ce018_997.png",
+      "source_sha256": "cc496d9f4b497c3a6859c9d2bd3f77bb589e30bfc32b9f9e8875214e0abb0cf5",
+      "initial_rebuilt_sha256": "cc496d9f4b497c3a6859c9d2bd3f77bb589e30bfc32b9f9e8875214e0abb0cf5",
+      "texture_name": "lab-a.bmp",
+      "archive_paths": [
+        "ef/esd/jp/ce018_997.esd",
+        "ef/esd/ce000/ce018_997.esd"
+      ]
+    },
+    {
+      "group": "esd",
+      "source": "0.X30/ef/esd/kr/ce018_998.esd",
+      "editor": "0.X30/ef/esd/kr/ce018_998.png",
+      "source_sha256": "e84dd7a0bc0fad9805cbf61c1f210750a54060a3fb108ff67075effdf7ccb02c",
+      "initial_rebuilt_sha256": "e84dd7a0bc0fad9805cbf61c1f210750a54060a3fb108ff67075effdf7ccb02c",
+      "texture_name": "cathedral-a.bmp",
+      "archive_paths": [
+        "ef/esd/jp/ce018_998.esd",
+        "ef/esd/ce000/ce018_998.esd"
+      ]
+    },
+    {
+      "group": "esd",
+      "source": "0.X30/ef/esd/kr/ce018_999.esd",
+      "editor": "0.X30/ef/esd/kr/ce018_999.png",
+      "source_sha256": "4af9e120514315f71ae6dbbfe186c03776b3df592384901da6a26dc3661f702a",
+      "initial_rebuilt_sha256": "4af9e120514315f71ae6dbbfe186c03776b3df592384901da6a26dc3661f702a",
+      "texture_name": "miktam-a.bmp",
+      "archive_paths": [
+        "ef/esd/jp/ce018_999.esd",
+        "ef/esd/ce000/ce018_999.esd"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef0420.esp",
+      "editor": "0.X30/ef/map/ef0420.location.png",
+      "source_sha256": "d0d97fddf5037bc1df2f3016a65f3b4f331c219f3033a6622032e9f6e7338dde",
+      "initial_rebuilt_sha256": "d0d97fddf5037bc1df2f3016a65f3b4f331c219f3033a6622032e9f6e7338dde",
+      "texture_name": "urban-a.bmp",
+      "archive_paths": [
+        "ef/map/ef0420.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef0428.esp",
+      "editor": "0.X30/ef/map/ef0428.location.png",
+      "source_sha256": "97ea2bb82d593d5d5bd7b44994b7f5d2539b3d56f3387f68ec3a437ff1093300",
+      "initial_rebuilt_sha256": "97ea2bb82d593d5d5bd7b44994b7f5d2539b3d56f3387f68ec3a437ff1093300",
+      "texture_name": "urban-a.bmp",
+      "archive_paths": [
+        "ef/map/ef0428.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef0432.esp",
+      "editor": "0.X30/ef/map/ef0432.location.png",
+      "source_sha256": "9f5d4e30ce564f375cac113e900717d1279b78f948645c2af7e4fedc26d9147c",
+      "initial_rebuilt_sha256": "9f5d4e30ce564f375cac113e900717d1279b78f948645c2af7e4fedc26d9147c",
+      "texture_name": "1stmarchant-a.bmp",
+      "archive_paths": [
+        "ef/map/ef0432.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef0502.esp",
+      "editor": "0.X30/ef/map/ef0502.location.png",
+      "source_sha256": "9208412ab9f38477e8359da013bb5fcf68b1b68022ab718d8a2465dea907999e",
+      "initial_rebuilt_sha256": "9208412ab9f38477e8359da013bb5fcf68b1b68022ab718d8a2465dea907999e",
+      "texture_name": "rabyrinthos-a.bmp",
+      "archive_paths": [
+        "ef/map/ef0502.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef0551.esp",
+      "editor": "0.X30/ef/map/ef0551.location.png",
+      "source_sha256": "61decd9aa1b44661b937a953bcbcad64e58e705797975c8ca76eaf6e1c2a1dd2",
+      "initial_rebuilt_sha256": "61decd9aa1b44661b937a953bcbcad64e58e705797975c8ca76eaf6e1c2a1dd2",
+      "texture_name": "vectorsdivision-a.bmp",
+      "archive_paths": [
+        "ef/map/ef0551.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef1010.esp",
+      "editor": "0.X30/ef/map/ef1010.location.png",
+      "source_sha256": "ad129ea3a2cb9bb64cc5afcee7dd66952eb106f153c1874bf81815219dc0dc8a",
+      "initial_rebuilt_sha256": "ad129ea3a2cb9bb64cc5afcee7dd66952eb106f153c1874bf81815219dc0dc8a",
+      "texture_name": "vectorsdivision-a.bmp",
+      "archive_paths": [
+        "ef/map/ef1010.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef1150.esp",
+      "editor": "0.X30/ef/map/ef1150.location.png",
+      "source_sha256": "4ced2dbd9abe2224be7c15f41c41763a24d15537671b2d89a2a07f6cf6a9f22a",
+      "initial_rebuilt_sha256": "4ced2dbd9abe2224be7c15f41c41763a24d15537671b2d89a2a07f6cf6a9f22a",
+      "texture_name": "pediaisland-a.bmp",
+      "archive_paths": [
+        "ef/map/ef1150.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef1210.esp",
+      "editor": "0.X30/ef/map/ef1210.location.png",
+      "source_sha256": "ab121dd8d4aa2dedd9642f852ccc200cb03d0333f24d6cb27584eb38fd345f22",
+      "initial_rebuilt_sha256": "ab121dd8d4aa2dedd9642f852ccc200cb03d0333f24d6cb27584eb38fd345f22",
+      "texture_name": "5thelsalem-a.bmp",
+      "archive_paths": [
+        "ef/map/ef1210.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef1218.esp",
+      "editor": "0.X30/ef/map/ef1218.location.png",
+      "source_sha256": "e668c703582d7744e86cae1b1c56cc0e4c96ac80fbf689b8fb9cb37879d41798",
+      "initial_rebuilt_sha256": "e668c703582d7744e86cae1b1c56cc0e4c96ac80fbf689b8fb9cb37879d41798",
+      "texture_name": "5thelsalem-a.bmp",
+      "archive_paths": [
+        "ef/map/ef1218.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef1220.esp",
+      "editor": "0.X30/ef/map/ef1220.location.png",
+      "source_sha256": "0432363e34206c1155d9634d332635cb8bfb55afc68a64af19b3e6f732701e67",
+      "initial_rebuilt_sha256": "0432363e34206c1155d9634d332635cb8bfb55afc68a64af19b3e6f732701e67",
+      "texture_name": "spaceport-a.bmp",
+      "archive_paths": [
+        "ef/map/ef1220.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef1228.esp",
+      "editor": "0.X30/ef/map/ef1228.location.png",
+      "source_sha256": "56099d990db60df49084cae7a6b8311914714d456b067f8ca883cfdc74afdcc1",
+      "initial_rebuilt_sha256": "56099d990db60df49084cae7a6b8311914714d456b067f8ca883cfdc74afdcc1",
+      "texture_name": "spaceport-a.bmp",
+      "archive_paths": [
+        "ef/map/ef1228.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef1240.esp",
+      "editor": "0.X30/ef/map/ef1240.location.png",
+      "source_sha256": "8b5f51acfbfbfee388d23d7e739a109bdea26fb788588c2cc20f1c24ebea5e1d",
+      "initial_rebuilt_sha256": "8b5f51acfbfbfee388d23d7e739a109bdea26fb788588c2cc20f1c24ebea5e1d",
+      "texture_name": "1stmarchant-a.bmp",
+      "archive_paths": [
+        "ef/map/ef1240.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef1248.esp",
+      "editor": "0.X30/ef/map/ef1248.location.png",
+      "source_sha256": "473387745c7f54237a3a9197b4b2a9064b5f0b1896dc83ec5e082b8bc88a8477",
+      "initial_rebuilt_sha256": "473387745c7f54237a3a9197b4b2a9064b5f0b1896dc83ec5e082b8bc88a8477",
+      "texture_name": "1stmarchant-a.bmp",
+      "archive_paths": [
+        "ef/map/ef1248.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef1410.esp",
+      "editor": "0.X30/ef/map/ef1410.location.png",
+      "source_sha256": "560d265046a920bd5c3f668746da101947b6882433ae258849f3a10110af16f8",
+      "initial_rebuilt_sha256": "560d265046a920bd5c3f668746da101947b6882433ae258849f3a10110af16f8",
+      "texture_name": "elsa-a.bmp",
+      "archive_paths": [
+        "ef/map/ef1410.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef1430.esp",
+      "editor": "0.X30/ef/map/ef1430.location.png",
+      "source_sha256": "5fd19a5767ec59f294cda6e170e0f6b503510e1d1936a0089795b7ba1e6859a4",
+      "initial_rebuilt_sha256": "5fd19a5767ec59f294cda6e170e0f6b503510e1d1936a0089795b7ba1e6859a4",
+      "texture_name": "elsa-a.bmp",
+      "archive_paths": [
+        "ef/map/ef1430.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef1438.esp",
+      "editor": "0.X30/ef/map/ef1438.location.png",
+      "source_sha256": "8689212e63e7d0a4fb115556f0ea6b36878cd03dbd5f5dc20a7b2058fe639921",
+      "initial_rebuilt_sha256": "8689212e63e7d0a4fb115556f0ea6b36878cd03dbd5f5dc20a7b2058fe639921",
+      "texture_name": "elsa-a.bmp",
+      "archive_paths": [
+        "ef/map/ef1438.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef1440.esp",
+      "editor": "0.X30/ef/map/ef1440.location.png",
+      "source_sha256": "80f29cddd72d117ac982c5396c12a1c4132ec771d8e6c9a267967410ead98110",
+      "initial_rebuilt_sha256": "80f29cddd72d117ac982c5396c12a1c4132ec771d8e6c9a267967410ead98110",
+      "texture_name": "elsa-a.bmp",
+      "archive_paths": [
+        "ef/map/ef1440.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef1448.esp",
+      "editor": "0.X30/ef/map/ef1448.location.png",
+      "source_sha256": "8a90ea0cd1d7e9048d03838cf69eec83dc17c2a237baa669ffa0a1bc11f974fb",
+      "initial_rebuilt_sha256": "8a90ea0cd1d7e9048d03838cf69eec83dc17c2a237baa669ffa0a1bc11f974fb",
+      "texture_name": "elsa-a.bmp",
+      "archive_paths": [
+        "ef/map/ef1448.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef1630.esp",
+      "editor": "0.X30/ef/map/ef1630.location.png",
+      "source_sha256": "5c7c44705bad17cb36a0da3c742fc0e8ca6a16a8cedfa22458836696c0a84175",
+      "initial_rebuilt_sha256": "5c7c44705bad17cb36a0da3c742fc0e8ca6a16a8cedfa22458836696c0a84175",
+      "texture_name": "examinationhall-a.bmp",
+      "archive_paths": [
+        "ef/map/ef1630.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef2110.esp",
+      "editor": "0.X30/ef/map/ef2110.location.png",
+      "source_sha256": "16836c7efd88381f34deb29339f127142e327fd7c24c6a951afbc422c4e66b42",
+      "initial_rebuilt_sha256": "16836c7efd88381f34deb29339f127142e327fd7c24c6a951afbc422c4e66b42",
+      "texture_name": "levitationisland-a.bmp",
+      "archive_paths": [
+        "ef/map/ef2110.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef2200.esp",
+      "editor": "0.X30/ef/map/ef2200.location.png",
+      "source_sha256": "8ebd85c47849927a9cc8bd34cea591ab48c1771c41277f3740df99651c98b090",
+      "initial_rebuilt_sha256": "8ebd85c47849927a9cc8bd34cea591ab48c1771c41277f3740df99651c98b090",
+      "texture_name": "renmuchateau-a.bmp",
+      "archive_paths": [
+        "ef/map/ef2200.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef2310.esp",
+      "editor": "0.X30/ef/map/ef2310.location.png",
+      "source_sha256": "9cdc1aec540da10af51b101c1ad44c59d293b447ed0892d015f325034af2a3ba",
+      "initial_rebuilt_sha256": "9cdc1aec540da10af51b101c1ad44c59d293b447ed0892d015f325034af2a3ba",
+      "texture_name": "oldmiruchia-a.bmp",
+      "archive_paths": [
+        "ef/map/ef2310.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef2318.esp",
+      "editor": "0.X30/ef/map/ef2318.location.png",
+      "source_sha256": "d85e9b82a946c57fe9827c5a22ef3a123effd1bce93291b82d95addbfb6edb90",
+      "initial_rebuilt_sha256": "d85e9b82a946c57fe9827c5a22ef3a123effd1bce93291b82d95addbfb6edb90",
+      "texture_name": "oldmiruchia-a.bmp",
+      "archive_paths": [
+        "ef/map/ef2318.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef2410.esp",
+      "editor": "0.X30/ef/map/ef2410.location.png",
+      "source_sha256": "7cc66163383592a624683428a9574e70772c3431aff974251556bfadb893c860",
+      "initial_rebuilt_sha256": "7cc66163383592a624683428a9574e70772c3431aff974251556bfadb893c860",
+      "texture_name": "forest-a.bmp",
+      "archive_paths": [
+        "ef/map/ef2410.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef2418.esp",
+      "editor": "0.X30/ef/map/ef2418.location.png",
+      "source_sha256": "a40b35296fba375061d7c8e9b8047a91da70c891db942fad9030f250d3e54515",
+      "initial_rebuilt_sha256": "a40b35296fba375061d7c8e9b8047a91da70c891db942fad9030f250d3e54515",
+      "texture_name": "forest-a.bmp",
+      "archive_paths": [
+        "ef/map/ef2418.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef2610.esp",
+      "editor": "0.X30/ef/map/ef2610.location.png",
+      "source_sha256": "9ded00a9e2efdf4477b6b3bd571b7c71ee9767b411c06b1f8240dbfb7e6a54bb",
+      "initial_rebuilt_sha256": "9ded00a9e2efdf4477b6b3bd571b7c71ee9767b411c06b1f8240dbfb7e6a54bb",
+      "texture_name": "oldchurch-a.bmp",
+      "archive_paths": [
+        "ef/map/ef2610.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef2710.esp",
+      "editor": "0.X30/ef/map/ef2710.location.png",
+      "source_sha256": "361dfb91786de36900c6f4138fc67482248845a38ff436cae52310d4eba710cc",
+      "initial_rebuilt_sha256": "361dfb91786de36900c6f4138fc67482248845a38ff436cae52310d4eba710cc",
+      "texture_name": "daburimine-a.bmp",
+      "archive_paths": [
+        "ef/map/ef2710.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef2718.esp",
+      "editor": "0.X30/ef/map/ef2718.location.png",
+      "source_sha256": "c11b587a40779e8f2e83131020ff6495d16b205ff0e29a2ed6c79ff45ba0ae6e",
+      "initial_rebuilt_sha256": "c11b587a40779e8f2e83131020ff6495d16b205ff0e29a2ed6c79ff45ba0ae6e",
+      "texture_name": "daburimine-a.bmp",
+      "archive_paths": [
+        "ef/map/ef2718.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef2770.esp",
+      "editor": "0.X30/ef/map/ef2770.location.png",
+      "source_sha256": "db9152ba831b13565e18af18b965f99f6bc6dde637e898bf3901e4f454ef021e",
+      "initial_rebuilt_sha256": "db9152ba831b13565e18af18b965f99f6bc6dde637e898bf3901e4f454ef021e",
+      "texture_name": "calcareouscave-a.bmp",
+      "archive_paths": [
+        "ef/map/ef2770.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef2778.esp",
+      "editor": "0.X30/ef/map/ef2778.location.png",
+      "source_sha256": "104efc99b1ce3588137d79dead4b4c95469ee4f904a8633a82e28803c14185ef",
+      "initial_rebuilt_sha256": "104efc99b1ce3588137d79dead4b4c95469ee4f904a8633a82e28803c14185ef",
+      "texture_name": "calcareouscave-a.bmp",
+      "archive_paths": [
+        "ef/map/ef2778.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef2780.esp",
+      "editor": "0.X30/ef/map/ef2780.location.png",
+      "source_sha256": "e04301fb6ea4a9efa814ab49c26dfc7237fbcfb26b439e9113a8b40326c4a584",
+      "initial_rebuilt_sha256": "e04301fb6ea4a9efa814ab49c26dfc7237fbcfb26b439e9113a8b40326c4a584",
+      "texture_name": "daburimine-a.bmp",
+      "archive_paths": [
+        "ef/map/ef2780.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef2788.esp",
+      "editor": "0.X30/ef/map/ef2788.location.png",
+      "source_sha256": "db4974dbcb9385f95a5665cf3fb2fb82f1ad49eb5d907fbeda81dd47490bef26",
+      "initial_rebuilt_sha256": "db4974dbcb9385f95a5665cf3fb2fb82f1ad49eb5d907fbeda81dd47490bef26",
+      "texture_name": "daburimine-a.bmp",
+      "archive_paths": [
+        "ef/map/ef2788.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef2910.esp",
+      "editor": "0.X30/ef/map/ef2910.location.png",
+      "source_sha256": "e22238f1a6dc1179d0458adc1e298cfe7fe6e0bfa3cddc32799344a3cd100a32",
+      "initial_rebuilt_sha256": "e22238f1a6dc1179d0458adc1e298cfe7fe6e0bfa3cddc32799344a3cd100a32",
+      "texture_name": "urban-a.bmp",
+      "archive_paths": [
+        "ef/map/ef2910.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef2918.esp",
+      "editor": "0.X30/ef/map/ef2918.location.png",
+      "source_sha256": "17afe941ee522c70c3809edb2c837bb16bc97c10c09f7d48c2b6b0d60ec40942",
+      "initial_rebuilt_sha256": "17afe941ee522c70c3809edb2c837bb16bc97c10c09f7d48c2b6b0d60ec40942",
+      "texture_name": "urban-a.bmp",
+      "archive_paths": [
+        "ef/map/ef2918.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef3110.esp",
+      "editor": "0.X30/ef/map/ef3110.location.png",
+      "source_sha256": "659951cce73ee39ac27f7fd56578db4a2cbb66128f0d6badd57cebe23fa474f1",
+      "initial_rebuilt_sha256": "659951cce73ee39ac27f7fd56578db4a2cbb66128f0d6badd57cebe23fa474f1",
+      "texture_name": "hos-a.bmp",
+      "archive_paths": [
+        "ef/map/ef3110.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef3278.esp",
+      "editor": "0.X30/ef/map/ef3278.location.png",
+      "source_sha256": "3b206b0718f8390b5e663b0fd528c594b17e35ecf641f0380ee02f5a30ecdbcb",
+      "initial_rebuilt_sha256": "3b206b0718f8390b5e663b0fd528c594b17e35ecf641f0380ee02f5a30ecdbcb",
+      "texture_name": "hos-a.bmp",
+      "archive_paths": [
+        "ef/map/ef3278.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef3410.esp",
+      "editor": "0.X30/ef/map/ef3410.location.png",
+      "source_sha256": "e763525dfcea9cf026486adef9219c74c278a5bf7c5ac84d682e7e2612c34458",
+      "initial_rebuilt_sha256": "e763525dfcea9cf026486adef9219c74c278a5bf7c5ac84d682e7e2612c34458",
+      "texture_name": "rabyrinthos-a.bmp",
+      "archive_paths": [
+        "ef/map/ef3410.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef3710.esp",
+      "editor": "0.X30/ef/map/ef3710.location.png",
+      "source_sha256": "d5c0b67345adbdf39d66ace293668a8f4453bf5db05a3332b002b06d62569520",
+      "initial_rebuilt_sha256": "d5c0b67345adbdf39d66ace293668a8f4453bf5db05a3332b002b06d62569520",
+      "texture_name": "battleship-a.bmp",
+      "archive_paths": [
+        "ef/map/ef3710.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef3830.esp",
+      "editor": "0.X30/ef/map/ef3830.location.png",
+      "source_sha256": "7deb4958d5ca3cabe32f24eb9e0e84cd83d7a25bd1189ff205dec2f91dcd9f11",
+      "initial_rebuilt_sha256": "7deb4958d5ca3cabe32f24eb9e0e84cd83d7a25bd1189ff205dec2f91dcd9f11",
+      "texture_name": "durandal-a.bmp",
+      "archive_paths": [
+        "ef/map/ef3830.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef3838.esp",
+      "editor": "0.X30/ef/map/ef3838.location.png",
+      "source_sha256": "7acfff8b2143d96ec08d013419fa3c52bd521ceb28805560564dd04721538333",
+      "initial_rebuilt_sha256": "7acfff8b2143d96ec08d013419fa3c52bd521ceb28805560564dd04721538333",
+      "texture_name": "durandal-a.bmp",
+      "archive_paths": [
+        "ef/map/ef3838.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef4010.esp",
+      "editor": "0.X30/ef/map/ef4010.location.png",
+      "source_sha256": "fd6e620d714ba10e7d844abe935b8cd040b19cb5a16da422822270c13403a9ef",
+      "initial_rebuilt_sha256": "fd6e620d714ba10e7d844abe935b8cd040b19cb5a16da422822270c13403a9ef",
+      "texture_name": "abel-a.bmp",
+      "archive_paths": [
+        "ef/map/ef4010.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef4310.esp",
+      "editor": "0.X30/ef/map/ef4310.location.png",
+      "source_sha256": "3c2283bcc101085a89f0b99edf20020f75b8947da4c93d91c531464d45942ee7",
+      "initial_rebuilt_sha256": "3c2283bcc101085a89f0b99edf20020f75b8947da4c93d91c531464d45942ee7",
+      "texture_name": "miktam-a.bmp",
+      "archive_paths": [
+        "ef/map/ef4310.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef4340.esp",
+      "editor": "0.X30/ef/map/ef4340.location.png",
+      "source_sha256": "89678c20c14e32ba77f45aab2bf24e17bfbc098a0c4a871150a8815a3c699086",
+      "initial_rebuilt_sha256": "89678c20c14e32ba77f45aab2bf24e17bfbc098a0c4a871150a8815a3c699086",
+      "texture_name": "cathedral-a.bmp",
+      "archive_paths": [
+        "ef/map/ef4340.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef4370.esp",
+      "editor": "0.X30/ef/map/ef4370.location.png",
+      "source_sha256": "7f267478fa8f2c65410c5c7d290c08c10a137d299d8a1fb0b860799f11937943",
+      "initial_rebuilt_sha256": "7f267478fa8f2c65410c5c7d290c08c10a137d299d8a1fb0b860799f11937943",
+      "texture_name": "lab-a.bmp",
+      "archive_paths": [
+        "ef/map/ef4370.esp"
+      ]
+    },
+    {
+      "group": "map",
+      "source": "0.X30/ef/map/ef4450.esp",
+      "editor": "0.X30/ef/map/ef4450.location.png",
+      "source_sha256": "8c0c9c4c98958b1b3f5147276e2b1d54cca7cbdfbc7ba663f36e26a3fad67027",
+      "initial_rebuilt_sha256": "8c0c9c4c98958b1b3f5147276e2b1d54cca7cbdfbc7ba663f36e26a3fad67027",
+      "texture_name": "ruins-a.bmp",
+      "archive_paths": [
+        "ef/map/ef4450.esp"
+      ]
+    }
+  ]
+}

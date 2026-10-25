@@ -1,0 +1,11 @@
+@echo off
+setlocal DisableDelayedExpansion
+chcp 65001 >nul
+rem 필요할 때만 확장자를 .bat으로 바꾸어 실행하세요.
+rem 원본 ESD에서 지명 PNG를 추출합니다. 기존 PNG가 하나라도 있으면 전체 중단합니다.
+rem 작업 PNG를 따로 보관한 뒤 실행하세요. 덮어쓰기 옵션은 없습니다.
+python -X utf8 -B "%~dp0..\..\..\..\tools\x30\build_effects.py" --group esd --extract %*
+set "RESULT=%ERRORLEVEL%"
+if not "%RESULT%"=="0" echo 추출하지 않았거나 중간 오류가 발생했습니다. 기존 PNG를 확인하세요.
+if not defined XS3_NO_PAUSE pause
+exit /b %RESULT%

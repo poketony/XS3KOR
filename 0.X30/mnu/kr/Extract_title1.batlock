@@ -1,0 +1,12 @@
+@echo off
+chcp 65001 >nul
+setlocal DisableDelayedExpansion
+rem 필요할 때만 확장자를 .bat로 바꿔 실행하고 다시 .batlock으로 되돌리세요.
+rem original 폴더의 일본판 title1.png를 편집 경로에 복사합니다.
+rem 기존 편집 파일이 하나라도 있으면 전체 추출을 거부합니다. 번역이나 편집 파일을 덮어쓰지 않습니다.
+rem --check는 저장 없이 검사합니다. 원본 추출은 현재 번역을 되돌리는 작업이므로 먼저 별도 백업하세요.
+python -X utf8 -B "%~dp0..\..\..\tools\x30\build_native_images.py" --extract --asset title1 %*
+set "BUILD_RESULT=%ERRORLEVEL%"
+if not "%BUILD_RESULT%"=="0" echo EXTRACT FAILED. Existing editors were not replaced.
+if not defined XS3_NO_PAUSE pause
+exit /b %BUILD_RESULT%

@@ -1,0 +1,81 @@
+Optional Memory-Card Title Bundle
+================================
+
+This postprocessor does NOT change normal menu/ELF builds or copy anything to
+the ROM workspace. It is needed only when selecting a system-font save title.
+The game-font Korean substitution is not used by the PS2 memory-card browser.
+
+Workflow
+1. Rebuild the working menu with 0.X30/mnu/kr/Build_menutext.bat.
+2. edit/save_title.names.txt contains the approved English browser names.
+   In-game Korean names remain in the ordinary working menutext TXT.
+3. Drop the freshly built tools/x30/output/mnu/jp/menutext.txd onto
+   edit/Build_save_title.bat. The repository discmetadata/SLPS.txt is rebuilt in memory.
+4. A new output/save-title/<UTC timestamp>/ bundle contains:
+   menutext.txd.new, SLPS_256.40.new, SLPS_256.41.new and VERIFIED.json.
+5. Apply BOTH the menu and the matching disc's SLPS from that SAME bundle:
+   menutext.txd.new -> Xenosaga3/X30_UNPACKED/mnu/jp/menutext.txd
+   SLPS_256.40.new -> Xenosaga3/disc1metadata/SLPS_256.40
+   SLPS_256.41.new -> Xenosaga3/disc2metadata/SLPS_256.41
+   If a disc-specific X30_UNPACKED is used, apply the menu there as well.
+   These are manual destinations, NOT runtime dependencies or automatic copies.
+
+Rebuild this bundle after editing the menu, SLPS text or save-title names.
+Do not later overwrite just one of its files with the ordinary builder output.
+To undo the option, restore BOTH the ordinary menu and ordinary SLPS together.
+Never apply an incomplete .pending folder. Old bundles are not overwritten or
+automatically deleted. VERIFIED.json identifies input and output hashes.
+
+Manual invocation
+- The BAT is beside its working names TXT. It supports TXD drop and CLI.
+- No arguments intentionally fails with instructions, without picking a stale
+  menu from an output directory or silently using the Japanese reference.
+- Optional custom names TXT can be dropped with the TXD, in either order.
+  Names TXT must remain inside tools/elf; the explicit menu stays in XS3KOR.
+- --check validates without saving. --name selects a new bundle directory;
+  otherwise a unique UTC timestamp is used. XS3_NO_PAUSE=1 skips the BAT pause.
+- From the repository root:
+  tools\elf\edit\Build_save_title.bat tools\x30\output\mnu\jp\menutext.txd --check
+  tools\elf\edit\Build_save_title.bat tools\x30\output\mnu\jp\menutext.txd --name title-trial
+- Relative input paths are relative to the command's working directory.
+- Python: python -X utf8 -B tools/elf/save_title_tool.py MENU.txd [NAMES.txt] --check
+
+Names format and system-font restrictions
+- UTF-8 text, header '# XS3 save-title names v1', then ID|name for IDs01..16.
+- Keep every ID once. Row order may change. IDs11/12 are original placeholders,
+  IDs13..16 are E.S. robots; do not omit them as unused without further proof.
+- Names must be 1..10 fullwidth two-byte EUC-JIS-2004 characters whose actual
+  game conversion matches CP932. No ASCII/halfwidth names, controls or NULs.
+- Korean-to-kanji substitution is deliberately NOT performed here. It would
+  display unrelated system-font characters, not the patched game-font glyphs.
+- No automatic width conversion, transliteration, punctuation change or
+  truncation. The selected English policy uses ES Asher / ES Zebulun /
+  ES Dinah / ES Reuben to fit ten characters including the fullwidth space.
+- The in-game character names in the ordinary menutext TXT are not changed.
+
+Verified binary basis
+- SLPS 00232210 obtains a name through 00212640. 00189340 copies at most
+  sixteen two-byte characters; 001892a8 converts each pair to system SJIS.
+- The menu's existing count909 becomes926 by appending an empty name plus
+  sixteen private names. All old slot contents and old string-pool bytes stay
+  intact; their pointers shift by68 bytes with the expanded table.
+- Only the ADDIU immediate at VA0023230c changes, 244402a7 ->2444038d,
+  two bytes at file offsets0011330c/0011330d. Current ELF text is preserved.
+- The resident limit is16384 bytes. Embedded ov01 00a80c9c..00a80cd8 loads
+  resource09000004/menutext at003c2040 then09010004/umn.bin at003c6040.
+  Resolver001b6080 uses the filename records at003de8f8.
+- Original save-title format, fullwidth digits and star must be unchanged.
+  This tool fails rather than silently fixing an incompatible menu edit.
+- The immutable menu/ELF/font-mapping references are hash checked. An already
+  appended menu is rejected. Inputs are fingerprinted before and after work.
+- A complete bundle is renamed into place only after all files verify.
+  Other builds and existing working inputs are never rewritten.
+
+Validation scope
+Binary tests cover all3168 original AND3168 English character/level/star combinations, exact
+resident boundaries, unchanged menu pool/ELF bytes, invalid inputs, preservation
+of current translations, check-only mode, collisions and interrupted publication.
+These checks are NOT a gameplay, save/load or PS2-browser display test.
+No PCSX2/console, external ROM, ISO, codex-lab or XS2 dependency at runtime.
+
+Run: python -X utf8 -B -m unittest test_save_title_tool
