@@ -1,93 +1,187 @@
+# SB-TEXT: JPN-KOR v1
+
 [0xcb9]
+[JPN]
 B13
+[KOR]
+
 
 [0xcbd]
+[JPN]
 --- Battle Start ---
+[KOR]
+
 
 [0xcd2]
+[JPN]
 ａ−ｍａ−ｏ−ｐｕｎｎ
+[KOR]
+
 
 [0xce9]
+[JPN]
 必殺技により「金剛甲咒」に亀裂！
+[KOR]
+필살기로 「금강갑주」에 균열!
 
 [0xd0a]
+[JPN]
 「金剛甲咒」を破壊した！
+[KOR]
+「금강갑주」를 파괴했다!
 
 [0xd23]
+[JPN]
 --- default ---
+[KOR]
+
 
 [0xd33]
+[JPN]
 --- top025 ---
+[KOR]
+
 
 [0xd42]
+[JPN]
 ％  reuben
+[KOR]
+
 
 [0xd4d]
+[JPN]
 --- ルベンいじめを少々たしなんでおります ---
+[KOR]
+--- 르우벤 괴롭히기를 조금 즐기고 있습니다 ---
 
 [0xd7a]
+[JPN]
 --- 40％〜60％ ---
+[KOR]
+
 
 [0xd8d]
+[JPN]
 --- 20％〜40％ ---
+[KOR]
+
 
 [0xda0]
+[JPN]
 --- 0％〜20％ ---
+[KOR]
+
 
 [0xdb2]
+[JPN]
 ステータスアップ
+[KOR]
+능력치 상승
 
 [0xdc3]
+[JPN]
 素早さ、回避率、命中率UP！
+[KOR]
+민첩성, 회피율, 명중률 UP!
 
 [0xdde]
+[JPN]
 アーマー展開
+[KOR]
+아머 전개
 
 [0xdeb]
+[JPN]
 金剛甲咒
+[KOR]
+금강갑주
 
 [0xdf4]
+[JPN]
 アーマー亀裂
+[KOR]
+아머 균열
 
 [0xe01]
+[JPN]
 アーマー破壊
+[KOR]
+아머 파괴
 
 [0xe0e]
+[JPN]
 KAOV_EVE0600
+[KOR]
+
 
 [0xe1b]
+[JPN]
 KAOV_EVE0601
+[KOR]
+
 
 [0xe28]
+[JPN]
 アニマ覚醒
+[KOR]
+아니마 각성
 
 [0xe33]
+[JPN]
 KAOV_EVE0602
+[KOR]
+
 
 [0xe40]
+[JPN]
 KAOV_EVE0603
+[KOR]
+
 
 [0xe4d]
+[JPN]
 KAOV_EVE0604
+[KOR]
+
 
 [0xe5a]
+[JPN]
 camera_top025_j_00
+[KOR]
+
 
 [0xe6d]
+[JPN]
 camera_top025_j_01
+[KOR]
+
 
 [0xe80]
+[JPN]
 camera_top025_00
+[KOR]
+
 
 [0xe91]
+[JPN]
 camera_top025_01
+[KOR]
+
 
 [0xea2]
+[JPN]
 camera_top025_02
+[KOR]
+
 
 [0xeb3]
+[JPN]
 camera_dead
+[KOR]
+
 
 [0xebf]
+[JPN]
 camera_break
+[KOR]
 

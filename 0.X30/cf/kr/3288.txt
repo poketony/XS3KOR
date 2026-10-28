@@ -1,60 +1,127 @@
-﻿[0x1156]
+# SB-TEXT: JPN-KOR v1
+
+[0x1140]
+[JPN]
+E.S.に乗りますか？<f>
+[KOR]
+E.S.에 타겠습니까?<f>
+
+[0x1156]
+[JPN]
+はい\nいいえ
+[KOR]
 예\n아니요
 
 [0x1163]
+[JPN]
+E.S.から降りますか？<f>
+[KOR]
 E.S.에서 내리겠습니까?<f>
 
 [0x117b]
+[JPN]
 ***************************************************
+[KOR]
+
 
 [0x11af]
+[JPN]
   パーティ変更処理
+[KOR]
+  파티 변경 처리
 
 [0x11c2]
+[JPN]
   着せ替え処理
+[KOR]
+  의상 변경 처리
 
 [0x11d1]
+[JPN]
   ミニサブフラグ
+[KOR]
+  미니 서브 플래그
 
 [0x11e2]
+[JPN]
   個人フラグ
+[KOR]
+  개인 플래그
 
 [0x11ef]
+[JPN]
 ce050_001
+[KOR]
+
 
 [0x11f9]
+[JPN]
 ce013_008
+[KOR]
+
 
 [0x1203]
+[JPN]
 locater
+[KOR]
+
 
 [0x120b]
+[JPN]
   who:
+[KOR]
+  누구:
 
 [0x1212]
+[JPN]
   where:
+[KOR]
+  어디를:
 
 [0x121b]
+[JPN]
 kowaremono
+[KOR]
+
 
 [0x1226]
+[JPN]
   breakNo:
+[KOR]
+  파괴 번호:
 
 [0x1231]
+[JPN]
 getitem
+[KOR]
+
 
 [0x1239]
+[JPN]
   getNo:
+[KOR]
+  획득 번호:
 
 [0x1242]
+[JPN]
 BATEND
+[KOR]
+
 
 [0x1249]
+[JPN]
   situ:
+[KOR]
+  상황:
 
 [0x1251]
+[JPN]
   whom:
+[KOR]
+  누구에게:
 
 [0x1259]
+[JPN]
 ???
+[KOR]
 

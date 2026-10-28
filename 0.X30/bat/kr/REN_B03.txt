@@ -1,63 +1,127 @@
+# SB-TEXT: JPN-KOR v1
+
 [0xc65]
+[JPN]
 B04
+[KOR]
+
 
 [0xc69]
+[JPN]
 --- Battle Start ---
+[KOR]
+
 
 [0xc7e]
+[JPN]
 --- default ---
+[KOR]
+
 
 [0xc8e]
+[JPN]
 --- top005 ---
+[KOR]
+
 
 [0xc9d]
+[JPN]
 KOS-MOS！ 大人しく我が糧となれ…!!
+[KOR]
+KOS-MOS! 얌전히 내 양분이 되어라…!!
 
 [0xcc0]
+[JPN]
 CHRV_EVE0000
+[KOR]
+
 
 [0xccd]
+[JPN]
 焦る事はないわ…順番に始末してあげる…!!
+[KOR]
+서두를 것 없어… 차례로 처리해 주지…!!
 
 [0xcf6]
+[JPN]
 CHRV_EVE0001
+[KOR]
+
 
 [0xd03]
+[JPN]
 ブースト上昇率が大幅にUPした！
+[KOR]
+부스트 상승률이 크게 UP했다!
 
 [0xd22]
+[JPN]
 T-elosは必殺技の構えを取った
+[KOR]
+T-elos가 필살기 태세를 취했다
 
 [0xd3f]
+[JPN]
 T-elosは敵性体のブレイクゲージ残量を解析中
+[KOR]
+T-elos는 적성체의 브레이크 게이지 잔량을 분석 중
 
 [0xd6a]
+[JPN]
 BOOST ATK
+[KOR]
+
 
 [0xd74]
+[JPN]
 T-elosは解析に失敗したため行動できない
+[KOR]
+T-elos는 분석에 실패해 행동할 수 없다
 
 [0xd9b]
+[JPN]
 ここが貴様等の死に場所となるのだ…!!
+[KOR]
+여기가 너희가 죽을 곳이다…!!
 
 [0xdc0]
+[JPN]
 CHRV_EVE0002
+[KOR]
+
 
 [0xdcd]
+[JPN]
 T-elosは敵性体のHP残量を解析中
+[KOR]
+T-elos는 적성체의 HP 잔량을 분석 중
 
 [0xdec]
+[JPN]
 --- top005 Dmg ---
+[KOR]
+
 
 [0xdff]
+[JPN]
 camera_telos_00
+[KOR]
+
 
 [0xe0f]
+[JPN]
 camera_telos_01
+[KOR]
+
 
 [0xe1f]
+[JPN]
 camera_telos_02
+[KOR]
+
 
 [0xe2f]
+[JPN]
 camera_telos_dead
+[KOR]
 

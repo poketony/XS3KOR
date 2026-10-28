@@ -6,6 +6,7 @@ import struct
 
 ENCODING = 'euc_jis_2004'
 TAG = re.compile(r'\[(0x[0-9a-fA-F]+)\]')
+BILINGUAL_HEADER = '# SB-TEXT: JPN-KOR v1'
 INTERNAL_FIRST = {b'seg_now', b'--- main ---'}
 
 
@@ -51,18 +52,38 @@ def read_rows(data):
     return rows
 
 
-def extract_text(data):
+def render_bilingual(rows, translations=None):
+    translations = {} if translations is None else translations
+    blocks = []
+    for row in rows:
+        if not row['editable']:
+            continue
+        address = row['address']
+        original = row['text'].replace('\n', '[n]')
+        translated = translations.get(address, '').replace('\n', '[n]')
+        blocks.append(f'[{address:#x}]\n[JPN]\n{original}\n[KOR]\n{translated}\n')
+    return BILINGUAL_HEADER + '\n\n' + '\n'.join(blocks) if blocks else ''
+
+
+def extract_text(data, bilingual=True):
+    rows = read_rows(data)
+    if bilingual:
+        return render_bilingual(rows)
     return ''.join(f"[{row['address']:#x}]\n" + row['text'].replace('\n', '[n]') + '\n\n'
-                   for row in read_rows(data) if row['editable'])
+                   for row in rows if row['editable'])
+
+
+def normalized_lines(content):
+    content = content.removeprefix('\ufeff').replace('\r\n', '\n')
+    if '\r' in content or '\0' in content:
+        raise ValueError('Bare CR or NUL is not allowed in SB TXT')
+    return content.split('\n')
 
 
 def parse_text(content):
     # One physical body line; [n] represents physical LF inside a game string.
     # Blank separator lines are formatting, while spaces on the body are data.
-    content = content.removeprefix('\ufeff').replace('\r\n', '\n')
-    if '\r' in content or '\0' in content:
-        raise ValueError('Bare CR or NUL is not allowed in SB TXT')
-    lines = content.split('\n')
+    lines = normalized_lines(content)
     entries = {}
     index = 0
     while index < len(lines):
@@ -82,10 +103,73 @@ def parse_text(content):
     return entries
 
 
+def is_bilingual(content):
+    return any(line in (BILINGUAL_HEADER, '[JPN]', '[KOR]') or
+               line.startswith('# SB-TEXT:') for line in content.splitlines())
+
+
+def parse_bilingual(content):
+    """Parse JPN/KOR fields while retaining the existing one-line/[n] rule."""
+    lines = normalized_lines(content)
+    if not lines or lines[0] != BILINGUAL_HEADER:
+        raise ValueError('JPN/KOR TXT header is missing or unsupported')
+    originals, translations = {}, {}
+    index = 1
+    while index < len(lines):
+        while index < len(lines) and lines[index] == '':
+            index += 1
+        if index == len(lines):
+            break
+        match = TAG.fullmatch(lines[index])
+        if not match:
+            raise ValueError(f'Expected an SB address tag at line {index + 1}')
+        address = int(match[1], 16)
+        if address in originals:
+            raise ValueError(f'Duplicate SB address {address:#x} at line {index + 1}')
+        index += 1
+        if index >= len(lines) or lines[index] != '[JPN]':
+            raise ValueError(f'Missing [JPN] after {address:#x}')
+        index += 1
+        if index >= len(lines):
+            raise ValueError(f'Missing JPN text line after {address:#x}')
+        originals[address] = lines[index]
+        index += 1
+        if index < len(lines) and lines[index] == '[KOR]':
+            index += 1
+            if index >= len(lines):
+                raise ValueError(f'Missing KOR text line after {address:#x}')
+            value = lines[index]
+            if value.strip():
+                translations[address] = value
+            index += 1
+        if index < len(lines) and lines[index] != '':
+            raise ValueError(f'Unexpected content after {address:#x} at line {index + 1}; '
+                             'use [n] for LF')
+    return originals, translations
+
+
+def editor_entries(data, content):
+    rows = read_rows(data)
+    expected = {row['address']: row for row in rows if row['editable']}
+    if is_bilingual(content):
+        originals, translations = parse_bilingual(content)
+        if set(originals) != set(expected):
+            missing = sorted(set(expected) - set(originals))
+            extra = sorted(set(originals) - set(expected))
+            raise ValueError(f'SB address set mismatch: missing={[hex(v) for v in missing[:8]]}, '
+                             f'unknown={[hex(v) for v in extra[:8]]}')
+        for address, value in originals.items():
+            if value.replace('[n]', '\n') != expected[address]['text']:
+                raise ValueError(f'SB {address:#x}: JPN differs from the original')
+        return {address: translations.get(address, row['text'].replace('\n', '[n]')).replace('[n]', '\n')
+                for address, row in expected.items()}
+    return parse_text(content)
+
+
 def rebuild(data, content, charmap):
     data = bytes(data)
     rows = read_rows(data)
-    entries = parse_text(content)
+    entries = editor_entries(data, content)
     expected = {row['address'] for row in rows if row['editable']}
     if set(entries) != expected:
         missing, extra = sorted(expected - entries.keys()), sorted(entries.keys() - expected)

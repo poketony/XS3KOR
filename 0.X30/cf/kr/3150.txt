@@ -1,42 +1,91 @@
-﻿[0x662]
+# SB-TEXT: JPN-KOR v1
+
+[0x64c]
+[JPN]
+E.S.に乗りますか？<f>
+[KOR]
+E.S.에 타겠습니까?<f>
+
+[0x662]
+[JPN]
+はい\nいいえ
+[KOR]
 예\n아니요
 
 [0x66f]
+[JPN]
+E.S.から降りますか？<f>
+[KOR]
 E.S.에서 내리겠습니까?<f>
 
 [0x687]
+[JPN]
 ***************************************************
+[KOR]
+
 
 [0x6bb]
+[JPN]
 locater
+[KOR]
+
 
 [0x6c3]
+[JPN]
   who:
+[KOR]
+  누구:
 
 [0x6ca]
+[JPN]
   where:
+[KOR]
+  어디를:
 
 [0x6d3]
+[JPN]
 kowaremono
+[KOR]
+
 
 [0x6de]
+[JPN]
   breakNo:
+[KOR]
+  파괴 번호:
 
 [0x6e9]
+[JPN]
 getitem
+[KOR]
+
 
 [0x6f1]
+[JPN]
   getNo:
+[KOR]
+  획득 번호:
 
 [0x6fa]
+[JPN]
 BATEND
+[KOR]
+
 
 [0x701]
+[JPN]
   situ:
+[KOR]
+  상황:
 
 [0x709]
+[JPN]
   whom:
+[KOR]
+  누구에게:
 
 [0x711]
+[JPN]
 ???
+[KOR]
 

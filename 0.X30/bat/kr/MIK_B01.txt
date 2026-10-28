@@ -1,123 +1,247 @@
+# SB-TEXT: JPN-KOR v1
+
 [0x1265]
+[JPN]
 B04
+[KOR]
+
 
 [0x1269]
+[JPN]
 B03
+[KOR]
+
 
 [0x126d]
+[JPN]
 --- Battle Start ---
+[KOR]
+
 
 [0x1282]
+[JPN]
 強襲で敵の必殺技を阻止せよ！
+[KOR]
+강습으로 적의 필살기를 저지하라!
 
 [0x129f]
+[JPN]
 必殺技発動は阻止された！
+[KOR]
+필살기 발동이 저지되었다!
 
 [0x12b8]
+[JPN]
 --- default ---
+[KOR]
+
 
 [0x12c8]
+[JPN]
 --- 必殺構え ---
+[KOR]
+--- 필살 태세 ---
 
 [0x12d9]
+[JPN]
 --- 連携カウント ---
+[KOR]
+--- 연계 카운트 ---
 
 [0x12ee]
+[JPN]
 --- 必殺阻止！ ---
+[KOR]
+--- 필살 저지! ---
 
 [0x1301]
+[JPN]
 --- top022(リヒャルト) ---
+[KOR]
+--- top022(리하르트) ---
 
 [0x131c]
+[JPN]
 --- top022(リヒャルト) ---必殺
+[KOR]
+--- top022(리하르트) ---필살
 
 [0x133b]
+[JPN]
 --- top022(リヒャルト) ---アニマチェック
+[KOR]
+--- top022(리하르트) ---아니마 체크
 
 [0x1364]
+[JPN]
 アニマ覚醒
+[KOR]
+아니마 각성
 
 [0x136f]
+[JPN]
 KAOV_EVE0200
+[KOR]
+
 
 [0x137c]
+[JPN]
 KAOV_EVE0201
+[KOR]
+
 
 [0x1389]
+[JPN]
 KAOV_EVE0202
+[KOR]
+
 
 [0x1396]
+[JPN]
 KAOV_EVE0203
+[KOR]
+
 
 [0x13a3]
+[JPN]
 KAOV_EVE0204
+[KOR]
+
 
 [0x13b0]
+[JPN]
 KAOV_EVE0210
+[KOR]
+
 
 [0x13bd]
+[JPN]
 --- top023(ヘルマン) ---
+[KOR]
+--- top023(헤르만) ---
 
 [0x13d6]
+[JPN]
 アニマエネルギー
+[KOR]
+아니마 에너지
 
 [0x13e7]
+[JPN]
 アニマギフト
+[KOR]
+아니마 기프트
 
 [0x13f4]
+[JPN]
 ステータスアップ
+[KOR]
+능력치 상승
 
 [0x1405]
+[JPN]
 防御力UP！
+[KOR]
+방어력 UP!
 
 [0x1410]
+[JPN]
 KAOV_EVE0300
+[KOR]
+
 
 [0x141d]
+[JPN]
 KAOV_EVE0301
+[KOR]
+
 
 [0x142a]
+[JPN]
 inoki
+[KOR]
+
 
 [0x1430]
+[JPN]
 nRnd
+[KOR]
+
 
 [0x1435]
+[JPN]
 KAOV_EVE0302
+[KOR]
+
 
 [0x1442]
+[JPN]
 リヒャルト追悼開始
+[KOR]
+리하르트 추도 시작
 
 [0x1455]
+[JPN]
 KAOV_EVE0303
+[KOR]
+
 
 [0x1462]
+[JPN]
 リヒャルト追悼終了
+[KOR]
+리하르트 추도 종료
 
 [0x1475]
+[JPN]
 KAOV_EVE0305
+[KOR]
+
 
 [0x1482]
+[JPN]
 camera_top022jr
+[KOR]
+
 
 [0x1492]
+[JPN]
 camera_top023jin
+[KOR]
+
 
 [0x14a3]
+[JPN]
 camera_top022_00
+[KOR]
+
 
 [0x14b4]
+[JPN]
 camera_top023_00
+[KOR]
+
 
 [0x14c5]
+[JPN]
 camera_022023_00
+[KOR]
+
 
 [0x14d6]
+[JPN]
 camera_022023_01
+[KOR]
+
 
 [0x14e7]
+[JPN]
 camera_top022_dead
+[KOR]
+
 
 [0x14fa]
+[JPN]
 camera_top0230_dead
+[KOR]
 

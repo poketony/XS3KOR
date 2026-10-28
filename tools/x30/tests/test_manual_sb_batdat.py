@@ -27,7 +27,7 @@ class ManualSBTests(unittest.TestCase):
             name = item['asset']
             asset = self.manifest['assets'][name]
             original = (HOME / asset['original']).read_bytes()
-            fixture = sb_text.extract_text(original)
+            fixture = sb_text.extract_text(original, bilingual=False)
             entries = sb_text.parse_text(fixture)
             del entries[int(item['address'], 16)]
             legacy = ''.join(f'[{address:#x}]\n'+text.replace('\n', '[n]')+'\n\n' for address, text in entries.items())
@@ -37,7 +37,7 @@ class ManualSBTests(unittest.TestCase):
     def test_explicit_first_translation_is_not_overwritten(self):
         item = self.manifest['restored_first_rows'][0]
         source = (HOME / self.manifest['assets'][item['asset']]['original']).read_bytes()
-        text = sb_text.extract_text(source)
+        text = sb_text.extract_text(source, bilingual=False)
         text = text.replace(item['text'], 'TEST', 1)
         self.assertEqual(build_sb.normalize_editor(source, text, item), text)
         self.assertNotEqual(sb_text.rebuild(source, text, self.table), source)
@@ -45,7 +45,7 @@ class ManualSBTests(unittest.TestCase):
     def test_other_missing_rows_still_fail(self):
         item = self.manifest['restored_first_rows'][0]
         source = (HOME / self.manifest['assets'][item['asset']]['original']).read_bytes()
-        entries = sb_text.parse_text(sb_text.extract_text(source))
+        entries = sb_text.parse_text(sb_text.extract_text(source, bilingual=False))
         del entries[list(entries)[1]]
         text = ''.join(f'[{address:#x}]\n'+value.replace('\n', '[n]')+'\n\n' for address, value in entries.items())
         with self.assertRaises(ValueError):
@@ -54,7 +54,7 @@ class ManualSBTests(unittest.TestCase):
     def test_drop_uses_edited_text_not_a_snapshot(self):
         asset = self.manifest['assets']['cf/8050']
         original = (HOME / asset['original']).read_bytes()
-        entries = sb_text.parse_text(sb_text.extract_text(original))
+        entries = sb_text.parse_text(sb_text.extract_text(original, bilingual=False))
         entries[next(iter(entries))] = 'TEST'
         content = ''.join(f'[{address:#x}]\n'+value.replace('\n', '[n]')+'\n\n' for address, value in entries.items())
         with tempfile.TemporaryDirectory(dir=HOME) as directory:
@@ -100,7 +100,7 @@ class ManualSBTests(unittest.TestCase):
         name = 'bat/MIK_B12'
         data = (HOME / self.manifest['assets'][name]['original']).read_bytes()
         rows = sb_text.read_rows(data)
-        entries = sb_text.parse_text(sb_text.extract_text(data))
+        entries = sb_text.parse_text(sb_text.extract_text(data, bilingual=False))
         dialogue = next(row for row in rows if row['editable'] and any(ord(c) > 127 for c in row['text']))
         entries[dialogue['address']] = '\uc2dc\uc628 TEST'
         content = ''.join(f'[{address:#x}]\n'+value.replace('\n', '[n]')+'\n\n' for address, value in entries.items())

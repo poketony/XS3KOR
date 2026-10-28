@@ -1,48 +1,97 @@
+# SB-TEXT: JPN-KOR v1
+
 [0x9ad]
+[JPN]
 B09
+[KOR]
+
 
 [0x9b1]
+[JPN]
 --- Battle Start ---
+[KOR]
+
 
 [0x9c6]
+[JPN]
 毎ターン終了後に\n無効と弱点属性を変化させる
+[KOR]
+매 턴 종료 후\n무효 속성과 약점 속성을 바꾼다
 
 [0x9f3]
+[JPN]
 攻撃がグレードアップした！
+[KOR]
+공격이 강화되었다!
 
 [0xa0e]
+[JPN]
 --- default ---
+[KOR]
+
 
 [0xa1e]
+[JPN]
 --- top024 ---
+[KOR]
+
 
 [0xa2d]
+[JPN]
 グレートウェポン
+[KOR]
+그레이트 웨폰
 
 [0xa3e]
+[JPN]
 ファントムアーマー
+[KOR]
+팬텀 아머
 
 [0xa51]
+[JPN]
 KAOV_EVE0500
+[KOR]
+
 
 [0xa5e]
+[JPN]
 アニマ覚醒
+[KOR]
+아니마 각성
 
 [0xa69]
+[JPN]
 KAOV_EVE0501
+[KOR]
+
 
 [0xa76]
+[JPN]
 KAOV_EVE0502
+[KOR]
+
 
 [0xa83]
+[JPN]
 camera_top024_dead
+[KOR]
+
 
 [0xa96]
+[JPN]
 camera_top024_00
+[KOR]
+
 
 [0xaa7]
+[JPN]
 camera_top024_01
+[KOR]
+
 
 [0xab8]
+[JPN]
 camera_top024_02
+[KOR]
 

@@ -11,7 +11,7 @@ from tools.output import write_output
 
 
 def normalize_editor(original, content, restored=None):
-    if restored is None:
+    if restored is None or sb_text.is_bilingual(content):
         return content
     first = sb_text.read_rows(original)[0]
     if not first['editable'] or hex(first['address']) != restored['address'] or first['text'] != restored['text']:

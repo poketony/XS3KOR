@@ -1,63 +1,133 @@
-﻿[0x16d6]
+# SB-TEXT: JPN-KOR v1
+
+[0x16c0]
+[JPN]
+E.S.に乗りますか？<f>
+[KOR]
+E.S.에 타겠습니까?<f>
+
+[0x16d6]
+[JPN]
+はい\nいいえ
+[KOR]
 예\n아니요
 
 [0x16e3]
+[JPN]
+E.S.から降りますか？<f>
+[KOR]
 E.S.에서 내리겠습니까?<f>
 
 [0x16fb]
+[JPN]
 ***************************************************
+[KOR]
+
 
 [0x172f]
+[JPN]
   パーティ変更処理
+[KOR]
+  파티 변경 처리
 
 [0x1742]
+[JPN]
   着せ替え処理
+[KOR]
+  의상 변경 처리
 
 [0x1751]
+[JPN]
   ミニサブフラグ
+[KOR]
+  미니 서브 플래그
 
 [0x1762]
+[JPN]
   個人フラグ
+[KOR]
+  개인 플래그
 
 [0x176f]
+[JPN]
 locater
+[KOR]
+
 
 [0x1777]
+[JPN]
   who:
+[KOR]
+  누구:
 
 [0x177e]
+[JPN]
   where:
+[KOR]
+  어디를:
 
 [0x1787]
+[JPN]
 kowaremono
+[KOR]
+
 
 [0x1792]
+[JPN]
   breakNo:
+[KOR]
+  파괴 번호:
 
 [0x179d]
+[JPN]
 getitem
+[KOR]
+
 
 [0x17a5]
+[JPN]
   getNo:
+[KOR]
+  획득 번호:
 
 [0x17ae]
+[JPN]
 BATEND
+[KOR]
+
 
 [0x17b5]
+[JPN]
   situ:
+[KOR]
+  상황:
 
 [0x17bd]
+[JPN]
   whom:
+[KOR]
+  누구에게:
 
 [0x17c5]
+[JPN]
 ???
+[KOR]
+
 
 [0x17c9]
+[JPN]
 反応が無い
+[KOR]
+반응이 없다
 
 [0x17d4]
+[JPN]
 スイッチを押しますか？<f>
+[KOR]
+스위치를 누르겠습니까?<f>
 
 [0x17ee]
+[JPN]
 ce013_001
+[KOR]
 

@@ -39,11 +39,13 @@ DBC 두 결과는 함께 적용합니다. MVtext는 무비 뷰어 목록/설명�
 다른 텍스트
 -----------
 cf/kr/*.txt
+  편집: [JPN]은 그대로 두고 [KOR]만 수정. 빈 KOR는 원본 유지
   전체: 3.RepackAllStorySb.bat
   선택: 4.DragStoryTxt.bat에 수정한 TXT를 드롭
   결과: 같은 폴더의 *.sb.new -> X30_UNPACKED/cf/jp/
 
 bat/kr/*.txt
+  편집: [JPN]은 그대로 두고 [KOR]만 수정. 빈 KOR는 원본 유지
   실행: 1.BattleSbRepack.bat
   결과: *.sb.new -> X30_UNPACKED/bat/jp/
 
@@ -165,6 +167,7 @@ ROM 빌더는 계속 독립적으로 실행합니다. 자세한 제어 코드와
 - UTF-8 한글 작업 TXT를 직접 편집합니다. 치환한 TXT 사본은 따로 만들 필요가 없습니다.
 - 도구가 작업 폴더의 한글/한자 표를 읽어 치환하고 EUC-JIS-2004로 저장합니다.
 - 기존 주소/ID/제어 코드, 꺾쇠와 인용부호를 유지합니다. 문장 부호를 자동 변환하지 않습니다.
+- SB TXT는 [JPN] 원문을 수정하지 않고 [KOR]만 편집합니다. 빈/공백 KOR나 KOR 구획 없음은 원본 바이트를 유지합니다.
 - [menu_sita]의 기존 처리 규칙은 유지합니다.
 - 원본 BIN/TXD/SB/ESD/ESP, original 이미지, 치환표와 *_sources.json은 일반 편집 대상이 아닙니다.
 - .new는 변환 결과입니다. 이를 기준 원본으로 덮어쓰지 마세요.

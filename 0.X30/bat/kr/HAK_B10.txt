@@ -1,21 +1,43 @@
+# SB-TEXT: JPN-KOR v1
+
 [0x471]
+[JPN]
 B10
+[KOR]
+
 
 [0x475]
+[JPN]
 --- Battle Start ---
+[KOR]
+
 
 [0x48a]
+[JPN]
 ソウルダウン反応が作動した！
+[KOR]
+소울 다운 반응이 작동했다!
 
 [0x4a7]
+[JPN]
 --- default ---
+[KOR]
+
 
 [0x4b7]
+[JPN]
 --- top015 バーラー2 ---
+[KOR]
+
 
 [0x4d0]
+[JPN]
 カオスアイ
+[KOR]
+카오스 아이
 
 [0x4db]
+[JPN]
 camera_top015_dead
+[KOR]
 

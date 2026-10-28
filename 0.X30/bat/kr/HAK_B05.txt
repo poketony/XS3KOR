@@ -1,30 +1,61 @@
+# SB-TEXT: JPN-KOR v1
+
 [0x829]
+[JPN]
 B10
+[KOR]
+
 
 [0x82d]
+[JPN]
 --- Battle Start ---
+[KOR]
+
 
 [0x842]
+[JPN]
 ダメージをあたえて\nスナイパーモード解除！
+[KOR]
+대미지를 입혀\n스나이퍼 모드 해제!
 
 [0x86d]
+[JPN]
 スナイパー機能がダウンした！
+[KOR]
+스나이퍼 기능이 정지했다!
 
 [0x88a]
+[JPN]
 --- default ---
+[KOR]
+
 
 [0x89a]
+[JPN]
 --- top017 バーラー4 ---
+[KOR]
+
 
 [0x8b3]
+[JPN]
 スナイパー
+[KOR]
+스나이퍼
 
 [0x8be]
+[JPN]
 ステータスアップ
+[KOR]
+능력치 상승
 
 [0x8cf]
+[JPN]
 素早さ、回避率、命中率UP！
+[KOR]
+민첩성, 회피율, 명중률 UP!
 
 [0x8ea]
+[JPN]
 camera_top017_dead
+[KOR]
 

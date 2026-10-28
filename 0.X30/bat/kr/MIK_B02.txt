@@ -1,69 +1,139 @@
+# SB-TEXT: JPN-KOR v1
+
 [0xaed]
+[JPN]
 B04
+[KOR]
+
 
 [0xaf1]
+[JPN]
 --- Battle Start ---
+[KOR]
+
 
 [0xb06]
+[JPN]
 アニマゲージを破壊する力！
+[KOR]
+아니마 게이지를 파괴하는 힘!
 
 [0xb21]
+[JPN]
 必殺技を受けると\nE.S.イサカルのアニマゲージが上昇する
+[KOR]
+필살기를 받으면\nE.S. 잇사갈의 아니마 게이지가 상승한다
 
 [0xb58]
+[JPN]
 --- default ---
+[KOR]
+
 
 [0xb68]
+[JPN]
 ヒステリックアニマ--->
+[KOR]
+히스테릭 아니마--->
 
 [0xb7f]
+[JPN]
 アニマアタック--->
+[KOR]
+아니마 어택--->
 
 [0xb92]
+[JPN]
 ステータスアップ
+[KOR]
+능력치 상승
 
 [0xba3]
+[JPN]
 オフェンシブ
+[KOR]
+오펜시브
 
 [0xbb0]
+[JPN]
 マジックソード
+[KOR]
+매직 소드
 
 [0xbbf]
+[JPN]
 ヒステリックアニマ
+[KOR]
+히스테릭 아니마
 
 [0xbd2]
+[JPN]
 --- top021 ---
+[KOR]
+
 
 [0xbe1]
+[JPN]
 ％  reuben
+[KOR]
+
 
 [0xbec]
+[JPN]
 アニマかくせい
+[KOR]
+아니마 각성
 
 [0xbfb]
+[JPN]
 アニマ覚醒
+[KOR]
+아니마 각성
 
 [0xc06]
+[JPN]
 アニマ必殺発射
+[KOR]
+아니마 필살 발사
 
 [0xc15]
+[JPN]
 KAOV_EVE0400
+[KOR]
+
 
 [0xc22]
+[JPN]
 KAOV_EVE0401
+[KOR]
+
 
 [0xc2f]
+[JPN]
 KAOV_EVE0402
+[KOR]
+
 
 [0xc3c]
+[JPN]
 camera_top021_00
+[KOR]
+
 
 [0xc4d]
+[JPN]
 camera_top021_01
+[KOR]
+
 
 [0xc5e]
+[JPN]
 camera_top021_02
+[KOR]
+
 
 [0xc6f]
+[JPN]
 camera_top021_dead
+[KOR]
 

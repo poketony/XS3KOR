@@ -1,66 +1,133 @@
+# SB-TEXT: JPN-KOR v1
+
 [0xcad]
+[JPN]
 B04
+[KOR]
+
 
 [0xcb1]
+[JPN]
 B01
+[KOR]
+
 
 [0xcb5]
+[JPN]
 --- Battle Start ---
+[KOR]
+
 
 [0xcca]
+[JPN]
 --- default ---
+[KOR]
+
 
 [0xcda]
+[JPN]
 --- top010 ---
+[KOR]
+
 
 [0xce9]
+[JPN]
 無様ね、さっきまでの元気はどうしたの!?
+[KOR]
+꼴사납군, 아까 그 기세는 어디 갔지!?
 
 [0xd10]
+[JPN]
 CHRV_EVE0300
+[KOR]
+
 
 [0xd1d]
+[JPN]
 私からの献花受け取ってもらえるかしら？
+[KOR]
+내가 바치는 꽃을 받아 주겠어?
 
 [0xd44]
+[JPN]
 CHRV_EVE0301
+[KOR]
+
 
 [0xd51]
+[JPN]
 ブースト上昇率が大幅にUPした！
+[KOR]
+부스트 상승률이 크게 UP했다!
 
 [0xd70]
+[JPN]
 ペレグリーは必殺技の構えを取った
+[KOR]
+펠레그리가 필살기 태세를 취했다
 
 [0xd91]
+[JPN]
 ペレグリーは連続攻撃を繰り出す構えを取った
+[KOR]
+펠레그리가 연속 공격 태세를 취했다
 
 [0xdbc]
+[JPN]
 ペレグリーのSTRとAGIがアップした
+[KOR]
+펠레그리의 STR과 AGI가 상승했다
 
 [0xddd]
+[JPN]
 --- top010 Dmg ---
+[KOR]
+
 
 [0xdf0]
+[JPN]
 ジンの攻撃がペレグリーの連続攻撃を阻止した
+[KOR]
+진의 공격이 펠레그리의 연속 공격을 저지했다
 
 [0xe1b]
+[JPN]
 連続攻撃の構えが解かれた
+[KOR]
+연속 공격 태세가 풀렸다
 
 [0xe34]
+[JPN]
 私とした事が…少々見縊っていたようね…
+[KOR]
+나답지 않게… 조금 얕봤던 모양이군…
 
 [0xe5b]
+[JPN]
 CHRV_EVE0302
+[KOR]
+
 
 [0xe68]
+[JPN]
 camera_pellegri_00
+[KOR]
+
 
 [0xe7b]
+[JPN]
 camera_pellegri_01
+[KOR]
+
 
 [0xe8e]
+[JPN]
 camera_pellegri_02
+[KOR]
+
 
 [0xea1]
+[JPN]
 camera_pellegri_dead
+[KOR]
 

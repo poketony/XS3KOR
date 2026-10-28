@@ -1,78 +1,157 @@
+# SB-TEXT: JPN-KOR v1
+
 [0x955]
+[JPN]
 B09
+[KOR]
+
 
 [0x959]
+[JPN]
 --- Battle Start ---
+[KOR]
+
 
 [0x96e]
+[JPN]
 --- default ---
+[KOR]
+
 
 [0x97e]
+[JPN]
 --- top011 ---
+[KOR]
+
 
 [0x98d]
+[JPN]
 全力でかかってこい来いよぉ
+[KOR]
+전력을 다해 덤벼 봐라
 
 [0x9a8]
+[JPN]
 CHRV_EVE0400
+[KOR]
+
 
 [0x9b5]
+[JPN]
 ブースト上昇率が大幅にUPした！
+[KOR]
+부스트 상승률이 크게 UP했다!
 
 [0x9d4]
+[JPN]
 BOOST1
+[KOR]
+
 
 [0x9db]
+[JPN]
 オラ、どうしたァ！
+[KOR]
+어이, 왜 그러냐!
 
 [0x9ee]
+[JPN]
 CHRV_EVE0407
+[KOR]
+
 
 [0x9fb]
+[JPN]
 BOOST2
+[KOR]
+
 
 [0xa02]
+[JPN]
 攻撃実行５０−１００
+[KOR]
+공격 실행50−100
 
 [0xa17]
+[JPN]
 攻撃終了５０−１００
+[KOR]
+공격 종료50−100
 
 [0xa2c]
+[JPN]
 どうした、もう終わりか？
+[KOR]
+왜 그래, 벌써 끝이냐?
 
 [0xa45]
+[JPN]
 CHRV_EVE0401
+[KOR]
+
 
 [0xa52]
+[JPN]
 バージルは必殺技の構えを取った
+[KOR]
+버질이 필살기 태세를 취했다
 
 [0xa71]
+[JPN]
 つまらねえなぁ、もっと激しくやろううぜぇ
+[KOR]
+재미없군, 좀 더 격하게 해 보자고
 
 [0xa9a]
+[JPN]
 CHRV_EVE0402
+[KOR]
+
 
 [0xaa7]
+[JPN]
 --- top011 Dmg ---
+[KOR]
+
 
 [0xaba]
+[JPN]
 へッ…少しはやるようだな…
+[KOR]
+헷… 제법 하는군…
 
 [0xad5]
+[JPN]
 CHRV_EVE0403
+[KOR]
+
 
 [0xae2]
+[JPN]
 camera_virgil_00
+[KOR]
+
 
 [0xaf3]
+[JPN]
 camera_virgil_01
+[KOR]
+
 
 [0xb04]
+[JPN]
 camera_virgil_02
+[KOR]
+
 
 [0xb15]
+[JPN]
 camera_virgil_03
+[KOR]
+
 
 [0xb26]
+[JPN]
 camera_virgil_dead
+[KOR]
 

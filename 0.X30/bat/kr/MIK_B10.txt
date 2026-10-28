@@ -1,105 +1,211 @@
+# SB-TEXT: JPN-KOR v1
+
 [0xee5]
+[JPN]
 B14
+[KOR]
+
 
 [0xee9]
+[JPN]
 --- Battle Start ---
+[KOR]
+
 
 [0xefe]
+[JPN]
 --- default ---
+[KOR]
+
 
 [0xf0e]
+[JPN]
 --- top026 ---
+[KOR]
+
 
 [0xf1d]
+[JPN]
 どうして…!? なぜ貴方とKOS-MOSが闘わなければならないの…
+[KOR]
+어째서…!? 왜 너와 KOS-MOS가 싸워야 하는 거야…
 
 [0xf56]
+[JPN]
 過去を失った巫女よ…私の手で全てを思い出させてあげる…
+[KOR]
+과거를 잃은 무녀여… 내 손으로 다 떠올리게 해 주지…
 
 [0xf8d]
+[JPN]
 CHRV_EVE0700
+[KOR]
+
 
 [0xf9a]
+[JPN]
 出来損ないが!! 大人しくマリアの意識を差し出せばいいのよ
+[KOR]
+실패작 주제에!! 얌전히 마리아의 의식을 내놓으면 돼
 
 [0xfd2]
+[JPN]
 残念ですが、貴方の命令に従うつもりはありません
+[KOR]
+유감이지만, 당신의 명령에 따를 생각은 없습니다
 
 [0x1001]
+[JPN]
 CHRV_EVE0701
+[KOR]
+
 
 [0x100e]
+[JPN]
 T-elosは必殺技の構えを取った
+[KOR]
+T-elos가 필살기 태세를 취했다
 
 [0x102b]
+[JPN]
 貴様の力など…所詮その程度のもの…
+[KOR]
+네 힘 따위… 결국 그 정도…
 
 [0x104e]
+[JPN]
 CHRV_EVE0702
+[KOR]
+
 
 [0x105b]
+[JPN]
 ブースト上昇率が大幅にUPした！
+[KOR]
+부스트 상승률이 크게 UP했다!
 
 [0x107a]
+[JPN]
 ここが貴様等の墓場となるのだ…
+[KOR]
+여기가 너희의 무덤이 될 것이다…
 
 [0x1099]
+[JPN]
 CHRV_EVE0703
+[KOR]
+
 
 [0x10a6]
+[JPN]
 ブレイク攻撃力が大幅にUPした！
+[KOR]
+브레이크 공격력이 크게 UP했다!
 
 [0x10c5]
+[JPN]
 大人しく我が肉体の一部となれ!! KOS-MOS!!
+[KOR]
+얌전히 내 몸의 일부가 되어라!! KOS-MOS!!
 
 [0x10ee]
+[JPN]
 T-elos、今の貴方では私に勝つことは出来ません、この場から引いてください
+[KOR]
+T-elos, 지금은 절 못 이깁니다, 여기서 물러나십시오
 
 [0x1135]
+[JPN]
 CHRV_EVE0704
+[KOR]
+
 
 [0x1142]
+[JPN]
 フン…なかなか楽しませてくれる…
+[KOR]
+흥… 제법 재미있군…
 
 [0x1163]
+[JPN]
 CHRV_EVE0705
+[KOR]
+
 
 [0x1170]
+[JPN]
 クリティカルが必ず発動するようになった！
+[KOR]
+크리티컬이 반드시 발동하게 되었다!
 
 [0x1199]
+[JPN]
 --- top026 Dmg ---
+[KOR]
+
 
 [0x11ac]
+[JPN]
 カウンターブースト発動--->
+[KOR]
+카운터 부스트 발동--->
 
 [0x11c7]
+[JPN]
 カウンター必殺でクリア--->
+[KOR]
+카운터 필살로 클리어--->
 
 [0x11e2]
+[JPN]
 私をここまで追い詰めるとはね…
+[KOR]
+나를 이렇게까지 몰아붙이다니…
 
 [0x1201]
+[JPN]
 CHRV_EVE0707
+[KOR]
+
 
 [0x120e]
+[JPN]
 camera_shion_00
+[KOR]
+
 
 [0x121e]
+[JPN]
 camera_telos_00
+[KOR]
+
 
 [0x122e]
+[JPN]
 camera_telos_01
+[KOR]
+
 
 [0x123e]
+[JPN]
 camera_telos_02
+[KOR]
+
 
 [0x124e]
+[JPN]
 camera_telos_03
+[KOR]
+
 
 [0x125e]
+[JPN]
 camera_telos_04
+[KOR]
+
 
 [0x126e]
+[JPN]
 camera_telos_dead
+[KOR]
 

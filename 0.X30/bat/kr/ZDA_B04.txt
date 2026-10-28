@@ -1,24 +1,49 @@
+# SB-TEXT: JPN-KOR v1
+
 [0x685]
+[JPN]
 B02
+[KOR]
+
 
 [0x689]
+[JPN]
 B01
+[KOR]
+
 
 [0x68d]
+[JPN]
 --- Battle Start ---
+[KOR]
+
 
 [0x6a2]
+[JPN]
 --- default ---
+[KOR]
+
 
 [0x6b2]
+[JPN]
 --- top003 ---
+[KOR]
+
 
 [0x6c1]
+[JPN]
 アルドラカーフの本能が目覚めた
+[KOR]
+알드라카프의 본능이 깨어났다
 
 [0x6e0]
+[JPN]
 --- top003 Dmg ---
+[KOR]
+
 
 [0x6f3]
+[JPN]
 ATR != BEAM
+[KOR]
 

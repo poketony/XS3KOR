@@ -1,36 +1,73 @@
+# SB-TEXT: JPN-KOR v1
+
 [0x615]
+[JPN]
 B04
+[KOR]
+
 
 [0x619]
+[JPN]
 --- Battle Start ---
+[KOR]
+
 
 [0x62e]
+[JPN]
 アニマLv１以上の２機を糧として\n低確率でチャージが発生した！■
+[KOR]
+아니마 Lv1 이상인 2기를 양분 삼아\n낮은 확률로 차지가 발생했다!■
 
 [0x66d]
+[JPN]
 --- default ---
+[KOR]
+
 
 [0x67d]
+[JPN]
 --- top030 ---
+[KOR]
+
 
 [0x68c]
+[JPN]
 必殺１構え
+[KOR]
+필살1 태세
 
 [0x697]
+[JPN]
 狂戦士の波動
+[KOR]
+광전사의 파동
 
 [0x6a4]
+[JPN]
 アニマチェック開始--->
+[KOR]
+아니마 체크 시작--->
 
 [0x6bb]
+[JPN]
 アニマチェック
+[KOR]
+아니마 체크
 
 [0x6ca]
+[JPN]
 アニマチェック終了--->
+[KOR]
+아니마 체크 종료--->
 
 [0x6e1]
+[JPN]
 大極の印
+[KOR]
+대극의 인
 
 [0x6ea]
+[JPN]
 camera_top030_dead
+[KOR]
 

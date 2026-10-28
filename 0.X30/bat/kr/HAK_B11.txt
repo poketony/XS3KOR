@@ -1,105 +1,211 @@
+# SB-TEXT: JPN-KOR v1
+
 [0xb61]
+[JPN]
 B05
+[KOR]
+
 
 [0xb65]
+[JPN]
 --- Battle Start ---
+[KOR]
+
 
 [0xb7a]
+[JPN]
 --- default ---
+[KOR]
+
 
 [0xb8a]
+[JPN]
 --- top018 ---
+[KOR]
+
 
 [0xb99]
+[JPN]
 私が死ねばニグレドも死ぬのだ
+[KOR]
+내가 죽으면 니그레도도 죽는다
 
 [0xbb6]
+[JPN]
 ほざけ、ガイナンは必ず助け出す！
+[KOR]
+헛소리 마, 가이난은 반드시 구해 내겠어!
 
 [0xbd7]
+[JPN]
 CHRV_EVE0601
+[KOR]
+
 
 [0xbe4]
+[JPN]
 見ろ、これが神の力を持つということだ
+[KOR]
+보아라, 이것이 신의 힘을 갖는다는 것이다
 
 [0xc09]
+[JPN]
 CHRV_EVE0600
+[KOR]
+
 
 [0xc16]
+[JPN]
 本気であんなモン使うつもりかよ
+[KOR]
+정말 저딴 걸 쓸 셈이야
 
 [0xc35]
+[JPN]
 CHRV_EVE0602
+[KOR]
+
 
 [0xc42]
+[JPN]
 どうしたのだ、アベル？私に従え
+[KOR]
+왜 그러느냐, 아벨? 내게 복종해라
 
 [0xc61]
+[JPN]
 CHRV_EVE0603
+[KOR]
+
 
 [0xc6e]
+[JPN]
 ブーストをためさせては危険だ
+[KOR]
+부스트를 모으게 두면 위험하다
 
 [0xc8b]
+[JPN]
 ヒートで冷静さを失わせれば・・・
+[KOR]
+히트로 냉정함을 잃게 하면・・・
 
 [0xcac]
+[JPN]
 薙ぎ払え
+[KOR]
+쓸어버려라
 
 [0xcb5]
+[JPN]
 ククク、この程度で私を倒すことなどできんよ
+[KOR]
+크크크, 이 정도로 날 쓰러뜨릴 수는 없지
 
 [0xce0]
+[JPN]
 CHRV_EVE0604
+[KOR]
+
 
 [0xced]
+[JPN]
 ユーリエフは波動の強さを高めた
+[KOR]
+유리에프가 파동의 강도를 높였다
 
 [0xd0c]
+[JPN]
 焼き尽くすのだ
+[KOR]
+모조리 불태워라
 
 [0xd1b]
+[JPN]
 --- top019 ---
+[KOR]
+
 
 [0xd2a]
+[JPN]
 オメガ・レース・ノワエは静寂に包まれている
+[KOR]
+오메가 레스 노베는 정적에 싸여 있다
 
 [0xd55]
+[JPN]
 見ろ、これが恐怖という力だ
+[KOR]
+보아라, 이것이 공포라는 힘이다
 
 [0xd70]
+[JPN]
 私は神を越えるぞ、ルベド
+[KOR]
+나는 신을 뛰어넘겠다, 루베도
 
 [0xd89]
+[JPN]
 ブーストが足りずに必殺技が撃てない
+[KOR]
+부스트가 부족해 필살기를 쓸 수 없다
 
 [0xdac]
+[JPN]
 --- top018 Dmg ---
+[KOR]
+
 
 [0xdbf]
+[JPN]
 これで私に勝ったつもりか…
+[KOR]
+이걸로 날 이겼다고 생각하나…
 
 [0xdda]
+[JPN]
 CHRV_EVE0606
+[KOR]
+
 
 [0xde7]
+[JPN]
 camera_yuriev_00
+[KOR]
+
 
 [0xdf8]
+[JPN]
 camera_yuriev_01
+[KOR]
+
 
 [0xe09]
+[JPN]
 camera_yuriev_02
+[KOR]
+
 
 [0xe1a]
+[JPN]
 camera_yuriev_03
+[KOR]
+
 
 [0xe2b]
+[JPN]
 camera_omega_00
+[KOR]
+
 
 [0xe3b]
+[JPN]
 camera_jr_00
+[KOR]
+
 
 [0xe48]
+[JPN]
 camera_yuriev_dead
+[KOR]
 

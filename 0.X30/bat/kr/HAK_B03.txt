@@ -1,48 +1,97 @@
+# SB-TEXT: JPN-KOR v1
+
 [0x88d]
+[JPN]
 B10
+[KOR]
+
 
 [0x891]
+[JPN]
 --- Battle Start ---
+[KOR]
+
 
 [0x8a6]
+[JPN]
 対エーテルタイプ攻撃の構え
+[KOR]
+에테르 타입 대응 공격 태세
 
 [0x8c1]
+[JPN]
 対物理タイプ攻撃の構え
+[KOR]
+물리 타입 대응 공격 태세
 
 [0x8d8]
+[JPN]
 攻撃力が上昇した!
+[KOR]
+공격력이 상승했다!
 
 [0x8ea]
+[JPN]
 --- default ---
+[KOR]
+
 
 [0x8fa]
+[JPN]
 --- damage think ---
+[KOR]
+
 
 [0x90f]
+[JPN]
 水鏡ＨＩＴ
+[KOR]
+수경ＨＩＴ
 
 [0x91a]
+[JPN]
 鉄鏡ＨＩＴ
+[KOR]
+철경ＨＩＴ
 
 [0x925]
+[JPN]
 --- top014 バーラー1 ---
+[KOR]
+
 
 [0x93e]
+[JPN]
 水鏡の構え
+[KOR]
+수경의 태세
 
 [0x949]
+[JPN]
 鉄鏡の構え
+[KOR]
+철경의 태세
 
 [0x954]
+[JPN]
 烈火の構え
+[KOR]
+열화의 태세
 
 [0x95f]
+[JPN]
 ステータスアップ
+[KOR]
+능력치 상승
 
 [0x970]
+[JPN]
 回避率、命中率UP！
+[KOR]
+회피율, 명중률 UP!
 
 [0x983]
+[JPN]
 camera_top014_dead
+[KOR]
 

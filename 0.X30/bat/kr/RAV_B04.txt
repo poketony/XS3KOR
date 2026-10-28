@@ -1,21 +1,43 @@
+# SB-TEXT: JPN-KOR v1
+
 [0x559]
+[JPN]
 B06
+[KOR]
+
 
 [0x55d]
+[JPN]
 --- Battle Start ---
+[KOR]
+
 
 [0x572]
+[JPN]
 物理攻撃力が上がった！
+[KOR]
+물리 공격력이 올랐다!
 
 [0x589]
+[JPN]
 --- default ---
+[KOR]
+
 
 [0x599]
+[JPN]
 --- top009 ---
+[KOR]
+
 
 [0x5a8]
+[JPN]
 黒の波動
+[KOR]
+검은 파동
 
 [0x5b1]
+[JPN]
 camera_top009_dead
+[KOR]
 

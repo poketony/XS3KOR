@@ -80,7 +80,8 @@ class SBTests(unittest.TestCase):
                 first = sb.read_rows(self.source(entry['asset']))[0]
                 self.assertTrue(first['editable'])
                 self.assertEqual(hex(first['address']), entry['address'])
-                self.assertEqual(sb.parse_text(self.editor(entry['asset']))[first['address']], first['text'])
+                self.assertEqual(sb.editor_entries(self.source(entry['asset']),
+                                                   self.editor(entry['asset']))[first['address']], first['text'])
                 self.assertEqual(first['text'], entry['text'])
 
     def test_first_zero_offset_is_a_string_not_a_sentinel(self):
@@ -88,7 +89,7 @@ class SBTests(unittest.TestCase):
         data = self.source(name)
         first = sb.read_rows(data)[0]
         for value in ('', 'X', 'LONG' * 100):
-            entries = sb.parse_text(sb.extract_text(data))
+            entries = sb.parse_text(sb.extract_text(data, bilingual=False))
             entries[first['address']] = value
             result = sb.rebuild(data, render(entries), self.table)
             address = first['base'] + u32(result, first['ptr_pos'])
@@ -114,22 +115,26 @@ class SBTests(unittest.TestCase):
             first = sb.read_rows(data)[0]
             self.assertFalse(first['editable'])
             content = sb.extract_text(data)
-            self.assertNotIn(first['address'], sb.parse_text(content))
+            self.assertNotIn(first['address'], sb.parse_bilingual(content)[0])
             with self.assertRaisesRegex(ValueError, 'unknown'):
-                sb.rebuild(data, f'[{first["address"]:#x}]\nEDIT\n\n' + content, self.table)
+                sb.rebuild(data, content +
+                           f'\n[{first["address"]:#x}]\n[JPN]\n{first["text"]}\n[KOR]\nEDIT\n',
+                           self.table)
 
     def test_order_does_not_change_build(self):
         for name in ('cf/8050', 'bat/REN_B01'):
             content = self.editor(name)
-            reverse = dict(reversed(list(sb.parse_text(content).items())))
-            self.assertEqual(sb.rebuild(self.source(name), render(reverse), self.table),
+            data = self.source(name)
+            entries = sb.editor_entries(data, content)
+            reverse = sb.render_bilingual(reversed(sb.read_rows(data)), entries)
+            self.assertEqual(sb.rebuild(data, reverse, self.table),
                              sb.rebuild(self.source(name), content, self.table))
 
     def test_shortening_and_empty_change_only_original_slot(self):
         data = self.source()
         row = sb.read_rows(data)[1]
         for value in ('', 'TEST', row['text'][:3]):
-            entries = sb.parse_text(sb.extract_text(data))
+            entries = sb.parse_text(sb.extract_text(data, bilingual=False))
             entries[row['address']] = value
             result = sb.rebuild(data, render(entries), self.table)
             expected = bytearray(data)
@@ -141,7 +146,7 @@ class SBTests(unittest.TestCase):
         row = sb.read_rows(data)[1]
         # A reserved numeric field deliberately equals the old relative pointer.
         struct.pack_into('<I', data, 32, row['address'] - row['base'])
-        entries = sb.parse_text(sb.extract_text(data))
+        entries = sb.parse_text(sb.extract_text(data, bilingual=False))
         raw = b'<LONG>' * 100
         entries[row['address']] = raw.decode()
         result = sb.rebuild(data, render(entries), self.table)
@@ -153,7 +158,7 @@ class SBTests(unittest.TestCase):
 
     def test_whitespace_punctuation_and_newline_conventions(self):
         data = self.source()
-        entries = sb.parse_text(sb.extract_text(data))
+        entries = sb.parse_text(sb.extract_text(data, bilingual=False))
         row = sb.read_rows(data)[1]
         value = '  <f> "TEST" \\n\n\n <c>  '
         entries[row['address']] = value
@@ -164,7 +169,7 @@ class SBTests(unittest.TestCase):
 
     def test_bad_or_incomplete_address_sets_are_rejected(self):
         data = self.source()
-        entries = sb.parse_text(sb.extract_text(data))
+        entries = sb.parse_text(sb.extract_text(data, bilingual=False))
         first = next(iter(entries))
         missing = dict(entries)
         missing.pop(first)
@@ -179,7 +184,7 @@ class SBTests(unittest.TestCase):
 
     def test_encoding_nul_and_ambiguous_physical_lines_fail(self):
         data = self.source()
-        entries = sb.parse_text(sb.extract_text(data))
+        entries = sb.parse_text(sb.extract_text(data, bilingual=False))
         first = next(iter(entries))
         for value in ('\U0001f9ea', '\u2014', '\0', 'X\rY'):
             changed = dict(entries)
@@ -190,6 +195,41 @@ class SBTests(unittest.TestCase):
             sb.parse_text('[0x1]\nfirst\nsecond\n\n')
         with self.assertRaises(ValueError):
             sb.rebuild(data, render({**entries, first: 'X'}), {'X': '\0'})
+
+    def test_bilingual_blank_whitespace_and_missing_kor_preserve_original(self):
+        data = self.source()
+        content = sb.extract_text(data)
+        self.assertTrue(content.startswith(sb.BILINGUAL_HEADER + '\n'))
+        self.assertEqual(sb.rebuild(data, content, self.table), data)
+        self.assertEqual(sb.rebuild(data, content.replace('[KOR]\n\n', '[KOR]\n   \n', 1),
+                                    self.table), data)
+        self.assertEqual(sb.rebuild(data, content.replace('[KOR]\n\n', '', 1),
+                                    self.table), data)
+
+    def test_bilingual_translation_controls_and_literal_escape(self):
+        data = self.source()
+        rows = sb.read_rows(data)
+        row = next(item for item in rows if item['editable'])
+        content = sb.render_bilingual(rows, {row['address']: r'A[n]B\nC'})
+        result = sb.rebuild(data, content, self.table)
+        address = row['base'] + u32(result, row['ptr_pos'])
+        self.assertEqual(nul(result, address), b'A\nB\\nC')
+
+    def test_bilingual_jpn_and_structure_are_strict(self):
+        data = self.source()
+        content = sb.extract_text(data)
+        rows = [row for row in sb.read_rows(data) if row['editable']]
+        tag = f'[{rows[0]["address"]:#x}]'
+        broken = (
+            content.replace('[JPN]\n', '[JPN]\nBROKEN', 1),
+            content.replace(tag, '[0xffffffff]', 1),
+            content + '\n' + content[content.find(tag):],
+            content.replace('[KOR]\n\n', '[KOR]\nline one\nline two\n', 1),
+            content.replace(sb.BILINGUAL_HEADER, '# SB-TEXT: JPN-KOR v2', 1),
+        )
+        for value in broken:
+            with self.subTest(value=value[:80]), self.assertRaises(ValueError):
+                sb.rebuild(data, value, self.table)
 
     def test_corrupt_binary_fails_before_rebuild(self):
         source = self.source()
@@ -215,7 +255,7 @@ class SBTests(unittest.TestCase):
         for name, _, result, _ in results:
             with self.subTest(name=name):
                 data = self.source(name)
-                entries = sb.parse_text(self.editor(name))
+                entries = sb.editor_entries(data, self.editor(name))
                 allowed = []
                 for row in sb.read_rows(data):
                     address = row['base'] + u32(result, row['ptr_pos'])
@@ -247,9 +287,10 @@ class SBTests(unittest.TestCase):
         def damaged(path, *args, **kwargs):
             text = real_read(path, *args, **kwargs)
             if path == bad_path:
-                entries = sb.parse_text(text)
+                data = self.source('cf/9248')
+                entries = sb.editor_entries(data, text)
                 entries[next(iter(entries))] = '\U0001f9ea'
-                return render(entries)
+                return sb.render_bilingual(sb.read_rows(data), entries)
             return text
         with patch.object(Path, 'read_text', damaged), patch.object(build_sb, 'write_output') as save:
             with contextlib.redirect_stderr(io.StringIO()):

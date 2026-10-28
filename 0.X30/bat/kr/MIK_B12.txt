@@ -1,165 +1,331 @@
+# SB-TEXT: JPN-KOR v1
+
 [0x1735]
+[JPN]
 B15
+[KOR]
+
 
 [0x1739]
+[JPN]
 B09
+[KOR]
+
 
 [0x173d]
+[JPN]
 --- Battle Start ---
+[KOR]
+
 
 [0x1752]
+[JPN]
 --- default ---
+[KOR]
+
 
 [0x1762]
+[JPN]
 --- top027 ---
+[KOR]
+
 
 [0x1771]
+[JPN]
 悪いが、貴方に妹を渡すわけにはいきません
+[KOR]
+미안하지만, 당신에게 여동생을 넘길 순 없습니다
 
 [0x179a]
+[JPN]
 妹を見殺しにするのか…薄情な兄だな…
+[KOR]
+여동생이 죽게 두겠다는 건가… 매정한 오빠로군…
 
 [0x17bf]
+[JPN]
 CHRV_EVE0801
+[KOR]
+
 
 [0x17cc]
+[JPN]
 お前達にシオンを止める事は出来ない
+[KOR]
+너희는 시온을 막을 수 없다
 
 [0x17ef]
+[JPN]
 CHRV_EVE0800
+[KOR]
+
 
 [0x17fc]
+[JPN]
 シオンを傷つける事は許さん…
+[KOR]
+시온을 해치는 건 용서 못 한다…
 
 [0x1819]
+[JPN]
 CHRV_EVE0804
+[KOR]
+
 
 [0x1826]
+[JPN]
 ケビンの波動が高まった
+[KOR]
+케빈의 파동이 높아졌다
 
 [0x183d]
+[JPN]
 --- top032 ---
+[KOR]
+
 
 [0x184c]
+[JPN]
 お願い…邪魔をしないで
+[KOR]
+부탁이야… 방해하지 마
 
 [0x1863]
+[JPN]
 CHRV_EVE0802
+[KOR]
+
 
 [0x1870]
+[JPN]
 もうイヤ・・・、二人だけにして！
+[KOR]
+이젠 싫어・・・, 둘만 있게 해 줘!
 
 [0x1891]
+[JPN]
 CHRV_EVE0803
+[KOR]
+
 
 [0x189e]
+[JPN]
 やめて！ケビン先輩を傷つけないで
+[KOR]
+그만해! 케빈 선배를 해치지 마
 
 [0x18bf]
+[JPN]
 CHRV_EVE0805
+[KOR]
+
 
 [0x18cc]
+[JPN]
 --- top028 ---
+[KOR]
+
 
 [0x18db]
+[JPN]
 シオン…僕の言う事を聞いてくれ…シオン…
+[KOR]
+시온… 내 말을 들어 줘… 시온…
 
 [0x1904]
+[JPN]
 CHRV_EVE0901
+[KOR]
+
 
 [0x1911]
+[JPN]
 シオン…僕の言葉が届かないのかい…
+[KOR]
+시온… 내 말이 들리지 않는 거야…
 
 [0x1934]
+[JPN]
 ケビン先輩…私はもう…貴方のもとへは戻らない…
+[KOR]
+케빈 선배… 전 이제… 당신 곁으로 안 돌아가요…
 
 [0x1963]
+[JPN]
 CHRV_EVE0900
+[KOR]
+
 
 [0x1970]
+[JPN]
 死よりも無為なる生に恐怖せよ…
+[KOR]
+죽음보다 무의미한 삶을 두려워하라…
 
 [0x198f]
+[JPN]
 CHRV_EVE0902
+[KOR]
+
 
 [0x199c]
+[JPN]
 ケビンは必殺技の構えを取った
+[KOR]
+케빈이 필살기 태세를 취했다
 
 [0x19b9]
+[JPN]
 ブースト上昇率が大幅にUPした！
+[KOR]
+부스트 상승률이 크게 UP했다!
 
 [0x19d8]
+[JPN]
 穢れし魂に永遠の安息を…
+[KOR]
+더럽혀진 영혼에 영원한 안식을…
 
 [0x19f1]
+[JPN]
 CHRV_EVE0903
+[KOR]
+
 
 [0x19fe]
+[JPN]
 クリティカルが必ず発動するようになった！
+[KOR]
+크리티컬이 반드시 발동하게 되었다!
 
 [0x1a27]
+[JPN]
 物理攻撃が無効になった！
+[KOR]
+물리 공격이 무효가 되었다!
 
 [0x1a40]
+[JPN]
 --- top027 Dmg ---
+[KOR]
+
 
 [0x1a53]
+[JPN]
 --- top032 Dmg ---
+[KOR]
+
 
 [0x1a66]
+[JPN]
 もうイヤ…、わかってよ!!
+[KOR]
+이젠 싫어…, 내 마음을 알아줘!!
 
 [0x1a7f]
+[JPN]
 CHRV_EVE0807
+[KOR]
+
 
 [0x1a8c]
+[JPN]
 --- top028 Dmg ---
+[KOR]
+
 
 [0x1a9f]
+[JPN]
 シオン…僕の元に帰るんだ…
+[KOR]
+시온… 내 곁으로 돌아와…
 
 [0x1aba]
+[JPN]
 CHRV_EVE0904
+[KOR]
+
 
 [0x1ac7]
+[JPN]
 camera_jin_00
+[KOR]
+
 
 [0x1ad5]
+[JPN]
 camera_kevin_00
+[KOR]
+
 
 [0x1ae5]
+[JPN]
 camera_kevin_01
+[KOR]
+
 
 [0x1af5]
+[JPN]
 camera_shion_00
+[KOR]
+
 
 [0x1b05]
+[JPN]
 camera_shion_01
+[KOR]
+
 
 [0x1b15]
+[JPN]
 camera_shion_02
+[KOR]
+
 
 [0x1b25]
+[JPN]
 camera_shion_03
+[KOR]
+
 
 [0x1b35]
+[JPN]
 camera_kevin_02
+[KOR]
+
 
 [0x1b45]
+[JPN]
 camera_kevin_03
+[KOR]
+
 
 [0x1b55]
+[JPN]
 camera_kevin_04
+[KOR]
+
 
 [0x1b65]
+[JPN]
 camera_kevin_05
+[KOR]
+
 
 [0x1b75]
+[JPN]
 camera_kevin01_dead
+[KOR]
+
 
 [0x1b89]
+[JPN]
 camera_shion_dead
+[KOR]
+
 
 [0x1b9b]
+[JPN]
 camera_kevin02_dead
+[KOR]
 

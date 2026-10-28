@@ -1,39 +1,79 @@
+# SB-TEXT: JPN-KOR v1
+
 [0x5b5]
+[JPN]
 B10
+[KOR]
+
 
 [0x5b9]
+[JPN]
 --- Battle Start ---
+[KOR]
+
 
 [0x5ce]
+[JPN]
 スキンダウン反応が作動した！
+[KOR]
+스킨 다운 반응이 작동했다!
 
 [0x5eb]
+[JPN]
 遠隔攻撃でトルナードの発動確率UP！
+[KOR]
+원격 공격으로 토르나도의 발동 확률 UP!
 
 [0x60e]
+[JPN]
 物理属性強化！
+[KOR]
+물리 속성 강화!
 
 [0x61d]
+[JPN]
 --- default ---
+[KOR]
+
 
 [0x62d]
+[JPN]
 --- Damage Think !!! ---
+[KOR]
+
 
 [0x646]
+[JPN]
 --- 3top016 バーラー3 ---
+[KOR]
+
 
 [0x660]
+[JPN]
 --- 現在のファイナル確率！ ---
+[KOR]
+--- 현재 파이널 확률! ---
 
 [0x67f]
+[JPN]
 カオスアイ
+[KOR]
+카오스 아이
 
 [0x68a]
+[JPN]
 物理半減
+[KOR]
+물리 반감
 
 [0x693]
+[JPN]
 プロテクト
+[KOR]
+프로텍트
 
 [0x69e]
+[JPN]
 camera_top016_dead
+[KOR]
 

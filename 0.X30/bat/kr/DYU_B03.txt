@@ -1,90 +1,181 @@
+# SB-TEXT: JPN-KOR v1
+
 [0x975]
+[JPN]
 B02
+[KOR]
+
 
 [0x979]
+[JPN]
 --- Battle Start ---
+[KOR]
+
 
 [0x98e]
+[JPN]
 --- default ---
+[KOR]
+
 
 [0x99e]
+[JPN]
 --- top013 ---
+[KOR]
+
 
 [0x9ad]
+[JPN]
 あら、貴方も私に踏まれたいの？
+[KOR]
+어머, 너도 나한테 밟히고 싶니?
 
 [0x9cc]
+[JPN]
 CHRV_EVE0500
+[KOR]
+
 
 [0x9d9]
+[JPN]
 ねえ、ルベド、貴方の力はそんなものなの？
+[KOR]
+있지, 루베도, 네 힘은 그 정도니?
 
 [0xa02]
+[JPN]
 CHRV_EVE0501
+[KOR]
+
 
 [0xa0f]
+[JPN]
 キツイお仕置きが必要みたいね
+[KOR]
+따끔하게 벌을 줘야겠네
 
 [0xa2c]
+[JPN]
 CHRV_EVE0502
+[KOR]
+
 
 [0xa39]
+[JPN]
 シトリンの思念波が高まり始めた
+[KOR]
+시트린의 사념파가 높아지기 시작했다
 
 [0xa58]
+[JPN]
 いい加減にしろシトリン!! 俺はもう誰も失いたくないんだ
+[KOR]
+그만해, 시트린!! 난 더는 아무도 잃고 싶지 않아
 
 [0xa8e]
+[JPN]
 認めない…私は認めないわよ…
+[KOR]
+인정 못 해… 난 인정 못 한다고…
 
 [0xaab]
+[JPN]
 CHRV_EVE0503
+[KOR]
+
 
 [0xab8]
+[JPN]
 CHRV_EVE0504
+[KOR]
+
 
 [0xac5]
+[JPN]
 HPが「６６６」以下の者を戦闘不能にする能力が覚醒した
+[KOR]
+HP 「666」 이하를 전투 불능으로 만드는 능력 각성
 
 [0xafa]
+[JPN]
 HPが666以下の者を\n戦闘不能にする能力が覚醒した
+[KOR]
+HP가 666 이하인 자를\n전투 불능으로 만드는 능력이 각성했다
 
 [0xb2a]
+[JPN]
 シトリンの思念波が異常なまでに高まり始めた
+[KOR]
+시트린의 사념파가 비정상적으로 높아지기 시작했다
 
 [0xb55]
+[JPN]
 1ct
+[KOR]
+
 
 [0xb59]
+[JPN]
 2ct
+[KOR]
+
 
 [0xb5d]
+[JPN]
 --- top013 Dmg ---
+[KOR]
+
 
 [0xb70]
+[JPN]
 シトリンは思念波を制御出来なかった
+[KOR]
+시트린은 사념파를 제어하지 못했다
 
 [0xb93]
+[JPN]
 そんな…お…お父様…
+[KOR]
+그럴 수가… 아… 아버지…
 
 [0xba8]
+[JPN]
 CHRV_EVE0505
+[KOR]
+
 
 [0xbb5]
+[JPN]
 camera_sitrin_00
+[KOR]
+
 
 [0xbc6]
+[JPN]
 camera_sitrin_01
+[KOR]
+
 
 [0xbd7]
+[JPN]
 camera_sitrin_02
+[KOR]
+
 
 [0xbe8]
+[JPN]
 camera_sitrin_03
+[KOR]
+
 
 [0xbf9]
+[JPN]
 camera_jr_00
+[KOR]
+
 
 [0xc06]
+[JPN]
 camera_sitrin_dead
+[KOR]
 
