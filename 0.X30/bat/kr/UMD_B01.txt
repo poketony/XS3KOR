@@ -34,7 +34,7 @@ B01
 [JPN]
     <col848952>【敵の種族】\n<colC16060>  Ｂ      <colFFFFFF>バイオ             （生物系）\n<colC16060>  Ｍ      <colFFFFFF>マシーン         （機械系）\n<colC16060>  Ｇ      <colFFFFFF>グノーシス     （グノーシス系）■
 [KOR]
-    <col848952>【적의 종족】\n<colC16060>  B      <colFFFFFF>바이오             (생물계)\n<colC16060>  M     <colFFFFFF>머신　             (기계계)\n<colC16060>  G      <colFFFFFF>그노시스         (그노시스계)■
+    <col848952>【적의 종족】\n<colC16060>  B      <colFFFFFF>바이오             (생물계)\n<colC16060>  M     <colFFFFFF>머신              (기계계)\n<colC16060>  G      <colFFFFFF>그노시스         (그노시스계)■
 
 [0x65b]
 [JPN]
